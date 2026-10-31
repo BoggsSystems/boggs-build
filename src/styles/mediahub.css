@@ -3909,4 +3909,568 @@ html, body {
   }
 }
 
+/* ==========================================================================
+   Capstone Fast-Track Intake Modal
+   ========================================================================== */
+
+.capstone-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 13, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  animation: capstoneFadeIn 0.2s ease-out;
+}
+
+@keyframes capstoneFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.capstone-modal-content {
+  position: relative;
+  background: linear-gradient(145deg, #0f172a 0%, #090e17 100%);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.12);
+  width: 100%;
+  max-width: 660px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px 32px 28px;
+  color: #f8fafc;
+}
+
+.capstone-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.capstone-modal-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.capstone-modal-header {
+  margin-bottom: 22px;
+}
+
+.capstone-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+  margin-bottom: 12px;
+}
+
+.capstone-modal-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0 0 10px 0;
+}
+
+.capstone-modal-subtitle {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.capstone-modal-subtitle strong {
+  color: #38bdf8;
+}
+
+.capstone-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.capstone-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.capstone-form-row {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .capstone-form-row {
+    flex-direction: column;
+  }
+}
+
+.capstone-form-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.capstone-form-input,
+.capstone-form-textarea {
+  background: rgba(3, 7, 18, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: #f8fafc;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.capstone-form-input:focus,
+.capstone-form-textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.capstone-form-textarea {
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.capstone-system-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7px;
+  max-height: 190px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.capstone-system-card {
+  text-align: left;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.capstone-system-card:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.capstone-system-card.active {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+.capstone-sys-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.capstone-sys-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.capstone-system-card.active .capstone-sys-name {
+  color: #38bdf8;
+}
+
+.capstone-sys-tag {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-family: monospace;
+}
+
+.capstone-velocity-callout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.capstone-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3);
+}
+
+.capstone-btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+}
+
+.capstone-success-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 10px;
+  gap: 14px;
+}
+
+.capstone-success-icon {
+  margin-bottom: 6px;
+}
+
+.capstone-success-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+}
+
+.capstone-success-desc {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  max-width: 480px;
+  margin: 0;
+}
+
+.capstone-btn-secondary {
+  padding: 10px 22px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.15s ease;
+}
+
+.capstone-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   5-Product Operating Portfolio Showcase
+   ========================================================================== */
+
+.boggs-portfolio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.boggs-portfolio-card {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.75) 0%, rgba(9, 14, 23, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.boggs-portfolio-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(56, 189, 248, 0.08);
+}
+
+.boggs-portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.boggs-portfolio-grid.reverse {
+  direction: rtl;
+}
+
+.boggs-portfolio-grid.reverse > * {
+  direction: ltr;
+}
+
+.boggs-portfolio-media {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #020617;
+  aspect-ratio: 16 / 10;
+}
+
+.boggs-portfolio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.boggs-portfolio-card:hover .boggs-portfolio-img {
+  transform: scale(1.03);
+}
+
+.boggs-portfolio-overlay-badges {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  z-index: 2;
+}
+
+.boggs-portfolio-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f1f5f9;
+}
+
+.boggs-portfolio-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.boggs-portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  width: fit-content;
+}
+
+.boggs-portfolio-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.boggs-portfolio-desc {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.boggs-portfolio-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.boggs-portfolio-spec-item {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 9px;
+  padding: 9px 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.boggs-portfolio-spec-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.boggs-portfolio-spec-text {
+  font-size: 0.81rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.boggs-portfolio-spec-text strong {
+  color: #f8fafc;
+}
+
+.boggs-portfolio-hiring-box {
+  margin-top: 6px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(30, 41, 59, 0.4) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boggs-portfolio-hiring-box.amber {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.boggs-portfolio-hiring-box.emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.09) 0%, rgba(5, 150, 105, 0.04) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.boggs-portfolio-hiring-box.purple {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.09) 0%, rgba(147, 51, 234, 0.04) 100%);
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+.boggs-portfolio-hiring-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.boggs-portfolio-hiring-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+}
+
+.boggs-portfolio-hiring-box.amber .boggs-portfolio-hiring-tag {
+  color: #fbbf24;
+}
+
+.boggs-portfolio-hiring-box.emerald .boggs-portfolio-hiring-tag {
+  color: #34d399;
+}
+
+.boggs-portfolio-hiring-box.purple .boggs-portfolio-hiring-tag {
+  color: #c084fc;
+}
+
+.boggs-portfolio-hiring-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.boggs-portfolio-hiring-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+}
+
+.boggs-portfolio-hiring-btn.amber {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #000000;
+}
+
+.boggs-portfolio-hiring-btn.amber:hover {
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
+
+.boggs-portfolio-hiring-btn.emerald {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #ffffff;
+}
+
+.boggs-portfolio-hiring-btn.emerald:hover {
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.boggs-portfolio-hiring-btn.purple {
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  border-color: rgba(192, 132, 252, 0.5);
+  color: #ffffff;
+}
+
+.boggs-portfolio-hiring-btn.purple:hover {
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .boggs-portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .boggs-portfolio-grid.reverse {
+    direction: ltr;
+  }
+}
+
+
 

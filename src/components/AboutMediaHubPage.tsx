@@ -32,6 +32,7 @@ import { BoggsLogo } from './BoggsLogo';
 import { BoggsHero } from './BoggsHero';
 import { OpportunityOSSection } from './OpportunityOSSection';
 import { NewsletterModal } from './NewsletterModal';
+import { CapstoneApplyModal } from './CapstoneApplyModal';
 import bookCoverUrl from '../assets/ai-native-software-engineering-cover@2x.png';
 
 interface AboutMediaHubPageProps {
@@ -265,6 +266,8 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
   const [showPrologueDrawer, setShowPrologueDrawer] = useState<boolean>(false);
   const [upcomingModalVideo, setUpcomingModalVideo] = useState<VideoItem | null>(null);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [showCapstoneModal, setShowCapstoneModal] = useState<boolean>(false);
+  const [selectedCapstoneSystem, setSelectedCapstoneSystem] = useState<string>('transit-os');
 
   // Cinematic Video Modal State
   const [modalVideo, setModalVideo] = useState<VideoItem | null>(null);
@@ -809,6 +812,10 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
           onOpenNewsletter={() => setShowNewsletterModal(true)}
+          onOpenCapstone={(systemId) => {
+            setSelectedCapstoneSystem(systemId);
+            setShowCapstoneModal(true);
+          }}
           shortsSlot={
             <section className="mediahub-shorts-section" style={{ paddingTop: '8px', paddingBottom: '8px' }}>
               <div className="mediahub-shorts-header">
@@ -1899,6 +1906,15 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
             <button onClick={() => setShowNewsletterModal(true)} style={{ background: 'none', border: 'none', color: '#f97316', cursor: 'pointer', padding: 0 }}>
               Newsletter
             </button>
+            <button
+              onClick={() => {
+                setSelectedCapstoneSystem('transit-os');
+                setShowCapstoneModal(true);
+              }}
+              style={{ background: 'none', border: 'none', color: '#38bdf8', cursor: 'pointer', padding: 0, fontWeight: 700 }}
+            >
+              Capstone Fast-Track
+            </button>
           </div>
           <p style={{ color: '#64748b', fontSize: '0.8rem', margin: 0, textAlign: 'center' }}>
             &copy; {new Date().getFullYear()} Boggs Systems Inc. All rights reserved. The sovereign enterprise umbrella for autonomous systems.
@@ -1911,6 +1927,13 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
         isOpen={showNewsletterModal}
         onClose={handleCloseNewsletterModal}
         source="about_page_modal"
+      />
+
+      {/* Capstone Fast-Track Intake Modal */}
+      <CapstoneApplyModal
+        isOpen={showCapstoneModal}
+        onClose={() => setShowCapstoneModal(false)}
+        initialSystem={selectedCapstoneSystem}
       />
     </div>
   );

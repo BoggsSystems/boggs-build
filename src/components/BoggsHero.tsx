@@ -18,18 +18,29 @@ import {
   Activity,
   Layers,
   CheckCircle2,
+  Clock,
+  Radio,
+  FileCode2,
+  Play,
+  Flame,
 } from 'lucide-react';
 import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
+import transitOsCommandCenterUrl from '../assets/transit-os-command-center.jpg';
+import sovereignMeshEnergyUrl from '../assets/sovereign-mesh-energy.jpg';
+import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
+import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
 
 interface BoggsHeroProps {
   onScrollToPlayer: () => void;
   onOpenNewsletter: () => void;
+  onOpenCapstone?: (systemId: string) => void;
   shortsSlot?: React.ReactNode;
 }
 
 export const BoggsHero: React.FC<BoggsHeroProps> = ({
   onScrollToPlayer,
   onOpenNewsletter,
+  onOpenCapstone,
   shortsSlot,
 }) => {
   return (
@@ -42,12 +53,13 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
         <span className="boggs-pill-text">
           Publishing live dev & test videos ahead of our Nov visit • Sponsoring <strong>10 Capstone roles</strong> across our advanced repos
         </span>
-        <a
-          href="mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Inquiry%20-%20Student%20Application"
+        <button
+          onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Inquiry%20-%20Student%20Application')}
           className="boggs-pill-link"
+          style={{ background: 'transparent', border: 'none', cursor: 'pointer', font: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
         >
-          Inquire <ArrowRight size={13} />
-        </a>
+          Claim a Repo <ArrowRight size={13} />
+        </button>
       </div>
 
       <div className="boggs-hero-content">
@@ -196,226 +208,457 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
           </div>
         </div>
 
-        {/* Flagship Capstone Project Spotlight: Smart Mohs Workstation & Laser Systems */}
-        <div className="boggs-mohs-section">
-          <div className="boggs-section-badge" style={{ color: '#f43f5e' }}>
-            <Activity size={14} /> Flagship Capstone Project • uOttawa SEG 2026/2027
+        {/* ==========================================================================
+           The 5-System Operating Portfolio Showcase & High-Velocity Capstone Funnel
+           ========================================================================== */}
+        <div style={{ marginBottom: '40px' }}>
+          <div className="boggs-section-badge" style={{ color: '#38bdf8' }}>
+            <Layers size={14} /> The 5-System Sovereign & Commercial Portfolio
           </div>
           <h2 className="boggs-section-heading">
-            Smart Mohs: Autonomous Optical Biopsy & Sub-Millimeter Laser Ablation
+            Operating Platforms Designed for Autonomous Scale.
           </h2>
           <p className="boggs-section-desc">
-            Our primary medical infrastructure initiative under the Medicine plank—decoupling dermatological oncology and laser surgery from slow, manual frozen-section histology.
+            Explore every system under the Boggs Systems umbrella. University of Ottawa Capstone students inherit mature, production-grade codebases already developed extensively by founder Jeffrey Boggs (uOttawa SEG Inaugural Class)—with full creative freedom to build novel features and cross the finish line.
           </p>
 
-          <div className="boggs-mohs-grid">
-            {/* Left: 3D Workstation Render */}
-            <div>
-              <div className="boggs-mohs-image-wrap">
-                <img
-                  src={smartMohsWorkstationUrl}
-                  alt="Smart Mohs Closed-Loop Surgical Robotics Workstation"
-                  className="boggs-mohs-img"
-                />
-                <div className="boggs-mohs-image-badge">
-                  <span style={{ fontWeight: 800, color: '#38bdf8' }}>Smart Mohs Workstation Prototype</span>
-                  <span style={{ color: '#94a3b8' }}>LC-OCT Biopsy • AI Segmentation</span>
+          {/* High-Velocity Student Onboarding Manifesto Banner */}
+          <div
+            style={{
+              background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
+              borderRadius: '16px',
+              padding: '22px 26px',
+              marginBottom: '32px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '14px',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(56, 189, 248, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8' }}>
+                  <GraduationCap size={22} />
                 </div>
-              </div>
-              <div className="boggs-mohs-stats">
-                <span className="boggs-mohs-stat-pill">
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-                  100% In Situ Negative Margins
-                </span>
-                <span className="boggs-mohs-stat-pill">
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                  &lt;2 µm Thermal Damage
-                </span>
-                <span className="boggs-mohs-stat-pill">
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f59e0b' }} />
-                  Zero Frozen-Section Turnaround
-                </span>
-              </div>
-            </div>
-
-            {/* Right: Technical Architecture & Variations */}
-            <div className="boggs-mohs-content">
-              <p className="boggs-mohs-desc">
-                Transforming Mohs surgery into an automated, scalpel-free, single-stage outpatient procedure. Cellular-resolution Line-Field Confocal Optical Coherence Tomography (LC-OCT) streams tissue volumes via zero-copy RDMA to a 3D neural network, guiding a cold femtosecond laser steered by a 20 kHz galvanometer array.
-              </p>
-
-              <div className="boggs-mohs-variations">
-                {/* Variation 1: Mohs Oncology */}
-                <div className="boggs-mohs-var-card">
-                  <div className="boggs-mohs-var-icon" style={{ background: 'rgba(244, 63, 94, 0.15)', color: '#f43f5e' }}>
-                    <Activity size={18} />
-                  </div>
-                  <div>
-                    <div className="boggs-mohs-var-title">Dermatological Oncology (Smart Mohs)</div>
-                    <p className="boggs-mohs-var-desc">
-                      Closed-loop non-melanoma skin cancer excision (BCC & SCC). Automated margin segmentation and sub-millimeter ablation with instant crater re-scanning.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Variation 2: Medical Dermatology */}
-                <div className="boggs-mohs-var-card">
-                  <div className="boggs-mohs-var-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
-                    <Zap size={18} />
-                  </div>
-                  <div>
-                    <div className="boggs-mohs-var-title">Medical Dermatology & Vascular Systems</div>
-                    <p className="boggs-mohs-var-desc">
-                      Real-time optical dosimetry and automated lesion targeting for deep vascular malformations, inflammatory pathologies, and precision pigment clearing.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Variation 3: Aesthetics & Reconstructive Surgery */}
-                <div className="boggs-mohs-var-card">
-                  <div className="boggs-mohs-var-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-                    <Sparkles size={18} />
-                  </div>
-                  <div>
-                    <div className="boggs-mohs-var-title">Aesthetic & Reconstructive Laser Software</div>
-                    <p className="boggs-mohs-var-desc">
-                      Computer-vision-guided fractional skin resurfacing, scar remodeling, and thermal-damage-free aesthetic soft-tissue ablation.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Student Hiring Callout */}
-              <div className="boggs-mohs-hiring-box">
-                <div className="boggs-mohs-hiring-text">
-                  <strong style={{ color: '#fbbf24', fontSize: '0.92rem', display: 'block', marginBottom: '4px' }}>
-                    uOttawa SEG Capstone Apprenticeship (Smart Mohs & Laser Systems):
-                  </strong>
-                  Sponsoring student engineers to take over dedicated, high-performance repositories already developed quite far by Jeff Boggs.
-                </div>
-
-                <div className="boggs-mohs-hiring-points">
-                  <div className="boggs-mohs-hiring-point">
-                    <CheckCircle2 size={15} style={{ color: '#fbbf24', flexShrink: 0, marginTop: '2px' }} />
-                    <span><strong>Advanced Foundation:</strong> Inherit an established C++23 wave optics digital twin & CUDA 3D segmentation codebase—taking it across the finish line.</span>
-                  </div>
-                  <div className="boggs-mohs-hiring-point">
-                    <Sparkles size={15} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
-                    <span><strong>Student Ingenuity:</strong> Full creative freedom to architect new clinical features, optimize dosimetry loops, and design real product extensions.</span>
-                  </div>
-                  <div className="boggs-mohs-hiring-point">
-                    <GraduationCap size={15} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
-                    <span><strong>SPO Executive Training:</strong> Mentored directly by Jeff Boggs in AI-native software engineering, strategic management, and commercial product thinking.</span>
-                  </div>
-                  <div className="boggs-mohs-hiring-point">
-                    <Tv size={15} style={{ color: '#c084fc', flexShrink: 0, marginTop: '2px' }} />
-                    <span><strong>Live Dev & Test Videos:</strong> Continuous live coding and test-execution videos published between now and November so you can watch the software running in real-time.</span>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', marginTop: '6px' }}>
-                  <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
-                    10 fully sponsored roles across our systems portfolio • Visiting uOttawa in November
+                <div>
+                  <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 900, color: '#f8fafc' }}>
+                    uOttawa SEG 2026/2027 Capstone Apprenticeship • 48-Hour High-Velocity Intake
+                  </h3>
+                  <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+                    Sponsoring 10 Capstone roles across our advanced repositories • Direct founder mentorship
                   </span>
-                  <a
-                    href="mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Application%20-%20Smart%20Mohs%20Team"
-                    className="boggs-mohs-hiring-btn"
-                  >
-                    Apply for Smart Mohs Team <ArrowRight size={13} />
-                  </a>
+                </div>
+              </div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '5px 12px', borderRadius: '9999px', fontSize: '0.76rem', color: '#34d399', fontWeight: 700 }}>
+                <Clock size={13} /> 48h Turnaround vs. 4-Week Corporate Bureaucracy
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginTop: '4px' }}>
+              <div style={{ display: 'flex', gap: '8px', fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                <CheckCircle2 size={16} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
+                <span><strong style={{ color: '#ffffff' }}>Mature Codebases:</strong> No blank screens. Inherit an established repo developed far by Jeff Boggs and take it across the finish line.</span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                <Sparkles size={16} style={{ color: '#fbbf24', flexShrink: 0, marginTop: '2px' }} />
+                <span><strong style={{ color: '#ffffff' }}>Creative Ingenuity:</strong> Full freedom to architect your own features, refine algorithms, and own your engineering decisions.</span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                <Cpu size={16} style={{ color: '#a855f7', flexShrink: 0, marginTop: '2px' }} />
+                <span><strong style={{ color: '#ffffff' }}>SPO Training:</strong> Mentored in AI-native engineering (Software Product Orchestrator) and strategic product management.</span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                <Tv size={16} style={{ color: '#f43f5e', flexShrink: 0, marginTop: '2px' }} />
+                <span><strong style={{ color: '#ffffff' }}>Live Dev & Test Videos:</strong> Continuous dev speedruns and test traces published leading up to our November campus visit.</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="boggs-portfolio-container">
+            {/* -------------------------------------------------------------
+               PRODUCT 1: Transit-OS (Transportation Plank)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={transitOsCommandCenterUrl}
+                    alt="Transit-OS Autonomous Municipal Dispatch Command Center"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Zero "Ghost-Buses"
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Multi-Agent Dispatch Mesh
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      Sub-Millisecond Rust Core
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
+                    <Compass size={14} /> Transportation Plank • Public Infrastructure
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Transit-OS: Autonomous Municipal Dispatch & Corridor Synchronization
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Eliminates "ghost-buses" and restores public confidence in municipal transit networks. Autonomous multi-agent dispatch mesh, dynamic corridor GPS synchronization, real-time schedule recalculation, and passenger volume load balancing.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Cpu size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Deterministic Actor Engine:</strong> Built in Rust for sub-millisecond route adjustments, non-blocking GIS route recalculation, and fault-tolerant municipal gateway integrations.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                        <Compass size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Corridor & Headway Synchronization:</strong> Live telemetry aligns bus arterials with commuter rail to prevent bunching, phantom delays, and passenger stranding.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Capstone Repo: Transit-OS Core Dispatch & GIS Mesh
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('transit-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Transit-OS')}
+                        className="boggs-portfolio-hiring-btn"
+                      >
+                        Claim Transit-OS Repo <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Section 2: The 4 Infrastructure Pillars */}
-        <div style={{ marginBottom: '32px' }}>
-          <div className="boggs-section-badge" style={{ color: '#f59e0b' }}>
-            <Building2 size={14} /> Critical Infrastructure Focus Areas
-          </div>
-          <h2 className="boggs-section-heading">
-            The Four Infrastructure Pillars (2026–2051)
-          </h2>
-          <p className="boggs-section-desc">
-            Modernizing the foundational systems of Canadian society with deterministic, autonomous software platforms.
-          </p>
+            {/* -------------------------------------------------------------
+               PRODUCT 2: Smart Mohs (Medicine & Laser Robotics Plank)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={smartMohsWorkstationUrl}
+                    alt="Smart Mohs Autonomous Optical Biopsy and Laser Robotics Workstation"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f43f5e' }} />
+                      Sub-Cellular LC-OCT (1.2µm)
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Zero-Latency 3D AI Margins
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      C++23 & CUDA Digital Twin
+                    </span>
+                  </div>
+                </div>
 
-          <div className="boggs-pillars-grid">
-            {/* Pillar 1: Energy */}
-            <div className="boggs-pillar-card">
-              <div className="boggs-pillar-header">
-                <Zap size={22} className="boggs-icon-emerald" />
-                <span className="boggs-pillar-badge" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-                  Sovereign Mesh
-                </span>
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#f43f5e' }}>
+                    <Activity size={14} /> Medicine Plank • Surgical Laser Robotics
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Smart Mohs: Autonomous Optical Biopsy & 3D Cold Laser Micro-Ablation
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Modernizes skin cancer surgery from multi-hour frozen section histology into real-time sub-cellular digital margin assessment. Merges Line-Field Confocal OCT (LC-OCT), 3D AI segmentation, and cold laser micro-ablation into an integrated intraoperative workstation.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(244, 63, 94, 0.15)', color: '#f43f5e' }}>
+                        <Activity size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Closed-Loop Optical Biopsy:</strong> In situ volumetric tissue scanning replacing 45-minute frozen section histological slicing with instant digital 3D validation.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#fbbf24' }}>
+                        <Zap size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Picosecond Cold Laser Ablation:</strong> 20 kHz galvanometer array excising microscopic tumor margins with single-cell precision while sparing healthy facial tissue.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box amber">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Capstone Repo: Smart Mohs Wave Optics & Laser Control
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Smart%20Mohs')}
+                        className="boggs-portfolio-hiring-btn amber"
+                      >
+                        Claim Smart Mohs Repo <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#fbbf24' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="boggs-pillar-title">Energy</div>
-              <p className="boggs-pillar-desc">
-                Distributed community microgrid controllers, clean storage load balancing, Canadian sovereign telemetry standards, and Small Modular Reactor (SMR) / fusion grid orchestration decoupling power from foreign monopolies.
-              </p>
             </div>
 
-            {/* Pillar 2: Transportation */}
-            <div className="boggs-pillar-card">
-              <div className="boggs-pillar-header">
-                <Compass size={22} className="boggs-icon-cyan" />
-                <span className="boggs-pillar-badge" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
-                  Transit-OS
-                </span>
+            {/* -------------------------------------------------------------
+               PRODUCT 3: Sovereign Mesh (Clean Energy & Microgrids Plank)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={sovereignMeshEnergyUrl}
+                    alt="Sovereign Mesh Decentralized Clean Energy Microgrid Orchestration"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Autonomous Islanding
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Canadian SMR Telemetry Standard
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      P2P Storage Balancing
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#10b981' }}>
+                    <Zap size={14} /> Energy Plank • Sovereign Infrastructure
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Sovereign Mesh: Distributed Community Microgrids & Sovereign Power Orchestration
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Decouples Canadian communities and domestic compute clusters from vulnerable centralized grids and foreign energy conglomerates. Autonomous peer-to-peer microgrid controllers, clean battery storage load balancing, domestic SMR (Small Modular Reactor) telemetry, and edge compute balancing.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                        <Zap size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Autonomous Microgrid Balancing:</strong> Dynamic load-shedding and islanding for extreme climate resilience, remote communities, and domestic data security.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Radio size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Sovereign Telemetry Protocol:</strong> Domestic open standard unifying Small Modular Reactors (SMRs), community battery banks, and industrial edge compute.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box emerald">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Capstone Repo: Sovereign Mesh Microgrid Controller
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('sovereign-mesh') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Sovereign%20Mesh')}
+                        className="boggs-portfolio-hiring-btn emerald"
+                      >
+                        Claim Sovereign Mesh Repo <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#34d399' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="boggs-pillar-title">Transportation</div>
-              <p className="boggs-pillar-desc">
-                Intelligent municipal transit scheduling, autonomous multi-agent dispatch, and corridor integration to eliminate "ghost-buses" and restore rider trust across Canadian transit networks.
-              </p>
             </div>
 
-            {/* Pillar 3: Medicine */}
-            <div className="boggs-pillar-card">
-              <div className="boggs-pillar-header">
-                <Activity size={22} className="boggs-icon-rose" />
-                <span className="boggs-pillar-badge" style={{ background: 'rgba(244, 63, 94, 0.15)', color: '#f43f5e', border: '1px solid rgba(244, 63, 94, 0.3)' }}>
-                  Clinical Mesh
-                </span>
+            {/* -------------------------------------------------------------
+               PRODUCT 4: DigitPop (Interactive Media & Live Commerce Plank)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={digitpopLiveCommerceUrl}
+                    alt="DigitPop Sub-10ms Live Interactive Video Commerce Platform"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#c084fc' }} />
+                      &lt;10ms Ultra-Low Latency
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Shoppable 4K Video Overlays
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      WebAssembly & WebGL
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#c084fc' }}>
+                    <Tv size={14} /> Commerce & Media Plank • Commercial Engine
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    DigitPop: Sub-10ms Interactive Video Streaming & Decentralized Commerce Engine
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    The commercial growth and media engine of Boggs Systems. Replaces passive video broadcasts with ultra-low latency interactive WebAssembly streams, live dynamic clickable overlays, and decentralized digital commerce without middleman platform fees.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(192, 132, 252, 0.15)', color: '#c084fc' }}>
+                        <Play size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Interactive WebAssembly Pipeline:</strong> Client-side dynamic overlays running at 60fps across mobile browsers without native application installs.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Flame size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>In-Stream Direct Checkout:</strong> Synchronized video frames with live transaction engines allowing viewers to purchase products, vote, and unlock content inside the video frame.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box purple">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Capstone Repo: DigitPop WebAssembly Player & Live Ingest
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('digitpop') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20DigitPop')}
+                        className="boggs-portfolio-hiring-btn purple"
+                      >
+                        Claim DigitPop Repo <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#c084fc' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="boggs-pillar-title">Medicine</div>
-              <p className="boggs-pillar-desc">
-                De-bottlenecking emergency room and clinical administration, automated triage load balancing, and sovereign Canadian medical supply chain resilience to eliminate hospital logjams.
-              </p>
             </div>
 
-            {/* Pillar 4: Housing & Dignity */}
-            <div className="boggs-pillar-card">
-              <div className="boggs-pillar-header">
-                <HeartHandshake size={22} className="boggs-icon-gold" />
-                <span className="boggs-pillar-badge" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
-                  Opportunity OS
-                </span>
-              </div>
-              <div className="boggs-pillar-title">Housing & Dignity</div>
-              <p className="boggs-pillar-desc">
-                Real-time emergency shelter routing mesh, modular housing supply logistics, and dignity-first evidence-grounded candidate pipelines to systematically eliminate Canadian homelessness.
-              </p>
-            </div>
-          </div>
-        </div>
+            {/* -------------------------------------------------------------
+               PRODUCT 5: Opportunity OS (Housing, Social Mobility & Dignity)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={opportunityOsResumeUrl}
+                    alt="Opportunity OS Evidence-Grounded Hiring & Dignity Engine"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      1-Click ATS Co-Pilot
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Zero Data Exfiltration
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Homelessness Shelter Mesh
+                    </span>
+                  </div>
+                </div>
 
-        {/* Section 3: Umbrella Platform & Commercial Engine Note */}
-        <div
-          style={{
-            background: 'rgba(15, 23, 42, 0.5)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: '12px',
-            padding: '16px 20px',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '14px',
-          }}
-        >
-          <Building2 size={24} style={{ color: '#38bdf8', flexShrink: 0 }} />
-          <div style={{ fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.5 }}>
-            <strong style={{ color: '#f1f5f9' }}>Boggs Systems Enterprise Umbrella:</strong> Boggs Systems Inc. is the Canadian parent enterprise house architecting both sovereign public systems and commercial engines like <strong>DigitPop</strong> (sub-10ms interactive live video streaming and decentralized digital commerce).
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#fbbf24' }}>
+                    <HeartHandshake size={14} /> Housing & Dignity Plank • Social Engine
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Opportunity OS: Evidence-Grounded Candidate Pipelines & Homelessness Shelter Mesh
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Restoring human agency and economic dignity. Replaces keyword-stuffing ATS resume shredders with verified skill evidence and 1-click intelligent autofill co-pilots, while powering real-time emergency shelter routing to systematically eliminate Canadian homelessness.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#fbbf24' }}>
+                        <FileCode2 size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Production Chrome Extension:</strong> Full-stack browser extension with local PDF parsing and contextual form autofill with 100% client-side privacy.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <HeartHandshake size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Emergency Shelter Coordination Mesh:</strong> Algorithmic coordination platform matching unhoused citizens with open emergency shelter beds and modular housing inventory.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box amber">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Capstone Repo: Opportunity OS Extension & Shelter Mesh
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('opportunity-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Opportunity%20OS')}
+                        className="boggs-portfolio-hiring-btn amber"
+                      >
+                        Claim Opportunity OS Repo <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#fbbf24' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -22,7 +22,6 @@ const SYSTEMS = [
   { id: 'borealis-pods', name: 'Borealis Pods (6-Passenger Autonomous Fleet)', tag: 'C++20 • ROS 2 • V2X' },
   { id: 'borealis-maglev', name: 'Borealis Maglev (500 km/h Tube & Avionics)', tag: 'Rust • QNX • SIL-4' },
   { id: 'robot-fleet', name: 'Robot Fleet (Humanoid & Quadruped Multi-Agent)', tag: 'CycloneDDS • MuJoCo • DTDL v3' },
-  { id: 'sovereign-mesh', name: 'Sovereign Mesh (Clean Energy & Microgrids)', tag: 'Telemetry • SMR • Edge' },
   { id: 'digitpop', name: 'DigitPop (Interactive Video & Live Commerce)', tag: 'Wasm • Sub-10ms • WebGL' },
   { id: 'opportunity-os', name: 'Opportunity OS (Social Plank & Dignity Engine)', tag: 'Full-Stack • Extension • AI' },
 ];
@@ -39,7 +38,6 @@ const SYSTEM_PLACEHOLDERS: Record<string, string> = {
   'robot-fleet': "e.g., Tell Jeff about your robotics, ROS 2 / CycloneDDS, MuJoCo physics, or computer vision experience, and your interest in multi-agent humanoid/quadruped collaborative manipulation.",
   'borealis-pods': "e.g., Tell Jeff about your C++20, ROS 2, sensor fusion, or Cellular-V2X experience, and your interest in Level 4 urban path planning or dynamic green-wave pacing.",
   'transit-os': "e.g., Tell Jeff about your Rust, GIS, or distributed multi-agent routing experience, and your interest in deterministic municipal transit dispatch.",
-  'sovereign-mesh': "e.g., Tell Jeff about your edge systems, telemetry, or clean energy microgrid interests, and hands-on experience with SMR or battery control systems.",
   'digitpop': "e.g., Tell Jeff about your WebAssembly, WebGL, or video codec experience, and interest in building sub-10ms interactive live commerce overlays.",
   'opportunity-os': "e.g., Tell Jeff about your TypeScript, Chrome extension, or LLM agent workflow experience, and interest in building dignity-first career infrastructure."
 };

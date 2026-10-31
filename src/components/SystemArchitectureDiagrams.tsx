@@ -151,23 +151,6 @@ const ActorsDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ sy
             { num: 'UC-5', title: 'Deploy Eddy Failsafe', sub: 'Zero-Power Deceleration Skid', color: '#f87171' },
           ],
         };
-      case 'sovereign-mesh':
-        return {
-          title: 'SYSTEM BOUNDARY: SOVEREIGN MESH DISTRIBUTED SMART GRID',
-          primary: { role: 'Grid Operator', sub: 'Municipal Power Authority' },
-          actors: [
-            { role: 'Small Modular Reactor', sub: 'Base-Load SMR Unit', color: '#fbbf24' },
-            { role: 'BESS Battery Inverter', sub: 'Sub-Cycle Droop Injection', color: '#10b981' },
-            { role: 'Solid-State Switch', sub: '< 8ms Islanding Breaker', color: '#f87171' },
-          ],
-          useCases: [
-            { num: 'UC-1', title: '60 Hz Baseline Sync', sub: 'Bulk Transmission Intertie', color: accentColor },
-            { num: 'UC-2', title: 'Autonomous Islanding', sub: '< 8ms Disconnect on Fault', color: '#f87171' },
-            { num: 'UC-3', title: 'Synthetic Grid Inertia', sub: 'Sub-Cycle Frequency Droop', color: '#10b981' },
-            { num: 'UC-4', title: 'Encrypted P2P LoRa Mesh', sub: 'Teleprotection Packet Fabric', color: '#38bdf8' },
-            { num: 'UC-5', title: 'Cryptographic Settlement', sub: 'Ed25519 Energy Accounting', color: '#c084fc' },
-          ],
-        };
       case 'digitpop':
         return {
           title: 'SYSTEM BOUNDARY: DIGITPOP INTERACTIVE VIDEO RUNTIME',
@@ -379,33 +362,6 @@ const SubsystemDiagram: React.FC<{ systemId: string; accentColor: string }> = ({
             { title: 'Central OCC High-Speed Rail Dispatch', sub: 'Cross-Platform Handshake with Borealis Pods', color: '#a855f7' },
           ],
         };
-      case 'sovereign-mesh':
-        return {
-          tier1Label: 'TIER 1: DISTRIBUTED GENERATION & INVERTERS',
-          tier1Blocks: [
-            { title: 'Synchrophasor PMU & Phase Transducers', sub: '4800 Samples/sec Voltage & Current Phasors', color: '#38bdf8' },
-            { title: 'Solid-State Battery BESS Bidirectional Inverters', sub: 'Sub-Cycle Four-Quadrant Reactive Injection', color: '#fbbf24' },
-            { title: 'Substation Solid-State Transfer Breaker', sub: '< 8ms Fast Autonomous Islanding Trip', color: '#f87171' },
-          ],
-          tier2Label: 'TIER 2: SUB-CYCLE DETERMINISTIC FREQUENCY CONTROL',
-          tier2Blocks: [
-            { title: '250µs Wavelet Frequency Anomaly Detector', sub: 'Detects Bulk Grid Loss of Mains within < 4ms', color: '#38bdf8' },
-            { title: 'Frequency Droop Synthetic Inertia Controller', sub: 'Arrests Rate of Change of Frequency (RoCoF)', color: accentColor },
-            { title: 'Encrypted Multi-Hop 915 MHz LoRa Mesh Node', sub: 'Teleprotection Packet Fabric without Internet', color: '#34d399' },
-          ],
-          tier3Label: 'TIER 3: POWER BALANCING & ARBITRAGE ENGINES',
-          tier3Blocks: [
-            { title: 'Dynamic Microgrid Island Power Balancer', sub: 'Autonomous SMR, Solar & Storage Load Match', color: '#c084fc' },
-            { title: 'Algorithmic Priority Load-Shedding Matrix', sub: 'Guarantees Transit & Hospitals during Grid Loss', color: '#38bdf8' },
-            { title: 'Real-Time Locational Marginal Pricing Engine', sub: 'Predictive 24h Battery Arbitrage Dispatch', color: '#fbbf24' },
-          ],
-          tier4Label: 'TIER 4: ENERGY ACCOUNTING & OPERATOR GOVERNANCE',
-          tier4Blocks: [
-            { title: 'FIPS 140-3 Hardware Security Module (HSM)', sub: 'Cryptographically Signs Curtailment & Disconnect', color: '#10b981' },
-            { title: 'Ed25519 Energy Settlement Ledger', sub: 'Audited P2P Kilowatt-Hour Micro-Trading Records', color: '#38bdf8' },
-            { title: 'Zero-Crossing Phase Synchronization Bridge', sub: 'Seamless Microgrid Reconnection to Primary Grid', color: '#a855f7' },
-          ],
-        };
       case 'digitpop':
         return {
           tier1Label: 'TIER 1: MEDIA INGESTION & CLIENT RUNTIME',
@@ -615,17 +571,6 @@ const UmlClassDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           c6: { title: 'EddyCurrentFailsafeBrake', st: '<<PassiveFailsafe>>', m: ['+ release_permanent_skids(): void', '+ verify_brake_deceleration(): f32'], a: ['- mechanical_retention_latch: Pin', '- decel_force_kn: f32 = 180.0', '- thermal_dissipation: HeatSink'] },
           pattern: 'PATTERN: Triple Modular Redundancy (TMR)',
           patternDesc: '2-out-of-3 majority voting across 3 Rust cores',
-        };
-      case 'sovereign-mesh':
-        return {
-          c1: { title: 'IGridEdgeNodeController', st: '<<Interface / SEP2.0>>', m: ['+ sample_phasors(): PhasorMeasurement', '+ dispatch_inverter_curtailment(): void', '+ initiate_island_disconnect(): bool'], a: ['+ node_uuid: GridNodeUuid', '+ is_islanded: bool'] },
-          c2: { title: 'GridEdgeNode', st: '<<AutonomousAgent>>', m: ['+ sample_phasors(): PhasorMeasurement', '+ initiate_island_disconnect(): bool', '+ broadcast_mesh_telemetry(): void'], a: ['- droop_controller: DroopController', '- bms_bridge: BmsBridge', '- mesh_router: PeerMeshRouter'] },
-          c3: { title: 'FrequencyDroopController', st: '<<SubCycleController>>', m: ['+ compute_reactive_injection(): Setpoint', '+ trigger_synthetic_inertia(): void'], a: ['- nominal_frequency_hz: 60.0', '- droop_slope: 4.0%', '- sampling_interval_us: 250'] },
-          c4: { title: 'BmsTelemetryBridge', st: '<<BatterySupervisor>>', m: ['+ query_cell_voltages(): VoltTable', '+ enforce_soc_limits(): bool'], a: ['- inverter_interface: ModbusTCP', '- battery_capacity_kwh: f64', '- max_charge_rate_kw: f64'] },
-          c5: { title: 'PeerMeshRouter', st: '<<FaultTolerantNetworking>>', m: ['+ forward_teleprotection(): void', '+ elect_mesh_cluster_leader(): NodeId', '+ audit_energy_settlement(): Hash'], a: ['- active_peers: HashMap<NodeId, Cost>', '- fallback_lora: LoRaTransceiver', '- signature_key: Ed25519Key'] },
-          c6: { title: 'ByzantineConsensusSettlement', st: '<<AuditedAccounting>>', m: ['+ verify_kwh_transfer_signature(): bool', '+ append_immutable_block(): HashDigest'], a: ['- merkle_tree_root: HashDigest', '- hsm_slot_index: u32', '- settlement_epoch_sec: 900'] },
-          pattern: 'PATTERN: Consensus-Free Local Optimization',
-          patternDesc: '< 2ms sub-cycle local droop without consensus',
         };
       case 'digitpop':
         return {
@@ -844,20 +789,6 @@ const SequenceDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           s5Sub: 'Deploy eddy-current brakes with 0 power if fail',
           s6: '6. 500 km/h Supercruise Decel Handover',
           s7: '7. Docking Clamps Engaged; Pod Handshake Unlocked',
-        };
-      case 'sovereign-mesh':
-        return {
-          l1: 'Grid Operator', l2: 'GridEdgeNode', l3: 'DroopController', l4: 'BmsStorageArray', l5: 'LoRa Mesh & Trip',
-          s1: '1. monitor_grid_frequency_hz(60.0 baseline)',
-          s2: '2. sample_synchrophasor_pmu_stream()',
-          t1: 'Wavelet Anomaly Detection (< 4ms)',
-          s3: '3. trip_solid_state_transfer_switch()',
-          t2: 'Autonomous Islanding Disconnect (< 8ms)',
-          s4: '4. trigger_synthetic_inertia_droop_surge()',
-          s5Title: '5. Substation Watchdog Interlock',
-          s5Sub: 'Mechanical air-gap bypass drops on overvoltage',
-          s6: '6. P2P LoRa Teleprotection Load Balancing',
-          s7: '7. Cryptographic Ed25519 Energy Settlement Logged',
         };
       case 'digitpop':
         return {

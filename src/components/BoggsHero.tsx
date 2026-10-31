@@ -33,7 +33,6 @@ import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
 import borealisMaglevTubeUrl from '../assets/borealis-maglev-tube.jpg';
 import robotFleetHeterogeneousUrl from '../assets/robot-fleet-heterogeneous.jpg';
 import borealisRoadPodUrl from '../assets/borealis-road-pod.jpg';
-import sovereignMeshEnergyUrl from '../assets/sovereign-mesh-energy.jpg';
 import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
 import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
 import spoProductPodArchitectureUrl from '../assets/spo-product-pod-architecture.jpg';
@@ -953,96 +952,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 5: Sovereign Mesh (Clean Energy & Microgrids Plank)
+               PRODUCT 5: DigitPop (Interactive Media & Live Commerce Plank)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid">
-                <div className="boggs-portfolio-media">
-                  <img
-                    src={sovereignMeshEnergyUrl}
-                    alt="Sovereign Mesh Decentralized Clean Energy Microgrid Orchestration"
-                    className="boggs-portfolio-img"
-                  />
-                  <div className="boggs-portfolio-overlay-badges">
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-                      Autonomous Islanding
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                      Canadian SMR Telemetry Standard
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
-                      P2P Storage Balancing
-                    </span>
-                  </div>
-                </div>
-
-                <div className="boggs-portfolio-body">
-                  <div className="boggs-portfolio-tag" style={{ color: '#10b981' }}>
-                    <Zap size={14} /> Energy Plank • Sovereign Infrastructure
-                  </div>
-                  <h3 className="boggs-portfolio-title">
-                    Sovereign Mesh: Distributed Community Microgrids & Sovereign Power Orchestration
-                  </h3>
-                  <p className="boggs-portfolio-desc">
-                    Decouples Canadian communities and domestic compute clusters from vulnerable centralized grids and foreign energy conglomerates. Autonomous peer-to-peer microgrid controllers, clean battery storage load balancing, domestic SMR (Small Modular Reactor) telemetry, and edge compute balancing.
-                  </p>
-
-                  <div className="boggs-portfolio-specs">
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-                        <Zap size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>Autonomous Microgrid Balancing:</strong> Dynamic load-shedding and islanding for extreme climate resilience, remote communities, and domestic data security.
-                      </div>
-                    </div>
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
-                        <Radio size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>Sovereign Telemetry Protocol:</strong> Domestic open standard unifying Small Modular Reactors (SMRs), community battery banks, and industrial edge compute.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="boggs-portfolio-hiring-box emerald">
-                    <div className="boggs-portfolio-hiring-header">
-                      <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Sovereign Mesh Microgrid Controller
-                      </span>
-                      <div className="boggs-portfolio-actions">
-                        <button
-                          onClick={() => onOpenArchitecture ? onOpenArchitecture('sovereign-mesh') : undefined}
-                          className="boggs-portfolio-blueprint-btn emerald"
-                          title="Inspect requirements, UML class models, and state diagrams"
-                        >
-                          <FileCode2 size={13} /> View Architecture &amp; UML
-                        </button>
-                        <button
-                          onClick={() => onOpenCapstone ? onOpenCapstone('sovereign-mesh') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Sovereign%20Mesh')}
-                          className="boggs-portfolio-hiring-btn emerald"
-                        >
-                          Apply as Student <ArrowRight size={13} />
-                        </button>
-                      </div>
-                    </div>
-                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
-                      <strong style={{ color: '#34d399' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* -------------------------------------------------------------
-               PRODUCT 6: DigitPop (Interactive Media & Live Commerce Plank)
-               ------------------------------------------------------------- */}
-            <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid reverse">
                 <div className="boggs-portfolio-media">
                   <img
                     src={digitpopLiveCommerceUrl}

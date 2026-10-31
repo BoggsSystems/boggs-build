@@ -3517,24 +3517,40 @@ html, body {
 }
 
 .boggs-mohs-hiring-box {
-  margin-top: 8px;
+  margin-top: 10px;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.06) 100%);
   border: 1px solid rgba(245, 158, 11, 0.35);
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 16px 20px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .boggs-mohs-hiring-text {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   color: #f8fafc;
   line-height: 1.45;
-  flex: 1;
-  min-width: 240px;
+}
+
+.boggs-mohs-hiring-points {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.boggs-mohs-hiring-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.81rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.boggs-mohs-hiring-point strong {
+  color: #fbbf24;
 }
 
 .boggs-mohs-hiring-btn {

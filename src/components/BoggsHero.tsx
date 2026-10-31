@@ -17,6 +17,7 @@ import {
   Landmark,
   Activity,
   Layers,
+  CheckCircle2,
 } from 'lucide-react';
 import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
 
@@ -36,10 +37,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
       {/* Top Capstone Recruiting Announcement Banner */}
       <div className="boggs-announcement-pill">
         <div className="boggs-pill-badge">
-          <GraduationCap size={15} /> uOttawa SEG 2026/2027
+          <GraduationCap size={15} /> uOttawa SEG 2026/2027 • Road to Ottawa
         </div>
         <span className="boggs-pill-text">
-          Visiting Ottawa in Nov • Sponsoring <strong>10 Software Engineering Students</strong> across our Systems Portfolio
+          Publishing live dev & test videos ahead of our Nov visit • Sponsoring <strong>10 Capstone roles</strong> across our advanced repos
         </span>
         <a
           href="mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Inquiry%20-%20Student%20Application"
@@ -142,11 +143,11 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             {/* Coalition Partner 2: University Students */}
             <div className="boggs-coalition-card students">
               <span className="boggs-partner-pill" style={{ background: 'rgba(245, 158, 11, 0.12)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
-                <GraduationCap size={12} /> Next-Gen Talent
+                <GraduationCap size={12} /> Next-Gen Talent • SPO Apprenticeship
               </span>
               <div className="boggs-partner-title">University Students</div>
               <p className="boggs-partner-desc">
-                Halting Canada's STEM brain drain by funding student engineers to build mission-critical domestic infrastructure through the 1,000-Student Sovereign Builder Corps.
+                Halting Canada's STEM brain drain. Teams take over dedicated, mature repositories already developed quite far by Jeff Boggs, crossing the finish line with student ingenuity and executive mentorship.
               </p>
               <ul className="boggs-partner-bullets">
                 <li>
@@ -155,11 +156,15 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                 </li>
                 <li>
                   <Cpu size={14} style={{ color: '#f59e0b', flexShrink: 0, marginTop: '2px' }} />
-                  <span><strong>Production Engineering:</strong> Students author and deploy real-world multi-agent runtimes, not disposable toy projects.</span>
+                  <span><strong>Advanced Repo Handover:</strong> Inheriting deep, high-performance codebases—not starting from scratch.</span>
+                </li>
+                <li>
+                  <Sparkles size={14} style={{ color: '#f59e0b', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Student Ingenuity:</strong> Full creative ownership to introduce novel features and optimize system architectures.</span>
                 </li>
                 <li>
                   <HeartHandshake size={14} style={{ color: '#f59e0b', flexShrink: 0, marginTop: '2px' }} />
-                  <span><strong>STEM Retention:</strong> High-wage domestic fellowships keeping our brightest engineers living and building in Canada.</span>
+                  <span><strong>SPO Executive Mentorship:</strong> Trained in AI-native engineering loops, strategic management, and commercial product thinking.</span>
                 </li>
               </ul>
             </div>
@@ -283,15 +288,42 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
               {/* Student Hiring Callout */}
               <div className="boggs-mohs-hiring-box">
                 <div className="boggs-mohs-hiring-text">
-                  <strong style={{ color: '#fbbf24', display: 'block', marginBottom: '2px' }}>uOttawa SEG Capstone Hiring:</strong>
-                  Sponsoring student engineers to build C++23 wave optics digital twins, real-time CUDA 3D segmentation, and FPGA safety watchdogs.
+                  <strong style={{ color: '#fbbf24', fontSize: '0.92rem', display: 'block', marginBottom: '4px' }}>
+                    uOttawa SEG Capstone Apprenticeship (Smart Mohs & Laser Systems):
+                  </strong>
+                  Sponsoring student engineers to take over dedicated, high-performance repositories already developed quite far by Jeff Boggs.
                 </div>
-                <a
-                  href="mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Application%20-%20Smart%20Mohs%20Team"
-                  className="boggs-mohs-hiring-btn"
-                >
-                  Apply for Smart Mohs Team <ArrowRight size={13} />
-                </a>
+
+                <div className="boggs-mohs-hiring-points">
+                  <div className="boggs-mohs-hiring-point">
+                    <CheckCircle2 size={15} style={{ color: '#fbbf24', flexShrink: 0, marginTop: '2px' }} />
+                    <span><strong>Advanced Foundation:</strong> Inherit an established C++23 wave optics digital twin & CUDA 3D segmentation codebase—taking it across the finish line.</span>
+                  </div>
+                  <div className="boggs-mohs-hiring-point">
+                    <Sparkles size={15} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
+                    <span><strong>Student Ingenuity:</strong> Full creative freedom to architect new clinical features, optimize dosimetry loops, and design real product extensions.</span>
+                  </div>
+                  <div className="boggs-mohs-hiring-point">
+                    <GraduationCap size={15} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                    <span><strong>SPO Executive Training:</strong> Mentored directly by Jeff Boggs in AI-native software engineering, strategic management, and commercial product thinking.</span>
+                  </div>
+                  <div className="boggs-mohs-hiring-point">
+                    <Tv size={15} style={{ color: '#c084fc', flexShrink: 0, marginTop: '2px' }} />
+                    <span><strong>Live Dev & Test Videos:</strong> Continuous live coding and test-execution videos published between now and November so you can watch the software running in real-time.</span>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', marginTop: '6px' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
+                    10 fully sponsored roles across our systems portfolio • Visiting uOttawa in November
+                  </span>
+                  <a
+                    href="mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Application%20-%20Smart%20Mohs%20Team"
+                    className="boggs-mohs-hiring-btn"
+                  >
+                    Apply for Smart Mohs Team <ArrowRight size={13} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -817,7 +817,10 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
                     <Flame size={16} color="#ffffff" />
                   </div>
                   <div>
-                    <h2 className="mediahub-shorts-title">Shorts & Engineering Insights</h2>
+                    <h2 className="mediahub-shorts-title">Shorts: Live Dev & Test Runs (Road to Ottawa)</h2>
+                    <p style={{ margin: '4px 0 0 0', fontSize: '0.82rem', color: '#94a3b8' }}>
+                      Watch Jeff's continuous live development sessions, active coding, and test executions between now and our November uOttawa visit.
+                    </p>
                   </div>
                 </div>
               </div>

@@ -18,6 +18,7 @@ import {
   Activity,
   Layers,
 } from 'lucide-react';
+import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
 
 interface BoggsHeroProps {
   onScrollToPlayer: () => void;
@@ -186,6 +187,112 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <span><strong>Surplus Recycling:</strong> 100% of net enterprise profits beyond operating reserves re-invested into public Canadian well-being.</span>
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Flagship Capstone Project Spotlight: Smart Mohs Workstation & Laser Systems */}
+        <div className="boggs-mohs-section">
+          <div className="boggs-section-badge" style={{ color: '#f43f5e' }}>
+            <Activity size={14} /> Flagship Capstone Project • uOttawa SEG 2026/2027
+          </div>
+          <h2 className="boggs-section-heading">
+            Smart Mohs: Autonomous Optical Biopsy & Sub-Millimeter Laser Ablation
+          </h2>
+          <p className="boggs-section-desc">
+            Our primary medical infrastructure initiative under the Medicine plank—decoupling dermatological oncology and laser surgery from slow, manual frozen-section histology.
+          </p>
+
+          <div className="boggs-mohs-grid">
+            {/* Left: 3D Workstation Render */}
+            <div>
+              <div className="boggs-mohs-image-wrap">
+                <img
+                  src={smartMohsWorkstationUrl}
+                  alt="Smart Mohs Closed-Loop Surgical Robotics Workstation"
+                  className="boggs-mohs-img"
+                />
+                <div className="boggs-mohs-image-badge">
+                  <span style={{ fontWeight: 800, color: '#38bdf8' }}>Smart Mohs Workstation Prototype</span>
+                  <span style={{ color: '#94a3b8' }}>LC-OCT Biopsy • AI Segmentation</span>
+                </div>
+              </div>
+              <div className="boggs-mohs-stats">
+                <span className="boggs-mohs-stat-pill">
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                  100% In Situ Negative Margins
+                </span>
+                <span className="boggs-mohs-stat-pill">
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                  &lt;2 µm Thermal Damage
+                </span>
+                <span className="boggs-mohs-stat-pill">
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f59e0b' }} />
+                  Zero Frozen-Section Turnaround
+                </span>
+              </div>
+            </div>
+
+            {/* Right: Technical Architecture & Variations */}
+            <div className="boggs-mohs-content">
+              <p className="boggs-mohs-desc">
+                Transforming Mohs surgery into an automated, scalpel-free, single-stage outpatient procedure. Cellular-resolution Line-Field Confocal Optical Coherence Tomography (LC-OCT) streams tissue volumes via zero-copy RDMA to a 3D neural network, guiding a cold femtosecond laser steered by a 20 kHz galvanometer array.
+              </p>
+
+              <div className="boggs-mohs-variations">
+                {/* Variation 1: Mohs Oncology */}
+                <div className="boggs-mohs-var-card">
+                  <div className="boggs-mohs-var-icon" style={{ background: 'rgba(244, 63, 94, 0.15)', color: '#f43f5e' }}>
+                    <Activity size={18} />
+                  </div>
+                  <div>
+                    <div className="boggs-mohs-var-title">Dermatological Oncology (Smart Mohs)</div>
+                    <p className="boggs-mohs-var-desc">
+                      Closed-loop non-melanoma skin cancer excision (BCC & SCC). Automated margin segmentation and sub-millimeter ablation with instant crater re-scanning.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Variation 2: Medical Dermatology */}
+                <div className="boggs-mohs-var-card">
+                  <div className="boggs-mohs-var-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                    <Zap size={18} />
+                  </div>
+                  <div>
+                    <div className="boggs-mohs-var-title">Medical Dermatology & Vascular Systems</div>
+                    <p className="boggs-mohs-var-desc">
+                      Real-time optical dosimetry and automated lesion targeting for deep vascular malformations, inflammatory pathologies, and precision pigment clearing.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Variation 3: Aesthetics & Reconstructive Surgery */}
+                <div className="boggs-mohs-var-card">
+                  <div className="boggs-mohs-var-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                    <Sparkles size={18} />
+                  </div>
+                  <div>
+                    <div className="boggs-mohs-var-title">Aesthetic & Reconstructive Laser Software</div>
+                    <p className="boggs-mohs-var-desc">
+                      Computer-vision-guided fractional skin resurfacing, scar remodeling, and thermal-damage-free aesthetic soft-tissue ablation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Student Hiring Callout */}
+              <div className="boggs-mohs-hiring-box">
+                <div className="boggs-mohs-hiring-text">
+                  <strong style={{ color: '#fbbf24', display: 'block', marginBottom: '2px' }}>uOttawa SEG Capstone Hiring:</strong>
+                  Sponsoring student engineers to build C++23 wave optics digital twins, real-time CUDA 3D segmentation, and FPGA safety watchdogs.
+                </div>
+                <a
+                  href="mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Application%20-%20Smart%20Mohs%20Team"
+                  className="boggs-mohs-hiring-btn"
+                >
+                  Apply for Smart Mohs Team <ArrowRight size={13} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -823,6 +823,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
             setSelectedArchitectureSystem(systemId);
             setShowArchitectureModal(true);
           }}
+          onOpenVideoModal={(video) => handleOpenVideoModal(video)}
           shortsSlot={
             <section className="mediahub-shorts-section" style={{ paddingTop: '8px', paddingBottom: '8px' }}>
               <div className="mediahub-shorts-header">
@@ -1684,6 +1685,32 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
                   <Sparkles size={14} color="#38bdf8" />
                   <span><strong>{modalVideo.chapterRef}</strong>: {modalVideo.notes || modalVideo.description}</span>
                 </div>
+                {modalVideo.id === "3d4f479f-a959-4b26-9733-1c329ef470b7" && (
+                  <button
+                    onClick={() => {
+                      handleCloseVideoModal();
+                      setSelectedCapstoneSystem("smart-mohs");
+                      setShowCapstoneModal(true);
+                    }}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      background: "linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)",
+                      border: "none",
+                      color: "#ffffff",
+                      fontSize: "0.75rem",
+                      fontWeight: 700,
+                      padding: "6px 14px",
+                      borderRadius: "8px",
+                      cursor: "pointer",
+                      marginLeft: "auto",
+                      flexShrink: 0,
+                    }}
+                  >
+                    Apply for SPO Pod <ArrowRight size={13} />
+                  </button>
+                )}
               </div>
             )}
           </div>

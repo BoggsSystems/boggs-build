@@ -38,11 +38,53 @@ import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
 import spoProductPodArchitectureUrl from '../assets/spo-product-pod-architecture.jpg';
 import highVelocityFunnelRoadmapUrl from '../assets/high-velocity-funnel-roadmap.jpg';
 
+export interface VideoModalItem {
+  id: string;
+  title: string;
+  category: string;
+  duration?: string;
+  description: string;
+  thumbnail: string;
+  videoUrl?: string;
+  digitpopProjectId?: string;
+  viewCount?: string;
+  chapterRef?: string;
+  notes?: string;
+  isUpcoming?: boolean;
+  isShort?: boolean;
+  isNew?: boolean;
+  thumbnailBadge?: string;
+  thumbnailTitle?: string;
+  thumbnailStyleColor?: string;
+  productTitle?: string;
+  productUrl?: string;
+}
+
+export const SPO_SHORT_VIDEO: VideoModalItem = {
+  id: "3d4f479f-a959-4b26-9733-1c329ef470b7",
+  title: "SOFTWARE PRODUCT ORCHESTRATOR",
+  category: "Shorts",
+  duration: "2:23",
+  description: "So a lot of traditional team structures, you have maybe a product manager, then a BA, then developers... Jeff Boggs breaks down why that model is obsolete and what a Software Product Orchestrator actually does.",
+  thumbnail: "https://pub-2af6e082fcb44c58add86361dad9d14b.r2.dev/thumbnails/shorts/opportunity-system/1793241310483_3d4f479f-a959-4b26-9733-1c329ef470b7_thumb.jpg",
+  videoUrl: "https://pub-2af6e082fcb44c58add86361dad9d14b.r2.dev/videos/shorts/opportunity-system/3d4f479f-a959-4b26-9733-1c329ef470b7_optimized.mp4",
+  digitpopProjectId: "3d4f479f-a959-4b26-9733-1c329ef470b7",
+  viewCount: "1.2K views",
+  isShort: true,
+  isNew: true,
+  thumbnailBadge: "⚡ MUST WATCH",
+  thumbnailTitle: "SOFTWARE PRODUCT ORCHESTRATOR",
+  thumbnailStyleColor: "#FFFFFF",
+  chapterRef: "Role Briefing • uOttawa SEG Capstone",
+  notes: "Jeff Boggs breaks down the Software Product Orchestrator role, why traditional PM/BA/Dev silos are obsolete, and what it means to be a system architect of one leading autonomous multi-agent loops.",
+};
+
 interface BoggsHeroProps {
   onScrollToPlayer: () => void;
   onOpenNewsletter: () => void;
   onOpenCapstone?: (systemId: string) => void;
   onOpenArchitecture?: (systemId: string) => void;
+  onOpenVideoModal?: (video: VideoModalItem) => void;
   shortsSlot?: React.ReactNode;
 }
 
@@ -51,6 +93,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
   onOpenNewsletter,
   onOpenCapstone,
   onOpenArchitecture,
+  onOpenVideoModal,
   shortsSlot,
 }) => {
   return (
@@ -327,6 +370,32 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   alt="Boggs Systems Autonomous Product Pod Architecture and Software Product Orchestrator Structure"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
+                <button
+                  onClick={() => onOpenVideoModal ? onOpenVideoModal(SPO_SHORT_VIDEO) : undefined}
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    background: "rgba(15, 23, 42, 0.88)",
+                    backdropFilter: "blur(8px)",
+                    border: "1px solid rgba(248, 113, 113, 0.6)",
+                    color: "#ffffff",
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    padding: "5px 11px",
+                    borderRadius: "9999px",
+                    cursor: "pointer",
+                    zIndex: 3,
+                    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
+                  }}
+                  title="Watch Jeff explain the Software Product Orchestrator role (2:23)"
+                >
+                  <Play size={10} fill="#ef4444" color="#ef4444" />
+                  <span>Watch Role Briefing (2:23)</span>
+                </button>
                 <div style={{ position: 'absolute', bottom: '10px', left: '10px', right: '10px', display: 'flex', gap: '8px', flexWrap: 'wrap', zIndex: 2 }}>
                   <span className="boggs-portfolio-stat-pill" style={{ background: 'rgba(15, 23, 42, 0.92)', borderColor: 'rgba(56, 189, 248, 0.4)' }}>
                     <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
@@ -360,9 +429,76 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       Filling First Now (uOttawa SEG)
                     </span>
                   </div>
-                  <p style={{ margin: 0, fontSize: '0.8rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                  <p style={{ margin: "0 0 10px 0", fontSize: "0.8rem", color: "#cbd5e1", lineHeight: 1.45 }}>
                     The central pillar of the pod. Software engineering students inherit our mature repos, coordinate multi-agent AI pipelines, architect product features, and lead system delivery. Direct 1-on-1 mentorship by Jeff Boggs.
                   </p>
+
+                  {/* Option 2: Watch Jeff Explain & Apply Action Bar */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", marginTop: "10px" }}>
+                    <button
+                      onClick={() => onOpenVideoModal ? onOpenVideoModal(SPO_SHORT_VIDEO) : undefined}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "7px",
+                        background: "linear-gradient(135deg, rgba(239, 68, 68, 0.22) 0%, rgba(185, 28, 28, 0.38) 100%)",
+                        border: "1px solid rgba(248, 113, 113, 0.65)",
+                        color: "#ffffff",
+                        fontSize: "0.74rem",
+                        fontWeight: 700,
+                        padding: "6px 12px",
+                        borderRadius: "8px",
+                        cursor: "pointer",
+                        boxShadow: "0 0 14px rgba(239, 68, 68, 0.25)",
+                        transition: "all 0.2s ease",
+                      }}
+                      title="Watch Jeff explain the Software Product Orchestrator role (2:23)"
+                    >
+                      <span style={{
+                        width: "18px",
+                        height: "18px",
+                        borderRadius: "50%",
+                        background: "#ef4444",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 0 6px #ef4444",
+                        flexShrink: 0,
+                      }}>
+                        <Play size={10} fill="#ffffff" color="#ffffff" style={{ marginLeft: "1px" }} />
+                      </span>
+                      <span>Watch Jeff Explain This Role</span>
+                      <span style={{
+                        fontSize: "0.65rem",
+                        background: "rgba(0, 0, 0, 0.45)",
+                        padding: "1px 5px",
+                        borderRadius: "4px",
+                        color: "#fecaca",
+                        fontWeight: 600,
+                      }}>
+                        2:23
+                      </span>
+                    </button>
+
+                    <button
+                      onClick={() => onOpenCapstone ? onOpenCapstone("smart-mohs") : (window.location.href = "mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20SPO%20Pod")}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        background: "rgba(56, 189, 248, 0.12)",
+                        border: "1px solid rgba(56, 189, 248, 0.35)",
+                        color: "#38bdf8",
+                        fontSize: "0.74rem",
+                        fontWeight: 700,
+                        padding: "6px 12px",
+                        borderRadius: "8px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Apply for SPO Pod <ArrowRight size={12} />
+                    </button>
+                  </div>
                 </div>
 
                 {/* Role 2: Commercial & Outreach */}

@@ -19,7 +19,8 @@ interface CapstoneApplyModalProps {
 
 const SYSTEMS = [
   { id: 'smart-mohs', name: 'Smart Mohs (Medicine & Laser Robotics)', tag: 'C++23 • CUDA • Optics' },
-  { id: 'transit-os', name: 'Transit-OS (Transportation & Fleet Mesh)', tag: 'Rust • Multi-Agent • GIS' },
+  { id: 'borealis-maglev', name: 'Borealis Maglev (500 km/h Tube & Avionics)', tag: 'Rust • QNX • SIL-4' },
+  { id: 'borealis-pods', name: 'Borealis Pods (6-Passenger Autonomous Fleet)', tag: 'C++20 • ROS 2 • V2X' },
   { id: 'sovereign-mesh', name: 'Sovereign Mesh (Clean Energy & Microgrids)', tag: 'Telemetry • SMR • Edge' },
   { id: 'digitpop', name: 'DigitPop (Interactive Video & Live Commerce)', tag: 'Wasm • Sub-10ms • WebGL' },
   { id: 'opportunity-os', name: 'Opportunity OS (Social Plank & Dignity Engine)', tag: 'Full-Stack • Extension • AI' },
@@ -33,6 +34,8 @@ const TRACKS = [
 
 const SYSTEM_PLACEHOLDERS: Record<string, string> = {
   'smart-mohs': "e.g., Tell Jeff about your C++23, CUDA, or computer vision experience, and your interest in sub-cellular optical biopsy margins or 3D cold laser micro-ablation.",
+  'borealis-maglev': "e.g., Tell Jeff about your Rust, QNX, control theory, or formal verification experience, and your interest in 20 kHz active levitation gap regulation or aerodynamic failsafes.",
+  'borealis-pods': "e.g., Tell Jeff about your C++20, ROS 2, sensor fusion, or Cellular-V2X experience, and your interest in Level 4 urban path planning or dynamic green-wave pacing.",
   'transit-os': "e.g., Tell Jeff about your Rust, GIS, or distributed multi-agent routing experience, and your interest in deterministic municipal transit dispatch.",
   'sovereign-mesh': "e.g., Tell Jeff about your edge systems, telemetry, or clean energy microgrid interests, and hands-on experience with SMR or battery control systems.",
   'digitpop': "e.g., Tell Jeff about your WebAssembly, WebGL, or video codec experience, and interest in building sub-10ms interactive live commerce overlays.",
@@ -54,7 +57,8 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
 
   useEffect(() => {
     if (isOpen && initialSystem) {
-      setSelectedSystem(initialSystem);
+      const resolved = initialSystem === 'transit-os' ? 'borealis-pods' : initialSystem;
+      setSelectedSystem(resolved);
       setSubmitted(false);
     }
   }, [isOpen, initialSystem]);

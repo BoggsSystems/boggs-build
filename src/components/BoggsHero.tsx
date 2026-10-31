@@ -23,9 +23,12 @@ import {
   FileCode2,
   Play,
   Flame,
+  Train,
+  Car,
 } from 'lucide-react';
 import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
-import transitOsCommandCenterUrl from '../assets/transit-os-command-center.jpg';
+import borealisMaglevTubeUrl from '../assets/borealis-maglev-tube.jpg';
+import borealisRoadPodUrl from '../assets/borealis-road-pod.jpg';
 import sovereignMeshEnergyUrl from '../assets/sovereign-mesh-energy.jpg';
 import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
 import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
@@ -510,7 +513,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   </div>
                   <h4 className="boggs-funnel-step-title">1. Submit Brief</h4>
                   <p className="boggs-funnel-step-desc">
-                    Pick your preferred system pod below (Smart Mohs, Transit-OS, Sovereign Mesh, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
+                    Pick your preferred system pod below (Smart Mohs, Borealis Maglev, Borealis Pods, Sovereign Mesh, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
                   </p>
                 </div>
 
@@ -632,41 +635,41 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 2: Transit-OS (Transportation Plank)
+               PRODUCT 2: Borealis Maglev (Transportation Plank • Intercity Rail)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid reverse">
                 <div className="boggs-portfolio-media">
                   <img
-                    src={transitOsCommandCenterUrl}
-                    alt="Transit-OS Autonomous Municipal Dispatch Command Center"
+                    src={borealisMaglevTubeUrl}
+                    alt="Borealis Elevated Canadian Maglev Tube Network and High-Speed Capsule"
                     className="boggs-portfolio-img"
                   />
                   <div className="boggs-portfolio-overlay-badges">
                     <span className="boggs-portfolio-stat-pill">
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                      Zero "Ghost-Buses"
+                      500–600 km/h Pylon Tube
                     </span>
                     <span className="boggs-portfolio-stat-pill">
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-                      Multi-Agent Dispatch Mesh
+                      SIL-4 Active Levitation (20 kHz)
                     </span>
                     <span className="boggs-portfolio-stat-pill">
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
-                      Sub-Millisecond Rust Core
+                      QNX & Rust Hard Real-Time
                     </span>
                   </div>
                 </div>
 
                 <div className="boggs-portfolio-body">
                   <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
-                    <Compass size={14} /> Transportation Plank • Public Infrastructure
+                    <Train size={14} /> Transportation Plank • 500 km/h Intercity Maglev
                   </div>
                   <h3 className="boggs-portfolio-title">
-                    Transit-OS: Autonomous Municipal Dispatch & Corridor Synchronization
+                    Borealis Maglev: Elevated Aerodynamic Tube Network & SIL-4 Capsule Avionics
                   </h3>
                   <p className="boggs-portfolio-desc">
-                    Eliminates "ghost-buses" and restores public confidence in municipal transit networks. Autonomous multi-agent dispatch mesh, dynamic corridor GPS synchronization, real-time schedule recalculation, and passenger volume load balancing.
+                    Overcomes Canadian winter blizzards and habitat clear-cutting by elevating aerodynamic composite tubes onto slender, isolated point-load pylons. Capsules cruise at 500–600 km/h with hard real-time active magnetic levitation (Toronto ↔ Montreal in 1h 35m; Ottawa ↔ Montreal in 52m).
                   </p>
 
                   <div className="boggs-portfolio-specs">
@@ -675,15 +678,15 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                         <Cpu size={15} />
                       </div>
                       <div className="boggs-portfolio-spec-text">
-                        <strong>Deterministic Actor Engine:</strong> Built in Rust for sub-millisecond route adjustments, non-blocking GIS route recalculation, and fault-tolerant municipal gateway integrations.
+                        <strong>Deterministic Active Gap Regulation:</strong> Closed-loop 20 kHz sensing-to-actuation cycle executing within ≤ 50 µs to regulate magnetic levitation clearance without physical touchdown at 500+ km/h.
                       </div>
                     </div>
                     <div className="boggs-portfolio-spec-item">
                       <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-                        <Compass size={15} />
+                        <Shield size={15} />
                       </div>
                       <div className="boggs-portfolio-spec-text">
-                        <strong>Corridor & Headway Synchronization:</strong> Live telemetry aligns bus arterials with commuter rail to prevent bunching, phantom delays, and passenger stranding.
+                        <strong>SIL-4 Formal Verification & Secondary Braking:</strong> CENELEC EN 50128 compliant fail-safe architecture with autonomous eddy-current deceleration and deployable aerodynamic drag flaps.
                       </div>
                     </div>
                   </div>
@@ -691,10 +694,120 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <div className="boggs-portfolio-hiring-box">
                     <div className="boggs-portfolio-hiring-header">
                       <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Transit-OS Core Dispatch & GIS Mesh
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Borealis Maglev Capsule Avionics & Guideway IoT
                       </span>
                       <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('transit-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Transit-OS')}
+                        onClick={() => onOpenCapstone ? onOpenCapstone('borealis-maglev') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Maglev')}
+                        className="boggs-portfolio-hiring-btn"
+                      >
+                        Apply as Student <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Intermodal Handshake Connection Banner */}
+            <div
+              style={{
+                margin: '12px 0 20px 0',
+                padding: '16px 22px',
+                background: 'linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%)',
+                border: '1px solid rgba(56, 189, 248, 0.22)',
+                borderRadius: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '12px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Compass size={16} />
+                </div>
+                <div>
+                  <strong style={{ fontSize: '0.85rem', color: '#ffffff' }}>
+                    The Intermodal "Zero-Wait" Handshake (Hub Gateway):
+                  </strong>
+                  <span style={{ fontSize: '0.8rem', color: '#94a3b8', marginLeft: '6px' }}>
+                    UWB precision docking aligns the 6-passenger road pod directly against the elevated maglev platform for a guaranteed ≤ 15-step cross-platform transfer.
+                  </span>
+                </div>
+              </div>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#34d399', background: 'rgba(16, 185, 129, 0.15)', padding: '3px 10px', borderRadius: '9999px', fontWeight: 700 }}>
+                DOORSTEP ➔ POD ➔ TUBE ➔ POD ➔ DESTINATION
+              </span>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 3: Borealis Road Pods (Transportation Plank • Micro-Transit)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={borealisRoadPodUrl}
+                    alt="Borealis 6-Passenger Autonomous Road Pod Micro-Transit Vehicle"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Level-4 Urban Autonomy
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Spacetime V2X Green-Wave
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#c084fc' }} />
+                      6-Seat Biosecure Cabin
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
+                    <Car size={14} /> Transportation Plank • 6-Passenger Autonomous Fleet
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Borealis Pods: 6-Passenger Autonomous Micro-Transit & V2X Corridors
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    On-demand Level-4 autonomous electric road pod fleet providing high-throughput doorstep pickup and feeder connectivity. Eliminates first/last-mile suburban friction with dynamic traffic signal priority and biosecure passenger cabins.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Radio size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Spacetime V2X Green-Wave Engine:</strong> Exchanges live SPaT messages over C-V2X (3GPP Rel-18) with municipal traffic signals to guarantee continuous green corridors and hit ±15-second hub arrival windows.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                        <Compass size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Canadian Winter Perception & Biosecure Cabin:</strong> Multi-modal LiDAR, 4D radar, and camera fusion with real-time snow/ice friction estimation, downward laminar airflow curtains, and automated 90s UV-C sanitization.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Borealis Autonomous Road Pod Fleet & V2X Engine
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('borealis-pods') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Pods')}
                         className="boggs-portfolio-hiring-btn"
                       >
                         Apply as Student <ArrowRight size={13} />
@@ -709,10 +822,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 3: Sovereign Mesh (Clean Energy & Microgrids Plank)
+               PRODUCT 4: Sovereign Mesh (Clean Energy & Microgrids Plank)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid">
+              <div className="boggs-portfolio-grid reverse">
                 <div className="boggs-portfolio-media">
                   <img
                     src={sovereignMeshEnergyUrl}
@@ -786,10 +899,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 4: DigitPop (Interactive Media & Live Commerce Plank)
+               PRODUCT 5: DigitPop (Interactive Media & Live Commerce Plank)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid reverse">
+              <div className="boggs-portfolio-grid">
                 <div className="boggs-portfolio-media">
                   <img
                     src={digitpopLiveCommerceUrl}
@@ -863,10 +976,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 5: Opportunity OS (Housing, Social Mobility & Dignity)
+               PRODUCT 6: Opportunity OS (Housing, Social Mobility & Dignity)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid">
+              <div className="boggs-portfolio-grid reverse">
                 <div className="boggs-portfolio-media">
                   <img
                     src={opportunityOsResumeUrl}

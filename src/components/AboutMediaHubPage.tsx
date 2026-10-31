@@ -1894,7 +1894,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
           </div>
           <div className="footer-links" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.85rem', color: '#94a3b8' }}>
             <span style={{ color: '#64748b' }}>Umbrella Systems:</span>
-            <span style={{ color: '#38bdf8', fontWeight: 600 }}>Transit-OS (Infrastructure)</span>
+            <span style={{ color: '#38bdf8', fontWeight: 600 }}>Borealis-OS (Transportation)</span>
             <span style={{ color: '#f59e0b', fontWeight: 600 }}>Opportunity OS (Social)</span>
             <span style={{ color: '#c084fc', fontWeight: 600 }}>DigitPop (Commerce)</span>
             <a href="mailto:jeff@boggs.build" style={{ color: '#38bdf8', textDecoration: 'none' }}>

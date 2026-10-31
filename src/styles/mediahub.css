@@ -3,6 +3,17 @@
    Built for Opportunity OS & Boggs Systems Corporation
    ========================================================================== */
 
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #080c15;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 .mediahub-container {
   min-height: 100vh;
   background-color: #080c15;

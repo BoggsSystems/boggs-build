@@ -811,6 +811,30 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
         />
       </div>
 
+      {/* ⚡ YouTube-Style Shorts Section */}
+      <section className="mediahub-shorts-section" style={{ paddingTop: '20px' }}>
+        <div className="mediahub-shorts-header">
+          <div className="mediahub-shorts-title-wrap">
+            <div className="mediahub-shorts-icon-badge">
+              <Flame size={16} color="#ffffff" />
+            </div>
+            <div>
+              <h2 className="mediahub-shorts-title">Shorts & Engineering Insights</h2>
+            </div>
+          </div>
+        </div>
+
+        <div className="mediahub-shorts-feed-wrapper">
+          <digitpop-feed
+            creator="opportunity-system"
+            channel="about"
+            format="shorts"
+            layout="carousel"
+            auto-expand="true"
+          />
+        </div>
+      </section>
+
       {/* Hero Viewport / TYT Stage */}
       <section className="mediahub-hero-section">
         <div className="mediahub-hero-header">
@@ -1208,30 +1232,6 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ⚡ YouTube-Style Shorts Section */}
-      <section className="mediahub-shorts-section">
-        <div className="mediahub-shorts-header">
-          <div className="mediahub-shorts-title-wrap">
-            <div className="mediahub-shorts-icon-badge">
-              <Flame size={16} color="#ffffff" />
-            </div>
-            <div>
-              <h2 className="mediahub-shorts-title">Shorts</h2>
-            </div>
-          </div>
-        </div>
-
-        <div className="mediahub-shorts-feed-wrapper">
-          <digitpop-feed
-            creator="opportunity-system"
-            channel="about"
-            format="shorts"
-            layout="carousel"
-            auto-expand="true"
-          />
         </div>
       </section>
 

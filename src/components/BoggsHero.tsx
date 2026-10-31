@@ -29,6 +29,7 @@ import transitOsCommandCenterUrl from '../assets/transit-os-command-center.jpg';
 import sovereignMeshEnergyUrl from '../assets/sovereign-mesh-energy.jpg';
 import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
 import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
+import spoProductPodArchitectureUrl from '../assets/spo-product-pod-architecture.jpg';
 
 interface BoggsHeroProps {
   onScrollToPlayer: () => void;
@@ -270,6 +271,138 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
               <div style={{ display: 'flex', gap: '8px', fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
                 <Tv size={16} style={{ color: '#f43f5e', flexShrink: 0, marginTop: '2px' }} />
                 <span><strong style={{ color: '#ffffff' }}>Live Dev & Test Videos:</strong> Continuous dev speedruns and test traces published leading up to our November campus visit.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* ==========================================================================
+             The Autonomous Product Pod & SPO Team Model
+             ========================================================================== */}
+          <div
+            style={{
+              background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.8) 0%, rgba(9, 14, 23, 0.9) 100%)',
+              border: '1px solid rgba(56, 189, 248, 0.25)',
+              borderRadius: '20px',
+              padding: '30px 30px 26px',
+              marginBottom: '36px',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              boxShadow: '0 16px 40px -10px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.06)',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(56, 189, 248, 0.12)', border: '1px solid rgba(56, 189, 248, 0.35)', color: '#38bdf8', fontSize: '0.76rem', fontWeight: 800, padding: '4px 12px', borderRadius: '9999px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <Users size={13} /> The Autonomous Product Pod Model
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(245, 158, 11, 0.12)', border: '1px solid rgba(245, 158, 11, 0.35)', color: '#fbbf24', fontSize: '0.76rem', fontWeight: 800, padding: '4px 12px', borderRadius: '9999px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <Sparkles size={13} /> Software-Pure • Partner-Manufactured
+              </span>
+            </div>
+
+            <h3 style={{ fontSize: '1.65rem', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.02em', margin: '0 0 12px 0', lineHeight: 1.25 }}>
+              How We Build: Interdisciplinary Pods Led by Software Orchestrators.
+            </h3>
+
+            <p style={{ fontSize: '0.92rem', color: '#cbd5e1', lineHeight: 1.6, margin: '0 0 24px 0', maxWidth: '1000px' }}>
+              Boggs Systems is built around a pure-software operating model. We architect the sovereign software intelligence, digital twins, and autonomous multi-agent pipelines, and execute an <strong>AI-Native Hardware Implementation Partnership Plan</strong> with established domestic manufacturers who build physical hardware.
+              <br /><br />
+              Each operating system is delivered by an <strong>Autonomous Product Pod</strong>. The very first role we are recruiting and filling across these pods is the <strong>Software Product Orchestrator (SPO)</strong>—uOttawa Software Engineering students who own the code, coordinate autonomous agents, and steer the system to the finish line.
+            </p>
+
+            {/* Pod Architecture Visual & Roles Grid */}
+            <div className="boggs-pod-section-grid">
+              {/* Left: 3D Pod Architecture Graphic */}
+              <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.12)', background: '#020617', aspectRatio: '16 / 9' }}>
+                <img
+                  src={spoProductPodArchitectureUrl}
+                  alt="Boggs Systems Autonomous Product Pod Architecture and Software Product Orchestrator Structure"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{ position: 'absolute', bottom: '10px', left: '10px', right: '10px', display: 'flex', gap: '8px', flexWrap: 'wrap', zIndex: 2 }}>
+                  <span className="boggs-portfolio-stat-pill" style={{ background: 'rgba(15, 23, 42, 0.92)', borderColor: 'rgba(56, 189, 248, 0.4)' }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                    SPO Lead (Hiring First Now)
+                  </span>
+                  <span className="boggs-portfolio-stat-pill" style={{ background: 'rgba(15, 23, 42, 0.92)' }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                    Commercial Outreach (Telfer)
+                  </span>
+                  <span className="boggs-portfolio-stat-pill" style={{ background: 'rgba(15, 23, 42, 0.92)' }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                    Hardware Alliance Partners
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: Pod Roles Breakdown */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {/* Role 1: SPO */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0.6) 100%)', border: '1px solid rgba(56, 189, 248, 0.4)', borderRadius: '12px', padding: '13px 15px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px', flexWrap: 'wrap', gap: '6px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: 'rgba(56, 189, 248, 0.25)', color: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Cpu size={13} />
+                      </div>
+                      <strong style={{ fontSize: '0.86rem', color: '#f8fafc' }}>
+                        Software Product Orchestrator (SPO)
+                      </strong>
+                    </div>
+                    <span style={{ fontSize: '0.68rem', fontWeight: 800, color: '#38bdf8', background: 'rgba(56, 189, 248, 0.2)', padding: '2px 8px', borderRadius: '9999px', textTransform: 'uppercase' }}>
+                      Filling First Now (uOttawa SEG)
+                    </span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.8rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                    The central pillar of the pod. Software engineering students inherit our mature repos, coordinate multi-agent AI pipelines, architect product features, and lead system delivery. Direct 1-on-1 mentorship by Jeff Boggs.
+                  </p>
+                </div>
+
+                {/* Role 2: Commercial & Outreach */}
+                <div style={{ background: 'rgba(15, 23, 42, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '11px 15px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: 'rgba(245, 158, 11, 0.2)', color: '#fbbf24', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Building2 size={13} />
+                    </div>
+                    <strong style={{ fontSize: '0.84rem', color: '#f8fafc' }}>
+                      Commercial Outreach & Public Affairs Lead
+                    </strong>
+                    <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>(Business / Telfer)</span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.78rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                    Engages municipal transit authorities, hospital administration, and commercial users. Drives pilot agreements, customer validation, and economic impact modeling.
+                  </p>
+                </div>
+
+                {/* Role 3: Domain Specialists */}
+                <div style={{ background: 'rgba(15, 23, 42, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '11px 15px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: 'rgba(244, 63, 94, 0.2)', color: '#f43f5e', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Activity size={13} />
+                    </div>
+                    <strong style={{ fontSize: '0.84rem', color: '#f8fafc' }}>
+                      Domain Science & Clinical Specialists
+                    </strong>
+                    <span style={{ fontSize: '0.7rem', color: '#94a3b8' }}>(Physics & Medicine)</span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.78rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                    Physics students model laser wave optics, dosimetry, and energy storage kinetics. Medical & health students guide surgical margin requirements and clinical validation.
+                  </p>
+                </div>
+
+                {/* Role 4: Hardware Partners */}
+                <div style={{ background: 'rgba(15, 23, 42, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '11px 15px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.2)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <HeartHandshake size={13} />
+                    </div>
+                    <strong style={{ fontSize: '0.84rem', color: '#f8fafc' }}>
+                      Hardware Alliance Partners
+                    </strong>
+                    <span style={{ fontSize: '0.7rem', color: '#10b981' }}>(AI-Native Hardware Plan)</span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.78rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                    We partner with established domestic hardware manufacturers and medical device fabricators to deliver physical workstations, cold laser optics, and microgrid inverters.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

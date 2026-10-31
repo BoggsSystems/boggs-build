@@ -4472,5 +4472,20 @@ html, body {
   }
 }
 
+.boggs-pod-section-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .boggs-pod-section-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+
 
 

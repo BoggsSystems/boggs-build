@@ -267,7 +267,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
   const [upcomingModalVideo, setUpcomingModalVideo] = useState<VideoItem | null>(null);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showCapstoneModal, setShowCapstoneModal] = useState<boolean>(false);
-  const [selectedCapstoneSystem, setSelectedCapstoneSystem] = useState<string>('transit-os');
+  const [selectedCapstoneSystem, setSelectedCapstoneSystem] = useState<string>('smart-mohs');
 
   // Cinematic Video Modal State
   const [modalVideo, setModalVideo] = useState<VideoItem | null>(null);
@@ -1908,7 +1908,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
             </button>
             <button
               onClick={() => {
-                setSelectedCapstoneSystem('transit-os');
+                setSelectedCapstoneSystem('smart-mohs');
                 setShowCapstoneModal(true);
               }}
               style={{ background: 'none', border: 'none', color: '#38bdf8', cursor: 'pointer', padding: 0, fontWeight: 700 }}

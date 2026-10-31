@@ -276,87 +276,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
 
           <div className="boggs-portfolio-container">
             {/* -------------------------------------------------------------
-               PRODUCT 1: Transit-OS (Transportation Plank)
+               PRODUCT 1: Smart Mohs (Medicine & Laser Robotics Plank)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid">
-                <div className="boggs-portfolio-media">
-                  <img
-                    src={transitOsCommandCenterUrl}
-                    alt="Transit-OS Autonomous Municipal Dispatch Command Center"
-                    className="boggs-portfolio-img"
-                  />
-                  <div className="boggs-portfolio-overlay-badges">
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                      Zero "Ghost-Buses"
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-                      Multi-Agent Dispatch Mesh
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
-                      Sub-Millisecond Rust Core
-                    </span>
-                  </div>
-                </div>
-
-                <div className="boggs-portfolio-body">
-                  <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
-                    <Compass size={14} /> Transportation Plank • Public Infrastructure
-                  </div>
-                  <h3 className="boggs-portfolio-title">
-                    Transit-OS: Autonomous Municipal Dispatch & Corridor Synchronization
-                  </h3>
-                  <p className="boggs-portfolio-desc">
-                    Eliminates "ghost-buses" and restores public confidence in municipal transit networks. Autonomous multi-agent dispatch mesh, dynamic corridor GPS synchronization, real-time schedule recalculation, and passenger volume load balancing.
-                  </p>
-
-                  <div className="boggs-portfolio-specs">
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
-                        <Cpu size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>Deterministic Actor Engine:</strong> Built in Rust for sub-millisecond route adjustments, non-blocking GIS route recalculation, and fault-tolerant municipal gateway integrations.
-                      </div>
-                    </div>
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-                        <Compass size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>Corridor & Headway Synchronization:</strong> Live telemetry aligns bus arterials with commuter rail to prevent bunching, phantom delays, and passenger stranding.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="boggs-portfolio-hiring-box">
-                    <div className="boggs-portfolio-hiring-header">
-                      <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Capstone Repo: Transit-OS Core Dispatch & GIS Mesh
-                      </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('transit-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Transit-OS')}
-                        className="boggs-portfolio-hiring-btn"
-                      >
-                        Claim Transit-OS Repo <ArrowRight size={13} />
-                      </button>
-                    </div>
-                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
-                      <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* -------------------------------------------------------------
-               PRODUCT 2: Smart Mohs (Medicine & Laser Robotics Plank)
-               ------------------------------------------------------------- */}
-            <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid reverse">
                 <div className="boggs-portfolio-media">
                   <img
                     src={smartMohsWorkstationUrl}
@@ -423,6 +346,83 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#fbbf24' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 2: Transit-OS (Transportation Plank)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={transitOsCommandCenterUrl}
+                    alt="Transit-OS Autonomous Municipal Dispatch Command Center"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Zero "Ghost-Buses"
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Multi-Agent Dispatch Mesh
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      Sub-Millisecond Rust Core
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
+                    <Compass size={14} /> Transportation Plank • Public Infrastructure
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Transit-OS: Autonomous Municipal Dispatch & Corridor Synchronization
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Eliminates "ghost-buses" and restores public confidence in municipal transit networks. Autonomous multi-agent dispatch mesh, dynamic corridor GPS synchronization, real-time schedule recalculation, and passenger volume load balancing.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Cpu size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Deterministic Actor Engine:</strong> Built in Rust for sub-millisecond route adjustments, non-blocking GIS route recalculation, and fault-tolerant municipal gateway integrations.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                        <Compass size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Corridor & Headway Synchronization:</strong> Live telemetry aligns bus arterials with commuter rail to prevent bunching, phantom delays, and passenger stranding.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Capstone Repo: Transit-OS Core Dispatch & GIS Mesh
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('transit-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Transit-OS')}
+                        className="boggs-portfolio-hiring-btn"
+                      >
+                        Claim Transit-OS Repo <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
                     </div>
                   </div>
                 </div>

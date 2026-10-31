@@ -9,11 +9,14 @@ import {
   Cpu,
   Tv,
   Zap,
-  ShieldCheck,
+  Shield,
   Compass,
   Users,
   Building2,
   HeartHandshake,
+  Landmark,
+  Activity,
+  Layers,
 } from 'lucide-react';
 
 interface BoggsHeroProps {
@@ -33,7 +36,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
           <GraduationCap size={15} /> uOttawa SEG 2026/2027
         </div>
         <span className="boggs-pill-text">
-          Visiting Ottawa in Nov • Hiring <strong>10 Software Engineering Students</strong> across our Systems Portfolio
+          Visiting Ottawa in Nov • Sponsoring <strong>10 Software Engineering Students</strong> across our Systems Portfolio
         </span>
         <a
           href="mailto:jeff@boggs.build?subject=uOttawa%20SEG%20Capstone%20Inquiry%20-%20Student%20Application"
@@ -45,21 +48,20 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
 
       <div className="boggs-hero-content">
         <div className="boggs-hero-tag">
-          <Building2 size={15} /> Boggs Systems Corporation • The Sovereign Enterprise Umbrella
+          <Landmark size={15} /> The Canadian Sovereign Infrastructure Plan (2026–2051)
         </div>
 
         <h1 className="boggs-hero-title">
-          Democratizing Compound Capability. <br />
-          <span className="boggs-hero-gradient">The Sovereign Umbrella for Autonomous Operating Systems.</span>
+          Building Canada's Sovereign Future. <br />
+          <span className="boggs-hero-gradient">
+            A Public-Interest Alliance Uniting Government, University Students, and Domestic Industry.
+          </span>
         </h1>
 
         <p className="boggs-hero-subtitle">
-          Boggs Systems Inc. is the Canadian enterprise house and parent umbrella platform behind{' '}
-          <strong>Transit-OS</strong>, <strong>Opportunity OS</strong>, and <strong>DigitPop</strong>.
-          We architect self-orchestrating multi-agent runtimes, deterministic public systems, and purpose-locked
-          capital recycling to systematically remove resource constraints for the common man.
-          Founded by <strong>Jeffrey Boggs</strong>—member of the inaugural uOttawa Software Engineering class,
-          16-year enterprise software architect, and author of <em>The New Physics of Software Velocity</em>.
+          Boggs Systems Inc. is the Canadian enterprise house and operating umbrella convening a historic domestic partnership to modernize national infrastructure. We replace fragile foreign monopolies and high-fee consulting dependencies with sovereign, self-orchestrating public systems across <strong>Energy</strong>, <strong>Transportation</strong>, <strong>Medicine</strong>, and <strong>Housing</strong>.
+          <br /><br />
+          Founded by <strong>Jeffrey Boggs</strong>—member of the inaugural uOttawa Software Engineering class, 16-year enterprise software architect, and author of <em>The New Physics of Software Velocity</em>.
         </p>
 
         {/* Action Buttons */}
@@ -69,10 +71,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
           </button>
 
           <a
-            href="mailto:jeff@boggs.build?subject=Boggs%20Systems%20-%20Executive%20Inquiry"
+            href="mailto:jeff@boggs.build?subject=Canadian%20Sovereign%20Infrastructure%20Plan%20-%20Alliance%20Inquiry"
             className="boggs-btn-secondary"
           >
-            <Mail size={16} /> Contact jeff@boggs.build
+            <Mail size={16} /> Partner With Us (jeff@boggs.build)
           </a>
 
           <a
@@ -89,76 +91,183 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
           </button>
         </div>
 
-        {/* The Systems Portfolio (The Umbrella Grid) */}
-        <div style={{ marginBottom: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#38bdf8', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '16px' }}>
-            <Sparkles size={15} /> The Boggs Systems Operating Portfolio
+        {/* Section 1: The Tripartite Coalition */}
+        <div className="boggs-coalition-section">
+          <div className="boggs-section-badge" style={{ color: '#38bdf8' }}>
+            <Sparkles size={14} /> The Tripartite Public-Interest Coalition
           </div>
+          <h2 className="boggs-section-heading">
+            Sovereign Infrastructure Built by Canadians, for Canadians.
+          </h2>
+          <p className="boggs-section-desc">
+            A united national coalition moving beyond foreign corporate extraction to deliver modern, resilient, and transparent public systems across the country.
+          </p>
 
-          <div className="boggs-hero-grid">
-            {/* System 1: Transit-OS (Infrastructure Plank) */}
-            <div className="boggs-metric-card">
-              <div className="boggs-card-header">
-                <Compass size={20} className="boggs-icon-cyan" />
-                <div>
-                  <span className="boggs-card-title">Transit-OS</span>
-                  <div style={{ fontSize: '0.7rem', color: '#38bdf8', fontWeight: 700, textTransform: 'uppercase' }}>
-                    Infrastructure Plank
-                  </div>
-                </div>
+          <div className="boggs-coalition-grid">
+            {/* Coalition Partner 1: Governments */}
+            <div className="boggs-coalition-card gov">
+              <span className="boggs-partner-pill" style={{ background: 'rgba(56, 189, 248, 0.12)', color: '#38bdf8', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
+                <Landmark size={12} /> Public Partner
+              </span>
+              <div className="boggs-partner-title">Canadian Governments</div>
+              <p className="boggs-partner-desc">
+                Federal, provincial, and municipal public service modernizations designed for total data sovereignty, zero vendor lock-in, and radical cost reduction.
+              </p>
+              <ul className="boggs-partner-bullets">
+                <li>
+                  <Shield size={14} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Data Sovereignty:</strong> All resident and municipal telemetry stays strictly within sovereign Canadian boundaries.</span>
+                </li>
+                <li>
+                  <Layers size={14} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Zero Vendor Lock-in:</strong> Open, auditable architectures eliminating multi-million-dollar legacy foreign software renewals.</span>
+                </li>
+                <li>
+                  <Sparkles size={14} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Taxpayer Stewardship:</strong> Direct software delivery replacing high-overhead foreign consulting retainers.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Coalition Partner 2: University Students */}
+            <div className="boggs-coalition-card students">
+              <span className="boggs-partner-pill" style={{ background: 'rgba(245, 158, 11, 0.12)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
+                <GraduationCap size={12} /> Next-Gen Talent
+              </span>
+              <div className="boggs-partner-title">University Students</div>
+              <p className="boggs-partner-desc">
+                Halting Canada's STEM brain drain by funding student engineers to build mission-critical domestic infrastructure through the 1,000-Student Sovereign Builder Corps.
+              </p>
+              <ul className="boggs-partner-bullets">
+                <li>
+                  <GraduationCap size={14} style={{ color: '#f59e0b', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>uOttawa SEG Sponsorship:</strong> Sponsoring 10 software engineering students for the 2026/2027 capstone cohort.</span>
+                </li>
+                <li>
+                  <Cpu size={14} style={{ color: '#f59e0b', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Production Engineering:</strong> Students author and deploy real-world multi-agent runtimes, not disposable toy projects.</span>
+                </li>
+                <li>
+                  <HeartHandshake size={14} style={{ color: '#f59e0b', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>STEM Retention:</strong> High-wage domestic fellowships keeping our brightest engineers living and building in Canada.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Coalition Partner 3: Domestic Industry & Boggs Systems */}
+            <div className="boggs-coalition-card industry">
+              <span className="boggs-partner-pill" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+                <Cpu size={12} /> Execution Engine
+              </span>
+              <div className="boggs-partner-title">Domestic Industry & Boggs Systems</div>
+              <p className="boggs-partner-desc">
+                Providing the deterministic multi-agent execution runtimes that operate national infrastructure with sub-second velocity, backed by a non-extractive enterprise charter.
+              </p>
+              <ul className="boggs-partner-bullets">
+                <li>
+                  <Zap size={14} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Compound Velocity:</strong> Multi-agent software orchestration achieving 10x acceleration in critical system deployments.</span>
+                </li>
+                <li>
+                  <Shield size={14} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Deterministic Verification:</strong> Mathematical proof and high-assurance guarantees on public software execution.</span>
+                </li>
+                <li>
+                  <HeartHandshake size={14} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Surplus Recycling:</strong> 100% of net enterprise profits beyond operating reserves re-invested into public Canadian well-being.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 2: The 4 Infrastructure Pillars */}
+        <div style={{ marginBottom: '32px' }}>
+          <div className="boggs-section-badge" style={{ color: '#f59e0b' }}>
+            <Building2 size={14} /> Critical Infrastructure Focus Areas
+          </div>
+          <h2 className="boggs-section-heading">
+            The Four Infrastructure Pillars (2026–2051)
+          </h2>
+          <p className="boggs-section-desc">
+            Modernizing the foundational systems of Canadian society with deterministic, autonomous software platforms.
+          </p>
+
+          <div className="boggs-pillars-grid">
+            {/* Pillar 1: Energy */}
+            <div className="boggs-pillar-card">
+              <div className="boggs-pillar-header">
+                <Zap size={22} className="boggs-icon-emerald" />
+                <span className="boggs-pillar-badge" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+                  Sovereign Mesh
+                </span>
               </div>
-              <p className="boggs-card-desc">
-                Intelligent municipal transit scheduling, multi-agent dispatch, and corridor integration eliminating "ghost-buses" and modernizing public mobility.
+              <div className="boggs-pillar-title">Energy</div>
+              <p className="boggs-pillar-desc">
+                Distributed community microgrid controllers, clean storage load balancing, Canadian sovereign telemetry standards, and Small Modular Reactor (SMR) / fusion grid orchestration decoupling power from foreign monopolies.
               </p>
             </div>
 
-            {/* System 2: Opportunity OS (Social Plank) */}
-            <div className="boggs-metric-card">
-              <div className="boggs-card-header">
-                <Users size={20} className="boggs-icon-gold" />
-                <div>
-                  <span className="boggs-card-title">Opportunity OS</span>
-                  <div style={{ fontSize: '0.7rem', color: '#f59e0b', fontWeight: 700, textTransform: 'uppercase' }}>
-                    Social Plank • Dignity Engine
-                  </div>
-                </div>
+            {/* Pillar 2: Transportation */}
+            <div className="boggs-pillar-card">
+              <div className="boggs-pillar-header">
+                <Compass size={22} className="boggs-icon-cyan" />
+                <span className="boggs-pillar-badge" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
+                  Transit-OS
+                </span>
               </div>
-              <p className="boggs-card-desc">
-                Democratizing economic opportunity: evidence-grounded candidate pipelines, automated social benefit claims, and transitional fair-wage work matching.
+              <div className="boggs-pillar-title">Transportation</div>
+              <p className="boggs-pillar-desc">
+                Intelligent municipal transit scheduling, autonomous multi-agent dispatch, and corridor integration to eliminate "ghost-buses" and restore rider trust across Canadian transit networks.
               </p>
             </div>
 
-            {/* System 3: DigitPop (Media & Live Commerce) */}
-            <div className="boggs-metric-card">
-              <div className="boggs-card-header">
-                <Tv size={20} className="boggs-icon-purple" />
-                <div>
-                  <span className="boggs-card-title">DigitPop</span>
-                  <div style={{ fontSize: '0.7rem', color: '#c084fc', fontWeight: 700, textTransform: 'uppercase' }}>
-                    Interactive Video Commerce
-                  </div>
-                </div>
+            {/* Pillar 3: Medicine */}
+            <div className="boggs-pillar-card">
+              <div className="boggs-pillar-header">
+                <Activity size={22} className="boggs-icon-rose" />
+                <span className="boggs-pillar-badge" style={{ background: 'rgba(244, 63, 94, 0.15)', color: '#f43f5e', border: '1px solid rgba(244, 63, 94, 0.3)' }}>
+                  Clinical Mesh
+                </span>
               </div>
-              <p className="boggs-card-desc">
-                Sub-10ms shoppable interactive video streaming, zero-latency client-side overlay architectures, and decentralized digital media engines.
+              <div className="boggs-pillar-title">Medicine</div>
+              <p className="boggs-pillar-desc">
+                De-bottlenecking emergency room and clinical administration, automated triage load balancing, and sovereign Canadian medical supply chain resilience to eliminate hospital logjams.
               </p>
             </div>
 
-            {/* System 4: Sovereign Mesh (Energy & Compute) */}
-            <div className="boggs-metric-card">
-              <div className="boggs-card-header">
-                <Zap size={20} style={{ color: '#10b981' }} />
-                <div>
-                  <span className="boggs-card-title">Sovereign Mesh</span>
-                  <div style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 700, textTransform: 'uppercase' }}>
-                    Energy & Sovereign Compute
-                  </div>
-                </div>
+            {/* Pillar 4: Housing & Dignity */}
+            <div className="boggs-pillar-card">
+              <div className="boggs-pillar-header">
+                <HeartHandshake size={22} className="boggs-icon-gold" />
+                <span className="boggs-pillar-badge" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
+                  Opportunity OS
+                </span>
               </div>
-              <p className="boggs-card-desc">
-                Edge microgrid controllers, SMR control telemetry standards, and domestic zero-copy Canadian compute decoupling public systems from foreign monopolies.
+              <div className="boggs-pillar-title">Housing & Dignity</div>
+              <p className="boggs-pillar-desc">
+                Real-time emergency shelter routing mesh, modular housing supply logistics, and dignity-first evidence-grounded candidate pipelines to systematically eliminate Canadian homelessness.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Section 3: Umbrella Platform & Commercial Engine Note */}
+        <div
+          style={{
+            background: 'rgba(15, 23, 42, 0.5)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: '12px',
+            padding: '16px 20px',
+            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '14px',
+          }}
+        >
+          <Building2 size={24} style={{ color: '#38bdf8', flexShrink: 0 }} />
+          <div style={{ fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.5 }}>
+            <strong style={{ color: '#f1f5f9' }}>Boggs Systems Enterprise Umbrella:</strong> Boggs Systems Inc. is the Canadian parent enterprise house architecting both sovereign public systems and commercial engines like <strong>DigitPop</strong> (sub-10ms interactive live video streaming and decentralized digital commerce).
           </div>
         </div>
 

@@ -31,6 +31,14 @@ const TRACKS = [
   { id: 'both', label: 'Both / Flexible' },
 ];
 
+const SYSTEM_PLACEHOLDERS: Record<string, string> = {
+  'smart-mohs': "e.g., Tell Jeff about your C++23, CUDA, or computer vision experience, and your interest in sub-cellular optical biopsy margins or 3D cold laser micro-ablation.",
+  'transit-os': "e.g., Tell Jeff about your Rust, GIS, or distributed multi-agent routing experience, and your interest in deterministic municipal transit dispatch.",
+  'sovereign-mesh': "e.g., Tell Jeff about your edge systems, telemetry, or clean energy microgrid interests, and hands-on experience with SMR or battery control systems.",
+  'digitpop': "e.g., Tell Jeff about your WebAssembly, WebGL, or video codec experience, and interest in building sub-10ms interactive live commerce overlays.",
+  'opportunity-os': "e.g., Tell Jeff about your TypeScript, Chrome extension, or LLM agent workflow experience, and interest in building dignity-first career infrastructure."
+};
+
 export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
   isOpen,
   onClose,
@@ -45,10 +53,11 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    if (initialSystem) {
+    if (isOpen && initialSystem) {
       setSelectedSystem(initialSystem);
+      setSubmitted(false);
     }
-  }, [initialSystem]);
+  }, [isOpen, initialSystem]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -85,6 +94,9 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
     setSubmitted(true);
   };
 
+  const currentSystemObj = SYSTEMS.find((s) => s.id === selectedSystem) || SYSTEMS[0];
+  const currentSystemShortName = currentSystemObj.name.split(' (')[0];
+
   return (
     <div className="capstone-modal-overlay" onClick={onClose}>
       <div
@@ -105,10 +117,10 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
           <>
             <div className="capstone-modal-header">
               <div className="capstone-modal-badge">
-                <GraduationCap size={15} /> uOttawa SEG 2026/2027 • Student Fast-Track Intake
+                <GraduationCap size={15} /> uOttawa SEG Intake • {currentSystemShortName} Pod
               </div>
               <h2 className="capstone-modal-title">
-                Apply as Student. Skip Corporate Bureaucracy.
+                Apply to {currentSystemShortName}. Skip Corporate Bureaucracy.
               </h2>
               <p className="capstone-modal-subtitle">
                 Whether you are applying for a <strong>Senior Capstone Project</strong>, a <strong>Co-op Work Term</strong>, or a <strong>Software Apprenticeship</strong>—Boggs Systems onboards you in <strong>48 hours</strong>: direct review by Jeff Boggs ➔ fast-track mutual NDA ➔ immediate GitHub repository invite to an advanced, working codebase.
@@ -209,7 +221,10 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
                   rows={3}
                   value={interestsNote}
                   onChange={(e) => setInterestsNote(e.target.value)}
-                  placeholder="Tell Jeff about your technical interests (C++, Rust, CUDA, WebAssembly, UI) and what features you'd like to build."
+                  placeholder={
+                    SYSTEM_PLACEHOLDERS[selectedSystem] ||
+                    "Tell Jeff about your technical interests (C++, Rust, CUDA, WebAssembly, UI) and what features you'd like to build."
+                  }
                   className="capstone-form-textarea"
                 />
               </div>

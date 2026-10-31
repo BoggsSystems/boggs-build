@@ -30,6 +30,7 @@ import sovereignMeshEnergyUrl from '../assets/sovereign-mesh-energy.jpg';
 import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
 import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
 import spoProductPodArchitectureUrl from '../assets/spo-product-pod-architecture.jpg';
+import highVelocityFunnelRoadmapUrl from '../assets/high-velocity-funnel-roadmap.jpg';
 
 interface BoggsHeroProps {
   onScrollToPlayer: () => void;
@@ -401,6 +402,151 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   </div>
                   <p style={{ margin: 0, fontSize: '0.78rem', color: '#94a3b8', lineHeight: 1.4 }}>
                     We partner with established domestic hardware manufacturers and medical device fabricators to deliver physical workstations, cold laser optics, and microgrid inverters.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* =============================================================
+              HIGH-VELOCITY ONBOARDING FUNNEL SECTION (DIRECTLY ABOVE SMART MOHS)
+              ============================================================= */}
+          <div
+            style={{
+              marginTop: '44px',
+              marginBottom: '32px',
+              padding: '28px',
+              background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)',
+              border: '1px solid rgba(56, 189, 248, 0.25)',
+              borderRadius: '20px',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: '0 20px 45px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+            }}
+          >
+            {/* Ambient subtle glow background */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-60px',
+                right: '-40px',
+                width: '260px',
+                height: '260px',
+                background: 'radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%)',
+                pointerEvents: 'none',
+              }}
+            />
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+                <div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 10px', background: 'rgba(56, 189, 248, 0.12)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '9999px', fontSize: '0.74rem', fontWeight: 700, color: '#38bdf8', marginBottom: '8px' }}>
+                    <Sparkles size={12} /> High-Velocity Onboarding Funnel
+                  </div>
+                  <h2 style={{ fontSize: '1.45rem', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.02em', margin: '0 0 6px 0', lineHeight: 1.25 }}>
+                    Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access
+                  </h2>
+                  <p style={{ fontSize: '0.86rem', color: '#94a3b8', margin: 0, maxWidth: '780px', lineHeight: 1.5 }}>
+                    Engineered specifically for uOttawa Software Engineering candidates. No corporate resume shredders or bureaucratic delays. You apply directly to founder Jeff Boggs, undergo immediate architectural review, execute a mutual digital IP agreement, and get push rights to code.
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Smart%20Mohs')}
+                  className="boggs-portfolio-hiring-btn cyan"
+                  style={{ whiteSpace: 'nowrap', padding: '10px 18px', fontSize: '0.85rem' }}
+                >
+                  <GraduationCap size={15} /> Apply as Student <ArrowRight size={14} />
+                </button>
+              </div>
+
+              {/* 3D Visual Roadmap Banner */}
+              <div
+                style={{
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  background: '#020617',
+                  boxShadow: '0 12px 28px rgba(0, 0, 0, 0.5)',
+                  position: 'relative',
+                  maxHeight: '340px',
+                }}
+              >
+                <img
+                  src={highVelocityFunnelRoadmapUrl}
+                  alt="High-Velocity Funnel Roadmap: Submit brief to 24h review to fast-track digital NDA to direct GitHub repo access"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', maxHeight: '340px' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '12px',
+                    left: '12px',
+                    background: 'rgba(15, 23, 42, 0.88)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    borderRadius: '8px',
+                    padding: '6px 12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '0.72rem',
+                    color: '#e2e8f0',
+                    fontWeight: 600,
+                  }}
+                >
+                  <Clock size={13} style={{ color: '#38bdf8' }} />
+                  Guaranteed 48-Hour SLA from Brief Submission to Day 1 Production Push
+                </div>
+              </div>
+
+              {/* 4 Funnel Milestone Cards */}
+              <div className="boggs-funnel-steps-grid">
+                {/* Step 1 */}
+                <div className="boggs-funnel-step-card">
+                  <div className="boggs-funnel-step-header">
+                    <span className="boggs-funnel-step-num cyan">01</span>
+                    <span className="boggs-funnel-step-badge">2-Min Intake</span>
+                  </div>
+                  <h4 className="boggs-funnel-step-title">1. Submit Brief</h4>
+                  <p className="boggs-funnel-step-desc">
+                    Pick your preferred system pod below (Smart Mohs, Transit-OS, Sovereign Mesh, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div className="boggs-funnel-step-card">
+                  <div className="boggs-funnel-step-header">
+                    <span className="boggs-funnel-step-num amber">02</span>
+                    <span className="boggs-funnel-step-badge">&lt; 24h Review</span>
+                  </div>
+                  <h4 className="boggs-funnel-step-title">2. 24h Review by Jeff Boggs</h4>
+                  <p className="boggs-funnel-step-desc">
+                    Founder Jeff Boggs (uOttawa SEG Alum) personally evaluates your engineering background within 24 hours to match your strengths directly to active system milestones.
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="boggs-funnel-step-card">
+                  <div className="boggs-funnel-step-header">
+                    <span className="boggs-funnel-step-num emerald">03</span>
+                    <span className="boggs-funnel-step-badge">5-Min e-Sign</span>
+                  </div>
+                  <h4 className="boggs-funnel-step-title">3. Fast-Track Digital NDA</h4>
+                  <p className="boggs-funnel-step-desc">
+                    Streamlined digital execution of our mutual IP & confidentiality agreement, ensuring full academic accreditation for your uOttawa capstone while protecting proprietary code.
+                  </p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="boggs-funnel-step-card">
+                  <div className="boggs-funnel-step-header">
+                    <span className="boggs-funnel-step-num purple">04</span>
+                    <span className="boggs-funnel-step-badge highlight">Day 1 Access</span>
+                  </div>
+                  <h4 className="boggs-funnel-step-title">4. Direct GitHub Access</h4>
+                  <p className="boggs-funnel-step-desc">
+                    Immediate invite to the private Boggs Systems organization on GitHub. Clone the production repo, join the autonomous pod, and ship your first pull request.
                   </p>
                 </div>
               </div>

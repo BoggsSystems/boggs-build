@@ -744,6 +744,245 @@ export const ARCHITECTURE_DATA: Record<string, SystemData> = {
   },
 };
 
+
+interface SubsystemInfra {
+  busesTitle: string;
+  buses: Array<{ code: string; title: string; desc: string }>;
+  isolationTitle: string;
+  isolations: Array<{ code: string; title: string; desc: string }>;
+}
+
+const SUBSYSTEM_INFRA_DATA: Record<string, SubsystemInfra> = {
+  'smart-mohs': {
+    busesTitle: "Real-Time Communications & Optical Buses",
+    buses: [
+      {
+        code: "BUS-1",
+        title: "Zero-Copy PCIe DMA Ring Buffer",
+        desc: "High-bandwidth dual-ring buffers streaming 100 kHz raw 1310nm OCT interferograms directly to GPU pinned memory.",
+      },
+      {
+        code: "BUS-2",
+        title: "Deterministic Galvo Control Bus",
+        desc: "Microsecond-latency SPI/EtherCAT trajectory feed driving Thorlabs dual-axis mirrors at 20 kHz update rates.",
+      },
+      {
+        code: "BUS-3",
+        title: "Isolated Hardware Laser Interlock",
+        desc: "Dedicated hardwired optical shutter coil line bypassing OS kernel to collapse laser beam in < 1.5ms on fault.",
+      },
+    ],
+    isolationTitle: "Fault Domains & Optical Isolation",
+    isolations: [
+      {
+        code: "ISO-1",
+        title: "Dual-Channel Thermal & Power Redundancy",
+        desc: "Independent laser diode chillers and redundant DC power lines preventing wavelength drift or thermal runaway.",
+      },
+      {
+        code: "ISO-2",
+        title: "Galvanic & Opto-Coupled Isolation",
+        desc: "Optoisolated digital I/O lines preventing high-voltage galvo piezo back-EMF feedback into the control plane.",
+      },
+      {
+        code: "ISO-3",
+        title: "Passive Fail-Closed Laser Shutter",
+        desc: "Physical solenoid-driven aperture held open actively; drops shut mechanically via spring return upon power loss.",
+      },
+    ],
+  },
+  'borealis-pods': {
+    busesTitle: "Real-Time Vehicular Communications & Buses",
+    buses: [
+      {
+        code: "BUS-1",
+        title: "Dual-Redundant CAN-FD & 1000BASE-T1",
+        desc: "Deterministic 1 Gbps automotive ethernet backplane routing raw 32-beam LiDAR and 4D radar point clouds.",
+      },
+      {
+        code: "BUS-2",
+        title: "Cyclone DDS / ROS 2 Real-Time Middleware",
+        desc: "Sub-millisecond publish/subscribe fabric linking BEV perception, MPC trajectory, and drive-by-wire controllers.",
+      },
+      {
+        code: "BUS-3",
+        title: "C-V2X & Private 5G Teleoperation Link",
+        desc: "Ultra-Reliable Low-Latency Communication (< 15ms latency) with deterministic fallback to safe-stop pull-over.",
+      },
+    ],
+    isolationTitle: "Fault Domains & Drive-by-Wire Isolation",
+    isolations: [
+      {
+        code: "ISO-1",
+        title: "Lockstep ASIL-D Drive-by-Wire Core",
+        desc: "Dual-core lockstep Infineon Aurix MCU continuously cross-checking steering and braking torques.",
+      },
+      {
+        code: "ISO-2",
+        title: "High-Voltage ESS Pyro-Fuse Disconnect",
+        desc: "Solid-state contactor isolating the 400V traction battery within 2ms of impact or thermal threshold trip.",
+      },
+      {
+        code: "ISO-3",
+        title: "Dual-Rail Hydraulic Brake Actuation",
+        desc: "Mechanically decoupled dual-circuit braking system delivering 1.2g stopping power even on electrical bus collapse.",
+      },
+    ],
+  },
+  'borealis-maglev': {
+    busesTitle: "High-Speed Guideway & Synchronous Inverter Buses",
+    buses: [
+      {
+        code: "BUS-1",
+        title: "Sub-Millisecond EtherCAT Levitation Ring",
+        desc: "Deterministic 1 kHz loop synchronizing 16 distributed EMS bogie controllers and inductive gap sensors.",
+      },
+      {
+        code: "BUS-2",
+        title: "Time-Sensitive Networking (TSN IEEE 802.1Qbv)",
+        desc: "Jitter-free trackside telemetry synchronizing linear synchronous motor (LSM) stator inverters with guideway position.",
+      },
+      {
+        code: "BUS-3",
+        title: "Fail-Safe Moving-Block ATP Radio",
+        desc: "Redundant trackside radio broadcasting continuously updated movement authority limits (MAL) per SIL-4 standards.",
+      },
+    ],
+    isolationTitle: "Fault Domains & Electromagnetic Isolation",
+    isolations: [
+      {
+        code: "ISO-1",
+        title: "Triple Modular Redundancy (TMR) QNX Cores",
+        desc: "2-out-of-3 voting architecture across independent levitation controllers guarding against SEU radiation or compute faults.",
+      },
+      {
+        code: "ISO-2",
+        title: "Electromagnetic Coil Galvanic Isolation",
+        desc: "1500V opto-coupled gate drivers shielding low-voltage DSP control logic from stator back-EMF spikes.",
+      },
+      {
+        code: "ISO-3",
+        title: "Passive Permanent-Magnet Skid Safe Landing",
+        desc: "Self-centering aerodynamic flaps and ceramic eddy-current skids safely decelerating pod to rest without guideway power.",
+      },
+    ],
+  },
+  'sovereign-mesh': {
+    busesTitle: "Microgrid Protection & Tele-Control Buses",
+    buses: [
+      {
+        code: "BUS-1",
+        title: "IEC 61850-9-2 Sampled Values (SV) Fiber Bus",
+        desc: "4 kHz continuous wave-point sampling of 3-phase voltage and current from digital optical instrument transformers.",
+      },
+      {
+        code: "BUS-2",
+        title: "GOOSE Real-Time Protection Bus",
+        desc: "Peer-to-peer multicast trip signals delivering breaker trip commands in < 2ms across substation switches.",
+      },
+      {
+        code: "BUS-3",
+        title: "Frequency-Hopping LoRa & Satellite Mesh",
+        desc: "Resilient out-of-band P2P gossip mesh sustaining microgrid synchronization during total cellular or fiber infrastructure outages.",
+      },
+    ],
+    isolationTitle: "Fault Domains & Grid Physical Isolation",
+    isolations: [
+      {
+        code: "ISO-1",
+        title: "Sub-Cycle Solid-State Islanding Switch",
+        desc: "Bidirectional GaN/SiC breaker disconnecting local microgrid from upstream utility grid in < 250µs upon phase angle fault.",
+      },
+      {
+        code: "ISO-2",
+        title: "Air-Gapped FIPS 140-3 Cryptographic HSM",
+        desc: "Dedicated cryptographic enclave signing every telemetry packet and tele-control command, physically isolating control plane from public IP.",
+      },
+      {
+        code: "ISO-3",
+        title: "Thermal & Battery Cell Galvanic Partitioning",
+        desc: "Independent BESS battery rack contactors with passive aerosol fire suppression and physical barrier containment.",
+      },
+    ],
+  },
+  'digitpop': {
+    busesTitle: "Streaming Video & Interactive Event Buses",
+    buses: [
+      {
+        code: "BUS-1",
+        title: "W3C WebCodecs VideoFrame Ring Buffer",
+        desc: "Zero-copy GPU texture bridge passing decoded 60 FPS video frames to WebAssembly optical flow tracker with zero GC pauses.",
+      },
+      {
+        code: "BUS-2",
+        title: "Wasm SharedArrayBuffer Coordinate Bus",
+        desc: "High-frequency bidirectional spatial bounding box dispatch between Rust/C++ tracking engine and WebGL canvas overlay.",
+      },
+      {
+        code: "BUS-3",
+        title: "Tokenized 1-Click Checkout Bridge",
+        desc: "Secure PostMessage and Web Workers bus bridging user click events with Stripe Elements and Apple/Google Pay sessions.",
+      },
+    ],
+    isolationTitle: "Sandbox Boundaries & Security Isolation",
+    isolations: [
+      {
+        code: "ISO-1",
+        title: "PCI-DSS Level 1 Sandboxed Iframe Isolation",
+        desc: "Payment credential tokenization and payment method collection strictly encapsulated in isolated iframe origins.",
+      },
+      {
+        code: "ISO-2",
+        title: "WebGL Context Loss Auto-Recovery",
+        desc: "Graceful fall-back to hardware-accelerated CSS DOM matrix hotspots if GPU context is lost or reallocated.",
+      },
+      {
+        code: "ISO-3",
+        title: "WebAssembly Memory Boundary Sandbox",
+        desc: "Rigid Wasm linear memory bounds preventing malformed video metadata payloads from corrupting browser UI state.",
+      },
+    ],
+  },
+  'opportunity-os': {
+    busesTitle: "Autonomous Ingestion & Evaluation Buses",
+    buses: [
+      {
+        code: "BUS-1",
+        title: "Async Event-Driven Kafka / NATS Messaging",
+        desc: "Resilient pub/sub spine orchestrating candidate git ingest, vector indexing, and asynchronous evaluation pipelines.",
+      },
+      {
+        code: "BUS-2",
+        title: "gRPC Streaming RPC Interface",
+        desc: "Low-latency bi-directional audio/video and text stream connecting the candidate cockpit with real-time AI interviewers.",
+      },
+      {
+        code: "BUS-3",
+        title: "WebAuthn & Ed25519 Cryptographic Bus",
+        desc: "Zero-knowledge cryptographic challenge-response bus verifying candidate identity and committing cryptographic skill attestations.",
+      },
+    ],
+    isolationTitle: "Execution Sandboxes & Tenant Isolation",
+    isolations: [
+      {
+        code: "ISO-1",
+        title: "gVisor / Firecracker Ephemeral MicroVM Sandbox",
+        desc: "Complete OS-level and network isolation for compiling and executing un-trusted student repository submissions.",
+      },
+      {
+        code: "ISO-2",
+        title: "Deterministic AI Guardrail Gateways",
+        desc: "Real-time semantic policy and bias monitoring enclaves inspecting AI evaluation outputs prior to recruiter dashboard persistence.",
+      },
+      {
+        code: "ISO-3",
+        title: "Zero-Trust Role-Based Access Partitioning",
+        desc: "Cryptographic token separation isolating student personally identifiable information (PII) from anonymized automated code scores.",
+      },
+    ],
+  },
+};
+
 export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = ({
   isOpen,
   onClose,
@@ -775,6 +1014,7 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
   if (!isOpen) return null;
 
   const currentSystem = ARCHITECTURE_DATA[selectedSystemId] || ARCHITECTURE_DATA['smart-mohs'];
+  const subsystemInfra = SUBSYSTEM_INFRA_DATA[currentSystem.id] || SUBSYSTEM_INFRA_DATA['smart-mohs'];
 
   const handleApplyClick = () => {
     onClose();
@@ -961,41 +1201,29 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
               <div className="boggs-arch-grid-two">
                 <div className="boggs-arch-section">
                   <h3 className="boggs-arch-section-heading">
-                    <CheckCircle2 size={16} color="#38bdf8" /> Real-Time Communications &amp; Buses
+                    <CheckCircle2 size={16} color="#38bdf8" /> {subsystemInfra.busesTitle}
                   </h3>
                   <ul className="boggs-arch-req-list">
-                    <li className="boggs-arch-req-item">
-                      <span className="boggs-arch-req-num">BUS-1</span>
-                      <span><strong>Zero-Copy Memory DMA:</strong> High-bandwidth ring buffers passing raw sensor payloads directly to GPU/FPGA unified memory.</span>
-                    </li>
-                    <li className="boggs-arch-req-item">
-                      <span className="boggs-arch-req-num">BUS-2</span>
-                      <span><strong>Deterministic Telemetry Bus:</strong> Microsecond latency deterministic state dispatch across lockstep compute channels.</span>
-                    </li>
-                    <li className="boggs-arch-req-item">
-                      <span className="boggs-arch-req-num">BUS-3</span>
-                      <span><strong>Isolated Hardware Interlock:</strong> Dedicated hardwired emergency stop bus bypassing all operating system kernels.</span>
-                    </li>
+                    {subsystemInfra.buses.map((bus, idx) => (
+                      <li key={idx} className="boggs-arch-req-item">
+                        <span className="boggs-arch-req-num">{bus.code}</span>
+                        <span><strong>{bus.title}:</strong> {bus.desc}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
                 <div className="boggs-arch-section">
                   <h3 className="boggs-arch-section-heading">
-                    <Zap size={16} color="#f59e0b" /> Fault Domains &amp; Physical Isolation
+                    <Zap size={16} color="#f59e0b" /> {subsystemInfra.isolationTitle}
                   </h3>
                   <ul className="boggs-arch-req-list">
-                    <li className="boggs-arch-req-item">
-                      <span className="boggs-arch-req-num" style={{ color: '#f59e0b' }}>ISO-1</span>
-                      <span><strong>Dual-Channel Redundancy:</strong> Independent power supplies and actuator paths preventing single-point failure.</span>
-                    </li>
-                    <li className="boggs-arch-req-item">
-                      <span className="boggs-arch-req-num" style={{ color: '#f59e0b' }}>ISO-2</span>
-                      <span><strong>Electromagnetic Shielding:</strong> Optoisolated digital I/O lines preventing high-voltage back-EMF feedback.</span>
-                    </li>
-                    <li className="boggs-arch-req-item">
-                      <span className="boggs-arch-req-num" style={{ color: '#f59e0b' }}>ISO-3</span>
-                      <span><strong>Passive Failsafe Engagement:</strong> Physical default state (shutter closed, brake clamped) held mechanically by springs.</span>
-                    </li>
+                    {subsystemInfra.isolations.map((iso, idx) => (
+                      <li key={idx} className="boggs-arch-req-item">
+                        <span className="boggs-arch-req-num" style={{ color: "#f59e0b" }}>{iso.code}</span>
+                        <span><strong>{iso.title}:</strong> {iso.desc}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

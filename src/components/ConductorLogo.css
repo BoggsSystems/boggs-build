@@ -1,0 +1,27 @@
+.conductor-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.conductor-logo-svg {
+  transform-origin: center center;
+}
+
+@keyframes conductor-logo-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.conductor-logo-container.thinking .conductor-logo-svg {
+  animation: conductor-logo-spin 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.6));
+}

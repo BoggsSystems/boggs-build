@@ -5349,3 +5349,121 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Boggs Systems - Interactive Architecture Diagram Studio Styles
+   ========================================================================== */
+
+.boggs-diagram-viewer {
+  display: flex;
+  flex-direction: column;
+  background: #060a12;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 10px 0 16px 0;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+.boggs-diagram-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.boggs-diagram-type-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.boggs-diagram-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 6px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  font-size: 0.73rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.boggs-diagram-nav-btn:hover {
+  color: #ffffff;
+  background: rgba(51, 65, 85, 0.7);
+}
+
+.boggs-diagram-nav-btn.active {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.boggs-diagram-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.boggs-zoom-btn {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.boggs-zoom-btn:hover {
+  color: #ffffff;
+  background: rgba(51, 65, 85, 0.9);
+}
+
+.boggs-zoom-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.70rem;
+  color: #cbd5e1;
+  min-width: 36px;
+  text-align: center;
+}
+
+.boggs-diagram-canvas-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px;
+  background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.6) 0%, #030712 100%);
+  display: flex;
+  justify-content: center;
+}
+
+.boggs-diagram-svg-container {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  justify-content: center;
+}
+
+.boggs-svg-canvas {
+  width: 100%;
+  height: auto;
+  min-width: 720px;
+  max-height: 520px;
+  user-select: none;
+}

@@ -12,7 +12,9 @@ import {
   CheckCircle2,
   Zap,
   Sparkles,
+  Users,
 } from 'lucide-react';
+import { SystemArchitectureDiagrams } from './SystemArchitectureDiagrams';
 
 export interface SystemArchitectureModalProps {
   isOpen: boolean;
@@ -749,7 +751,7 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
   onApplyForSystem,
 }) => {
   const [selectedSystemId, setSelectedSystemId] = useState<string>(initialSystem);
-  const [activeTab, setActiveTab] = useState<'requirements' | 'uml' | 'lifecycle' | 'backlog'>('requirements');
+  const [activeTab, setActiveTab] = useState<'requirements' | 'subsystem' | 'uml' | 'lifecycle' | 'backlog'>('requirements');
 
   useEffect(() => {
     if (isOpen && initialSystem) {
@@ -840,40 +842,58 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
             className={`boggs-arch-tab-btn ${activeTab === 'requirements' ? 'active' : ''}`}
             onClick={() => setActiveTab('requirements')}
           >
-            <Shield size={15} /> 1. Requirements & Standards
+            <Shield size={15} /> 1. Requirements &amp; Actors
+          </button>
+          <button
+            className={`boggs-arch-tab-btn ${activeTab === 'subsystem' ? 'active' : ''}`}
+            onClick={() => setActiveTab('subsystem')}
+          >
+            <Layers size={15} /> 2. Subsystem Architecture
           </button>
           <button
             className={`boggs-arch-tab-btn ${activeTab === 'uml' ? 'active' : ''}`}
             onClick={() => setActiveTab('uml')}
           >
-            <Layers size={15} /> 2. UML Class Model & Design
+            <FileCode2 size={15} /> 3. UML Class Model &amp; Patterns
           </button>
           <button
             className={`boggs-arch-tab-btn ${activeTab === 'lifecycle' ? 'active' : ''}`}
             onClick={() => setActiveTab('lifecycle')}
           >
-            <Activity size={15} /> 3. Lifecycle & State Machine
+            <Activity size={15} /> 4. Lifecycle &amp; State Machine
           </button>
           <button
             className={`boggs-arch-tab-btn ${activeTab === 'backlog' ? 'active' : ''}`}
             onClick={() => setActiveTab('backlog')}
           >
-            <GraduationCap size={15} /> 4. Capstone Pod Backlog
+            <GraduationCap size={15} /> 5. Capstone Pod Backlog
           </button>
         </div>
 
         {/* Tab Content Body */}
         <div className="boggs-arch-body">
-          {/* TAB 1: REQUIREMENTS & STANDARDS */}
+          {/* TAB 1: REQUIREMENTS & ACTORS */}
           {activeTab === 'requirements' && (
             <div className="boggs-arch-tab-content">
               <div className="boggs-arch-overview-box">
                 <p>{currentSystem.overview}</p>
               </div>
 
+              {/* Actors & System Boundary Model Diagram */}
               <div className="boggs-arch-section">
                 <h3 className="boggs-arch-section-heading">
-                  <Shield size={17} style={{ color: currentSystem.accentColor }} /> Regulatory & Industry Standards
+                  <Users size={17} style={{ color: currentSystem.accentColor }} /> Actors &amp; System Boundary Model
+                </h3>
+                <SystemArchitectureDiagrams
+                  systemId={currentSystem.id}
+                  accentColor={currentSystem.accentColor}
+                  initialView="actors"
+                />
+              </div>
+
+              <div className="boggs-arch-section">
+                <h3 className="boggs-arch-section-heading">
+                  <Shield size={17} style={{ color: currentSystem.accentColor }} /> Regulatory &amp; Industry Standards
                 </h3>
                 <div className="boggs-arch-standards-grid">
                   {currentSystem.standards.map((std, idx) => (
@@ -904,7 +924,7 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
 
                 <div className="boggs-arch-section">
                   <h3 className="boggs-arch-section-heading">
-                    <Zap size={16} color="#f59e0b" /> Non-Functional & Safety Requirements (NFR)
+                    <Zap size={16} color="#f59e0b" /> Non-Functional &amp; Safety Requirements (NFR)
                   </h3>
                   <ul className="boggs-arch-req-list">
                     {currentSystem.nonFunctionalReqs.map((req, idx) => (
@@ -919,12 +939,87 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
             </div>
           )}
 
-          {/* TAB 2: UML CLASS MODEL & DESIGN */}
+          {/* TAB 2: SUBSYSTEM ARCHITECTURE */}
+          {activeTab === 'subsystem' && (
+            <div className="boggs-arch-tab-content">
+              <div className="boggs-arch-package-header">
+                <span className="boggs-arch-package-label">Subsystem Tiering:</span>
+                <code>4-Tier Real-Time Architecture &amp; Data Buses</code>
+              </div>
+
+              <div className="boggs-arch-section">
+                <h3 className="boggs-arch-section-heading">
+                  <Layers size={17} style={{ color: currentSystem.accentColor }} /> Subsystem Block Decomposition &amp; Dataflow
+                </h3>
+                <SystemArchitectureDiagrams
+                  systemId={currentSystem.id}
+                  accentColor={currentSystem.accentColor}
+                  initialView="subsystem"
+                />
+              </div>
+
+              <div className="boggs-arch-grid-two">
+                <div className="boggs-arch-section">
+                  <h3 className="boggs-arch-section-heading">
+                    <CheckCircle2 size={16} color="#38bdf8" /> Real-Time Communications &amp; Buses
+                  </h3>
+                  <ul className="boggs-arch-req-list">
+                    <li className="boggs-arch-req-item">
+                      <span className="boggs-arch-req-num">BUS-1</span>
+                      <span><strong>Zero-Copy Memory DMA:</strong> High-bandwidth ring buffers passing raw sensor payloads directly to GPU/FPGA unified memory.</span>
+                    </li>
+                    <li className="boggs-arch-req-item">
+                      <span className="boggs-arch-req-num">BUS-2</span>
+                      <span><strong>Deterministic Telemetry Bus:</strong> Microsecond latency deterministic state dispatch across lockstep compute channels.</span>
+                    </li>
+                    <li className="boggs-arch-req-item">
+                      <span className="boggs-arch-req-num">BUS-3</span>
+                      <span><strong>Isolated Hardware Interlock:</strong> Dedicated hardwired emergency stop bus bypassing all operating system kernels.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="boggs-arch-section">
+                  <h3 className="boggs-arch-section-heading">
+                    <Zap size={16} color="#f59e0b" /> Fault Domains &amp; Physical Isolation
+                  </h3>
+                  <ul className="boggs-arch-req-list">
+                    <li className="boggs-arch-req-item">
+                      <span className="boggs-arch-req-num" style={{ color: '#f59e0b' }}>ISO-1</span>
+                      <span><strong>Dual-Channel Redundancy:</strong> Independent power supplies and actuator paths preventing single-point failure.</span>
+                    </li>
+                    <li className="boggs-arch-req-item">
+                      <span className="boggs-arch-req-num" style={{ color: '#f59e0b' }}>ISO-2</span>
+                      <span><strong>Electromagnetic Shielding:</strong> Optoisolated digital I/O lines preventing high-voltage back-EMF feedback.</span>
+                    </li>
+                    <li className="boggs-arch-req-item">
+                      <span className="boggs-arch-req-num" style={{ color: '#f59e0b' }}>ISO-3</span>
+                      <span><strong>Passive Failsafe Engagement:</strong> Physical default state (shutter closed, brake clamped) held mechanically by springs.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: UML CLASS MODEL & DESIGN */}
           {activeTab === 'uml' && (
             <div className="boggs-arch-tab-content">
               <div className="boggs-arch-package-header">
                 <span className="boggs-arch-package-label">Package Scope:</span>
                 <code>{currentSystem.umlPackage}</code>
+              </div>
+
+              {/* UML Class Diagram Visual */}
+              <div className="boggs-arch-section">
+                <h3 className="boggs-arch-section-heading">
+                  <FileCode2 size={17} style={{ color: currentSystem.accentColor }} /> Formal UML Object-Oriented Class Hierarchy &amp; Design Patterns
+                </h3>
+                <SystemArchitectureDiagrams
+                  systemId={currentSystem.id}
+                  accentColor={currentSystem.accentColor}
+                  initialView="uml-class"
+                />
               </div>
 
               {/* Design Patterns Callout */}
@@ -976,7 +1071,7 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
 
                       {cls.relations.length > 0 && (
                         <div className="boggs-arch-member-block relations">
-                          <div className="boggs-arch-member-title">Relationships & Constraints</div>
+                          <div className="boggs-arch-member-title">Relationships &amp; Constraints</div>
                           {cls.relations.map((rel, rIdx) => (
                             <div key={rIdx} className="boggs-arch-code-line relation">
                               ↳ {rel}
@@ -991,10 +1086,22 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
             </div>
           )}
 
-          {/* TAB 3: LIFECYCLE & STATE MACHINE */}
+          {/* TAB 4: LIFECYCLE & STATE MACHINE */}
           {activeTab === 'lifecycle' && (
             <div className="boggs-arch-tab-content">
-              <div className="boggs-arch-state-header">
+              {/* Sequence Diagram Visual */}
+              <div className="boggs-arch-section">
+                <h3 className="boggs-arch-section-heading">
+                  <Activity size={17} style={{ color: currentSystem.accentColor }} /> Runtime Sequence &amp; Deterministic Timing Verification
+                </h3>
+                <SystemArchitectureDiagrams
+                  systemId={currentSystem.id}
+                  accentColor={currentSystem.accentColor}
+                  initialView="sequence"
+                />
+              </div>
+
+              <div className="boggs-arch-state-header" style={{ marginTop: '16px' }}>
                 <Activity size={18} style={{ color: currentSystem.accentColor }} />
                 <h3>{currentSystem.stateMachine.title}</h3>
               </div>
@@ -1027,7 +1134,7 @@ export const SystemArchitectureModal: React.FC<SystemArchitectureModalProps> = (
               {/* Failsafe Callout */}
               <div className="boggs-arch-failsafe-box">
                 <div className="boggs-arch-failsafe-title">
-                  <Shield size={16} /> Autonomous Failsafe & Safe-State Protocol
+                  <Shield size={16} /> Autonomous Failsafe &amp; Safe-State Protocol
                 </div>
                 <p className="boggs-arch-failsafe-text">{currentSystem.stateMachine.failsafe}</p>
               </div>

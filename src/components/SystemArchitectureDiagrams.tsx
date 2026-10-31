@@ -185,6 +185,23 @@ const ActorsDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ sy
             { num: 'UC-5', title: 'Emit Clickstream Telemetry', sub: 'Sub-Second Attributed Beacon', color: '#fbbf24' },
           ],
         };
+      case 'robot-fleet':
+        return {
+          title: 'SYSTEM BOUNDARY: HETEROGENEOUS ROBOT FLEET ORCHESTRATOR',
+          primary: { role: 'Operations Director', sub: 'Fleet Supervisor' },
+          actors: [
+            { role: 'Unitree G1 Humanoid', sub: '33-DOF Bipedal Manipulator', color: '#06b6d4' },
+            { role: 'Unitree Go2 Quadruped', sub: 'Rough-Terrain Cargo Mule', color: '#10b981' },
+            { role: 'PX4 Autopilot Drone', sub: 'Aerial Perimeter Scout', color: '#c084fc' },
+          ],
+          useCases: [
+            { num: 'UC-1', title: 'Tri-Modal Mission Dispatch', sub: 'Multi-Agent Task Allocation', color: accentColor },
+            { num: 'UC-2', title: 'Kinematic Impedance Latching', sub: 'Picker-to-Saddle Transfer', color: '#06b6d4' },
+            { num: 'UC-3', title: 'MuJoCo Sim-to-Real Tuning', sub: 'Dynamic Stance Calibration', color: '#10b981' },
+            { num: 'UC-4', title: 'Dynamic 3D Zone Routing', sub: 'DTDL v3 Graph Synchronization', color: '#38bdf8' },
+            { num: 'UC-5', title: 'Emergency Stance Clamping', sub: '< 5ms Hardware E-Stop Interlock', color: '#fbbf24' },
+          ],
+        };
       default: // opportunity-os
         return {
           title: 'SYSTEM BOUNDARY: OPPORTUNITY OS CAREER ENGINE & DIGNITY GRAPH',
@@ -416,6 +433,33 @@ const SubsystemDiagram: React.FC<{ systemId: string; accentColor: string }> = ({
             { title: 'Sub-Second Attribution Analytics Beacon', sub: 'Clickstream & Hover Telemetry Ingestion', color: '#a855f7' },
           ],
         };
+      case 'robot-fleet':
+        return {
+          tier1Label: 'TIER 1: ROBOT HARDWARE & LOW-LEVEL MOTOR BUS',
+          tier1Blocks: [
+            { title: 'Unitree SDK2 LowCmd / LowState C++', sub: 'CycloneDDS Microsecond Joint Actuation', color: '#06b6d4' },
+            { title: 'PX4 Autopilot & MAVLink UDP Bus', sub: 'Geofenced Waypoint Navigation at 100 Hz', color: '#c084fc' },
+            { title: 'ZeroMQ High-Throughput Video Socket', sub: '60 FPS Edge Camera & Depth Cloud PUB/SUB', color: '#38bdf8' },
+          ],
+          tier2Label: 'TIER 2: REAL-TIME DETERMINISTIC CONTROL & SAFETY',
+          tier2Blocks: [
+            { title: 'CycloneDDS Distributed Middleware', sub: 'Multi-Robot Peer-to-Peer Telemetry Fabric', color: '#06b6d4' },
+            { title: 'MuJoCo Sim-to-Real Impedance Solver', sub: 'Phase 1 Whole-Body Joint Torque Envelopes', color: accentColor },
+            { title: 'Hardware Relayed Emergency Stop Bus', sub: 'Sub-5ms Actuator Power Cutoff on Breach', color: '#fbbf24' },
+          ],
+          tier3Label: 'TIER 3: AI EMBODIED INFERENCE & SPATIAL SLAM',
+          tier3Blocks: [
+            { title: 'Edge-Native YOLOv8 3D Spatial Vision', sub: 'Sub-15ms Object & Saddle Bounding Boxes', color: '#10b981' },
+            { title: 'Azure OpenAI RAG Action Tree Planner', sub: 'Natural Language to Multi-Robot Tasks', color: '#38bdf8' },
+            { title: 'Multi-Agent Sequential Rendezvous', sub: 'Picker-to-Carrier Dynamic Coordination', color: '#c084fc' },
+          ],
+          tier4Label: 'TIER 4: ENTERPRISE DIGITAL TWIN & FLEET CONSOLE',
+          tier4Blocks: [
+            { title: 'Azure Digital Twins DTDL v3 Graph Core', sub: 'Real-Time 3D Topological Zone Tracking', color: '#06b6d4' },
+            { title: 'Enterprise WMS / ERP Order Connector', sub: 'Automated Restock & Cargo Dispatch Flow', color: '#38bdf8' },
+            { title: 'Multi-Role Operations & Tele-Op Console', sub: 'Live Telemetry, Battery SOC & 3D Visualizer', color: '#a855f7' },
+          ],
+        };
       default: // opportunity-os
         return {
           tier1Label: 'TIER 1: SOURCE INGESTION & CODE PARSING PIPELINE',
@@ -593,6 +637,17 @@ const UmlClassDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           c6: { title: 'RealtimeAnalyticsBeacon', st: '<<TelemetryDispatcher>>', m: ['+ emit_hover_beacon(): void', '+ emit_conversion_event(): void'], a: ['- beacon_endpoint: string', '- session_uuid: string', '- buffer_queue: TelemetryEvent[]'] },
           pattern: 'PATTERN: Flyweight Hotspot Recycling Pool',
           patternDesc: 'Reuses canvas objects to eliminate GC pauses',
+        };
+      case 'robot-fleet':
+        return {
+          c1: { title: 'IRobotAdapter', st: '<<Interface / HAL>>', m: ['+ move_to_waypoint(pos: Vector3D): Promise<bool>', '+ execute_primitive(action: PrimitiveAction): void', '+ get_joint_states(): JointTelemetry'], a: ['+ agent_id: string', '+ battery_soc: float', '+ operational_state: AgentState'] },
+          c2: { title: 'RobotFleetManager', st: '<<CentralMediator>>', m: ['+ register_robot(agent: IRobotAdapter): void', '+ dispatch_mission(mission: MissionSpec): Promise<void>', '+ trigger_global_estop(): void'], a: ['- active_agents: Map<string, IRobotAdapter>', '- mission_queue: PriorityQueue<TaskWorkflow>', '- spatial_grid: TopologicalSpatialIndex'] },
+          c3: { title: 'G1HumanoidAdapter', st: '<<DexterousManipulator>>', m: ['+ execute_bipedal_step(gait: GaitConfig): void', '+ grasp_object(box: BoundingBox3D): Promise<bool>', '+ latch_to_quadruped(target: Go2CarrierAdapter): void'], a: ['- dds_lowcmd_pub: DdsPublisher<LowCmd>', '- dds_lowstate_sub: DdsSubscriber<LowState>', '- mujoco_impedance_solver: KinematicsSolver'] },
+          c4: { title: 'Go2CarrierAdapter', st: '<<RoughTerrainMule>>', m: ['+ traverse_rough_terrain(path: Waypoint[]): void', '+ lock_saddle_cargo(): void', '+ release_saddle_cargo(): void'], a: ['- payload_weight_kg: float', '- terrain_mode: TerrainProfile', '- contact_sensors: FootContactArray'] },
+          c5: { title: 'CollaborationWorkflows', st: '<<StateOrchestrator>>', m: ['+ initiate_handoff(picker: G1, carrier: Go2): void', '+ verify_aerial_clearance(drone: PX4): bool', '+ commit_handshake_state(): void'], a: ['- active_workflows: List<TriModalWorkflow>', '- synchronization_barrier: RendezvousBarrier'] },
+          c6: { title: 'DigitalTwinClient', st: '<<DTDLv3Client>>', m: ['+ update_robot_twin(telemetry: JointTelemetry): void', '+ query_zone_occupancy(zoneId: string): TwinNode[]', '+ patch_relationship(source: string, target: string): void'], a: ['- adt_endpoint: Uri', '- dtdl_model_cache: ModelDirectory', '- telemetry_batch_queue: Queue<TwinUpdate>'] },
+          pattern: 'PATTERN: Mediator & State Hierarchies',
+          patternDesc: 'Normalizes CycloneDDS, MAVLink, and DTDL topics',
         };
       default: // opportunity-os
         return {
@@ -817,6 +872,20 @@ const SequenceDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           s5Sub: 'Isolates Apple Pay / Stripe Elements from DOM',
           s6: '6. Instant Tokenized Purchase Confirmation',
           s7: '7. Cryptographic Receipt Emitted; Stream Resumes Unbroken',
+        };
+      case 'robot-fleet':
+        return {
+          l1: 'OpsDirector', l2: 'FleetManager', l3: 'PX4Drone', l4: 'G1Humanoid', l5: 'Go2Quadruped',
+          s1: '1. dispatch_tri_modal_order(sku_id, destination)',
+          s2: '2. scan_corridor_waypoints(MAVLink)',
+          t1: 'Aerial Path Clearance Confirmed (< 35ms)',
+          s3: '3. grasp_and_lift_payload(YOLOv8 + 33-DOF)',
+          t2: 'Saddle Rendezvous Latch (< 180ms confirm)',
+          s4: '4. traverse_rough_terrain(CycloneDDS)',
+          s5Title: '5. Hardware Emergency Stop Interlock',
+          s5Sub: 'Sub-5ms relay cuts motor power on boundary breach',
+          s6: '6. Destination Curbside Docking Completed',
+          s7: '7. Azure Digital Twins DTDL v3 Graph Updated (< 45ms)',
         };
       default: // opportunity-os
         return {

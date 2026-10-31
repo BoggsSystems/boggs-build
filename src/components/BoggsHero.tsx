@@ -25,9 +25,13 @@ import {
   Flame,
   Train,
   Car,
+  Bot,
+  Boxes,
+  Workflow,
 } from 'lucide-react';
 import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
 import borealisMaglevTubeUrl from '../assets/borealis-maglev-tube.jpg';
+import robotFleetHeterogeneousUrl from '../assets/robot-fleet-heterogeneous.jpg';
 import borealisRoadPodUrl from '../assets/borealis-road-pod.jpg';
 import sovereignMeshEnergyUrl from '../assets/sovereign-mesh-energy.jpg';
 import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
@@ -861,10 +865,98 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 4: Sovereign Mesh (Clean Energy & Microgrids Plank)
+               PRODUCT 4: Robot Fleet (Robotics Plank • Heterogeneous Multi-Agent)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={robotFleetHeterogeneousUrl}
+                    alt="Robot Fleet Heterogeneous Unitree G1 Humanoid, Go2 Quadruped and Drone Coordination"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#06b6d4" }} />
+                      Tri-Modal Team (G1 + Go2 + PX4)
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10b981" }} />
+                      CycloneDDS &amp; ZeroMQ Fabric
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#c084fc" }} />
+                      Azure Digital Twins DTDL v3
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: "#06b6d4" }}>
+                    <Bot size={14} /> Robotics Plank • Heterogeneous Multi-Agent Fleet
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Robot Fleet: Heterogeneous Humanoid &amp; Quadruped Multi-Agent Orchestration
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Autonomous embodied multi-agent platform coordinating teams of Unitree G1 humanoids, Go2 quadrupeds, and PX4 drones across enterprise supply chains and remote Canadian estate logistics. Couples physics-accurate MuJoCo sim-to-real embodied training with real-time CycloneDDS joint telemetry and live Azure Digital Twins spatial graph management.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: "rgba(6, 182, 212, 0.15)", color: "#06b6d4" }}>
+                        <Boxes size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Sequential Tri-Modal Orchestration:</strong> Automated picker-to-carrier handoffs linking G1 humanoid fine manipulation, Go2 quadruped rough-terrain cargo traversal, and PX4 drone aerial waypoint scouting.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: "rgba(16, 185, 129, 0.15)", color: "#10b981" }}>
+                        <Workflow size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Two-Phase MuJoCo &amp; Edge AI Stack:</strong> 33-DOF joint kinematics and balance control validated in MuJoCo physics, paired with edge-native YOLOv8 vision and RAG multi-environment policies.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box" style={{ borderColor: "rgba(6, 182, 212, 0.25)" }}>
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag" style={{ color: "#06b6d4" }}>
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Boggs Robot Fleet Orchestrator &amp; Embodied Digital Twin
+                      </span>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture("robot-fleet") : undefined}
+                          className="boggs-portfolio-blueprint-btn"
+                          style={{ borderColor: "rgba(6, 182, 212, 0.4)", color: "#06b6d4" }}
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone("robot-fleet") : (window.location.href = "mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Robot%20Fleet")}
+                          className="boggs-portfolio-hiring-btn"
+                          style={{ background: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)", color: "#ffffff" }}
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: "0.79rem", color: "#94a3b8", lineHeight: 1.4 }}>
+                      <strong style={{ color: "#06b6d4" }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 5: Sovereign Mesh (Clean Energy & Microgrids Plank)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid">
                 <div className="boggs-portfolio-media">
                   <img
                     src={sovereignMeshEnergyUrl}
@@ -947,10 +1039,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 5: DigitPop (Interactive Media & Live Commerce Plank)
+               PRODUCT 6: DigitPop (Interactive Media & Live Commerce Plank)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid">
+              <div className="boggs-portfolio-grid reverse">
                 <div className="boggs-portfolio-media">
                   <img
                     src={digitpopLiveCommerceUrl}

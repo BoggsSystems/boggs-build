@@ -428,6 +428,161 @@ export const ARCHITECTURE_DATA: Record<string, SystemData> = {
     ],
   },
 
+
+  'robot-fleet': {
+    id: 'robot-fleet',
+    name: 'Robot Fleet: Heterogeneous Humanoid & Quadruped Orchestration',
+    shortName: 'Robot Fleet',
+    badge: 'CycloneDDS • MuJoCo • Unitree SDK2 • DTDL v3',
+    accentColor: '#06b6d4',
+    repo: 'BoggsSystems/robot_fleet',
+    architectureTier: 'Distributed Multi-Agent Architecture • Real-Time Physical Embodiment',
+    overview:
+      'Autonomous embodied multi-agent platform coordinating teams of Unitree G1 humanoids, Go2 quadrupeds, and PX4 aerial drones across enterprise fulfillment and harsh remote operational domains. Couples physics-accurate MuJoCo sim-to-real embodied training with real-time CycloneDDS joint telemetry and live Azure Digital Twins spatial graph management.',
+    standards: [
+      { name: 'ISO 13482:2014', desc: 'Robots and robotic devices — Safety requirements for personal care and industrial mobile handling robots.' },
+      { name: 'OMG DDS-RTPS / ROS 2', desc: 'Deterministic microsecond publish-subscribe middleware standard for distributed real-time control.' },
+      { name: 'IEEE 1872 / DTDL v3', desc: 'Standard ontologies for robotics, automation, and Azure Digital Twin spatial boundary graphs.' },
+      { name: 'MAVLink 2.0 / PX4', desc: 'Micro Air Vehicle Communication Protocol for mission autopilot guidance and geofenced waypoint enforcement.' },
+    ],
+    functionalReqs: [
+      'Coordinate Unitree G1 33-DOF joint kinematics for bipedal locomotion and dual-arm dexterous manipulation.',
+      'Stream real-time 60 FPS video frames and YOLOv8 3D bounding boxes over low-latency ZeroMQ PUB/SUB pipelines.',
+      'Execute sequential tri-modal rendezvous workflows transferring payloads from humanoid pickers to quadruped carrier saddles.',
+      'Synchronize dynamic robot positions and topological zone occupancy into Azure Digital Twins within 45ms.',
+      'Trigger autonomous return-to-base and docking when battery state of charge (BMS) falls below 18%.',
+    ],
+    nonFunctionalReqs: [
+      'Maintain sub-10ms motor command loop jitter over CycloneDDS to avoid kinematic instability or oscillation.',
+      'Enforce hardwired hardware emergency stop relays halting all joint actuators within < 5ms of safety boundary breach.',
+      'Constrain sim-to-real joint impedance tracking error in MuJoCo to <= 4.5% during high-load cargo transport.',
+      'Ensure zero-trust cryptographic mutual TLS authentication across all cloud-to-device Azure IoT Hub command channels.',
+    ],
+    umlPackage: 'BoggsSystems::EmbodiedRobotics::FleetOrchestrator',
+    umlClasses: [
+      {
+        name: 'RobotFleetManager',
+        stereotype: '<<CentralMediator>>',
+        description: 'Central fleet dispatcher coordinating multi-agent task allocations, priority queuing, and spatial collision avoidance.',
+        attributes: [
+          '- active_agents: Map<string, IRobotAdapter>',
+          '- mission_queue: PriorityQueue<TaskWorkflow>',
+          '- spatial_grid: TopologicalSpatialIndex',
+        ],
+        methods: [
+          '+ register_robot(agent: IRobotAdapter): void',
+          '+ dispatch_mission(mission: MissionSpec): Promise<void>',
+          '+ trigger_global_estop(): void',
+        ],
+        relations: ['1 ──* IRobotAdapter', '1 ──1 CollaborationWorkflows'],
+      },
+      {
+        name: 'IRobotAdapter',
+        stereotype: '<<Interface / HAL>>',
+        description: 'Abstract hardware abstraction layer standardizing commands across humanoids, quadrupeds, and aerial drones.',
+        attributes: [
+          '+ agent_id: string',
+          '+ battery_soc: float',
+          '+ operational_state: AgentState',
+        ],
+        methods: [
+          '+ move_to_waypoint(pos: Vector3D): Promise<bool>',
+          '+ execute_primitive(action: PrimitiveAction): void',
+          '+ get_joint_states(): JointTelemetry',
+        ],
+        relations: ['Generalization for G1, Go2, and PX4 adapters'],
+      },
+      {
+        name: 'G1HumanoidAdapter',
+        stereotype: '<<DexterousManipulator>>',
+        description: 'Unitree G1 33-DOF humanoid kinematics controller handling fine object grasping and shelf manipulation.',
+        attributes: [
+          '- dds_lowcmd_pub: DdsPublisher<LowCmd>',
+          '- dds_lowstate_sub: DdsSubscriber<LowState>',
+          '- mujoco_impedance_solver: KinematicsSolver',
+        ],
+        methods: [
+          '+ execute_bipedal_step(gait: GaitConfig): void',
+          '+ grasp_object(box: BoundingBox3D): Promise<bool>',
+          '+ latch_to_quadruped(target: Go2CarrierAdapter): void',
+        ],
+        relations: ['Implements IRobotAdapter', 'Uses MuJoCo Physics Model'],
+      },
+      {
+        name: 'Go2CarrierAdapter',
+        stereotype: '<<RoughTerrainMule>>',
+        description: 'Unitree Go2 quadruped transport mule controller handling high-payload stability and curbside delivery.',
+        attributes: [
+          '- payload_weight_kg: float',
+          '- terrain_mode: TerrainProfile',
+          '- contact_sensors: FootContactArray',
+        ],
+        methods: [
+          '+ traverse_rough_terrain(path: Waypoint[]): void',
+          '+ lock_saddle_cargo(): void',
+          '+ release_saddle_cargo(): void',
+        ],
+        relations: ['Implements IRobotAdapter', 'Collaborates with G1HumanoidAdapter'],
+      },
+      {
+        name: 'CollaborationWorkflows',
+        stereotype: '<<StateOrchestrator>>',
+        description: 'Sequential multi-robot handoff state machine executing tri-modal delivery and fulfillment protocols.',
+        attributes: [
+          '- active_workflows: List<TriModalWorkflow>',
+          '- synchronization_barrier: RendezvousBarrier',
+        ],
+        methods: [
+          '+ initiate_handoff(picker: G1, carrier: Go2): void',
+          '+ verify_aerial_clearance(drone: PX4): bool',
+          '+ commit_handshake_state(): void',
+        ],
+        relations: ['Controlled by RobotFleetManager'],
+      },
+      {
+        name: 'DigitalTwinClient',
+        stereotype: '<<DTDLv3Client>>',
+        description: 'Azure Digital Twins graph synchronization client mapping live robot coordinates into enterprise WMS digital twins.',
+        attributes: [
+          '- adt_endpoint: Uri',
+          '- dtdl_model_cache: ModelDirectory',
+          '- telemetry_batch_queue: Queue<TwinUpdate>',
+        ],
+        methods: [
+          '+ update_robot_twin(telemetry: JointTelemetry): void',
+          '+ query_zone_occupancy(zoneId: string): TwinNode[]',
+          '+ patch_relationship(source: string, target: string): void',
+        ],
+        relations: ['Bridges Fleet to Azure Digital Twins'],
+      },
+    ],
+    designPatterns: [
+      { name: 'Mediator Pattern', usage: 'RobotFleetManager orchestrates message dispatch and priority queuing between heterogeneous agents.' },
+      { name: 'Adapter Pattern', usage: 'IRobotAdapter normalizes CycloneDDS, MAVLink, and ZMQ topics into uniform high-level primitives.' },
+      { name: 'State Pattern', usage: 'Strict hierarchical state machines govern robot rendezvous and prevent uncalibrated motion.' },
+    ],
+    stateMachine: {
+      title: 'Embodied Fleet Multi-Agent Rendezvous & Mission State Machine',
+      states: [
+        { name: 'IDLE_CHARGING', tag: 'State 0', desc: 'Inductive docking station engagement with BMS health verification.' },
+        { name: 'MISSION_DISPATCH', tag: 'State 1', desc: 'WMS order receipt, DTDL zone reservation, and multi-agent assignment.' },
+        { name: 'AERIAL_CLEARANCE', tag: 'State 2', desc: 'PX4 drone waypoint scan verifying collision-free path for ground agents.' },
+        { name: 'BIPEDAL_MANIPULATION', tag: 'State 3', desc: 'G1 humanoid identifies payload via YOLOv8 and executes 33-DOF grasping.' },
+        { name: 'COLLABORATIVE_LATCH', tag: 'State 4', desc: 'G1 transfers cargo to Go2 quadruped saddle with physical latch confirmation.' },
+        { name: 'TRANSIT_DELIVERY', tag: 'State 5', desc: 'Go2 transports cargo over terrain to destination curbside or shelf dock.' },
+      ],
+      failsafe: 'Immediate transition to SAFE_STANCE: Quadruped locks 4-point low center-of-mass crouch, Humanoid engages zero-velocity joint damping, and Drone enters geofenced hover.',
+    },
+    currentMilestones: [
+      { title: 'Tri-Modal Multi-Robot Architecture Implemented', status: 'completed', details: 'Full Unitree G1, Go2, and PX4 Python adapters with CycloneDDS low-level command loops.' },
+      { title: 'MuJoCo Sim-to-Real Embodied Physics Suite', status: 'completed', details: 'Headless MJCF simulation environments with joint-level impedance verification.' },
+      { title: 'Azure Digital Twins DTDL v3 Integration', status: 'completed', details: 'C# .NET 8 digital twin services mapping 3D warehouse and remote site topologies.' },
+      { title: 'Student Pod Task: Vision-Guided Intermodal Latching', status: 'pod-backlog', details: 'Implement sub-millimeter vision alignment between G1 arms and Go2 cargo saddles in MuJoCo & physical hardware.' },
+      { title: 'Student Pod Task: CycloneDDS-to-C-V2X Teleoperation Bridge', status: 'pod-backlog', details: 'Convert Unitree DDS topics to 3GPP Rel-18 C-V2X messages to synchronize robot deployment with Borealis Pods.' },
+      { title: 'Student Pod Task: Edge-Native YOLOv8 on Jetson Orin', status: 'pod-backlog', details: 'Accelerate YOLOv8 3D spatial bounding box inference in TensorRT for sub-15ms edge processing.' },
+    ],
+  },
+
   'sovereign-mesh': {
     id: 'sovereign-mesh',
     name: 'Sovereign Mesh (Clean Energy & Microgrids)',
@@ -864,6 +1019,45 @@ const SUBSYSTEM_INFRA_DATA: Record<string, SubsystemInfra> = {
         code: "ISO-3",
         title: "Passive Permanent-Magnet Skid Safe Landing",
         desc: "Self-centering aerodynamic flaps and ceramic eddy-current skids safely decelerating pod to rest without guideway power.",
+      },
+    ],
+  },
+
+  'robot-fleet': {
+    busesTitle: "Real-Time Robotics Telemetry & Vision Buses",
+    buses: [
+      {
+        code: "BUS-1",
+        title: "CycloneDDS Real-Time Telemetry Bus",
+        desc: "Microsecond-cadence joint command and sensor state publisher linking Unitree G1 and Go2 motor controllers.",
+      },
+      {
+        code: "BUS-2",
+        title: "ZeroMQ High-Throughput Spatial Frame Bus",
+        desc: "Sub-millisecond PUB/SUB socket fabric broadcasting 60 FPS video streams and YOLOv8 3D bounding boxes to AI workers.",
+      },
+      {
+        code: "BUS-3",
+        title: "Azure IoT Hub & DTDL v3 Graph Sync Link",
+        desc: "Bidirectional cloud-to-device MQTT/AMQP telemetry sync updating 3D topological zones in Azure Digital Twins.",
+      },
+    ],
+    isolationTitle: "Safety Domains & Physical Hazard Isolation",
+    isolations: [
+      {
+        code: "ISO-1",
+        title: "Hardwired Hardware Emergency Stop Interlock",
+        desc: "Physical safety relays instantly disconnecting motor driver bus power rails upon boundary breach, bypassing OS kernels.",
+      },
+      {
+        code: "ISO-2",
+        title: "Sim-to-Real Impedance Boundary Clamping",
+        desc: "Software safety envelopes clamping joint velocity and torque vectors to pre-verified MuJoCo simulation limits.",
+      },
+      {
+        code: "ISO-3",
+        title: "Dynamic Geofencing & Pedestrian Exclusion Enclaves",
+        desc: "Real-time LiDAR/UWB polygon barriers prohibiting autonomous motion within 2.5m of unauthenticated human workers.",
       },
     ],
   },

@@ -33,6 +33,7 @@ import { BoggsHero } from './BoggsHero';
 import { OpportunityOSSection } from './OpportunityOSSection';
 import { NewsletterModal } from './NewsletterModal';
 import { CapstoneApplyModal } from './CapstoneApplyModal';
+import { SystemArchitectureModal } from './SystemArchitectureModal';
 import bookCoverUrl from '../assets/ai-native-software-engineering-cover@2x.png';
 
 interface AboutMediaHubPageProps {
@@ -268,6 +269,8 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showCapstoneModal, setShowCapstoneModal] = useState<boolean>(false);
   const [selectedCapstoneSystem, setSelectedCapstoneSystem] = useState<string>('smart-mohs');
+  const [showArchitectureModal, setShowArchitectureModal] = useState<boolean>(false);
+  const [selectedArchitectureSystem, setSelectedArchitectureSystem] = useState<string>('smart-mohs');
 
   // Cinematic Video Modal State
   const [modalVideo, setModalVideo] = useState<VideoItem | null>(null);
@@ -815,6 +818,10 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
           onOpenCapstone={(systemId) => {
             setSelectedCapstoneSystem(systemId);
             setShowCapstoneModal(true);
+          }}
+          onOpenArchitecture={(systemId) => {
+            setSelectedArchitectureSystem(systemId);
+            setShowArchitectureModal(true);
           }}
           shortsSlot={
             <section className="mediahub-shorts-section" style={{ paddingTop: '8px', paddingBottom: '8px' }}>
@@ -1934,6 +1941,17 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
         isOpen={showCapstoneModal}
         onClose={() => setShowCapstoneModal(false)}
         initialSystem={selectedCapstoneSystem}
+      />
+
+      {/* Formal System Architecture & UML Decomposition Modal */}
+      <SystemArchitectureModal
+        isOpen={showArchitectureModal}
+        onClose={() => setShowArchitectureModal(false)}
+        initialSystem={selectedArchitectureSystem}
+        onApplyForSystem={(systemId) => {
+          setSelectedCapstoneSystem(systemId);
+          setShowCapstoneModal(true);
+        }}
       />
     </div>
   );

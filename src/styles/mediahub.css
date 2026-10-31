@@ -4574,3 +4574,778 @@ html, body {
 
 
 
+
+/* ==========================================================================
+   Boggs Systems - System Architecture & UML Decomposition Modal
+   ========================================================================== */
+
+.boggs-portfolio-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.boggs-portfolio-blueprint-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #cbd5e1;
+  font-weight: 700;
+  font-size: 0.80rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.boggs-portfolio-blueprint-btn:hover {
+  background: rgba(30, 41, 59, 0.95);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);
+}
+
+.boggs-portfolio-blueprint-btn.amber:hover {
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2);
+}
+
+.boggs-portfolio-blueprint-btn.emerald:hover {
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2);
+}
+
+.boggs-portfolio-blueprint-btn.purple:hover {
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.5);
+  box-shadow: 0 4px 14px rgba(192, 132, 252, 0.2);
+}
+
+/* Modal Overlay & Container */
+.boggs-arch-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(12px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: boggsFadeIn 0.2s ease-out;
+}
+
+.boggs-arch-modal-container {
+  background: #090e1a;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 1060px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header */
+.boggs-arch-modal-header {
+  padding: 22px 26px 16px 26px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.2) 100%);
+}
+
+.boggs-arch-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.boggs-arch-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+  width: fit-content;
+}
+
+.boggs-arch-title {
+  margin: 2px 0 0 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #f8fafc;
+  line-height: 1.25;
+}
+
+.boggs-arch-submeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.boggs-arch-repo-badge,
+.boggs-arch-tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.boggs-arch-tier-badge {
+  color: #cbd5e1;
+}
+
+.boggs-arch-close-btn {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.boggs-arch-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+/* System Switcher Pills */
+.boggs-arch-system-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 26px;
+  background: rgba(15, 23, 42, 0.5);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.boggs-arch-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.boggs-arch-pill-btn:hover {
+  color: #f1f5f9;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.boggs-arch-pill-btn.active {
+  color: #ffffff;
+}
+
+.boggs-arch-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Tabs */
+.boggs-arch-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 26px;
+  background: #080c16;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  overflow-x: auto;
+}
+
+.boggs-arch-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  font-size: 0.81rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.boggs-arch-tab-btn:hover {
+  color: #f8fafc;
+  background: rgba(30, 41, 59, 0.4);
+}
+
+.boggs-arch-tab-btn.active {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* Modal Body */
+.boggs-arch-body {
+  padding: 22px 26px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.boggs-arch-overview-box {
+  background: rgba(30, 41, 59, 0.3);
+  border-left: 3px solid #38bdf8;
+  padding: 12px 18px;
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 16px;
+}
+
+.boggs-arch-overview-box p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+}
+
+.boggs-arch-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.boggs-arch-section-heading {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Standards Grid */
+.boggs-arch-standards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.boggs-arch-standard-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.boggs-arch-standard-title {
+  font-weight: 800;
+  font-size: 0.82rem;
+  margin-bottom: 4px;
+}
+
+.boggs-arch-standard-desc {
+  font-size: 0.74rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* Requirements Grid */
+.boggs-arch-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.boggs-arch-req-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.boggs-arch-req-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.80rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.boggs-arch-req-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.70rem;
+  color: #38bdf8;
+  white-space: nowrap;
+  margin-top: 1px;
+}
+
+/* UML Class Model */
+.boggs-arch-package-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.boggs-arch-package-header code {
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.boggs-arch-patterns-strip {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 14px 0;
+}
+
+.boggs-arch-patterns-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.80rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.boggs-arch-patterns-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.boggs-arch-pattern-pill {
+  font-size: 0.77rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.boggs-arch-pattern-pill strong {
+  color: #38bdf8;
+}
+
+.boggs-arch-classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 16px;
+}
+
+.boggs-arch-class-box {
+  background: #0d1322;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.boggs-arch-class-header {
+  padding: 12px 16px;
+  background: rgba(30, 41, 59, 0.4);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.boggs-arch-stereotype {
+  font-size: 0.68rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #94a3b8;
+  font-style: italic;
+  display: block;
+}
+
+.boggs-arch-classname {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  margin: 2px 0 4px 0;
+}
+
+.boggs-arch-class-desc {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.boggs-arch-class-members {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.boggs-arch-member-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.boggs-arch-member-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.boggs-arch-code-line {
+  font-family: 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.boggs-arch-code-line.attribute {
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.boggs-arch-code-line.method {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.04);
+}
+
+.boggs-arch-code-line.relation {
+  color: #a855f7;
+  font-style: italic;
+  font-size: 0.72rem;
+}
+
+/* State Machine Timeline */
+.boggs-arch-state-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.boggs-arch-state-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #f8fafc;
+}
+
+.boggs-arch-states-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.boggs-arch-timeline-node {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.boggs-arch-node-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28px;
+}
+
+.boggs-arch-node-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: #090e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.boggs-arch-node-connector {
+  width: 2px;
+  flex: 1;
+  background: rgba(148, 163, 184, 0.2);
+  margin: 4px 0;
+}
+
+.boggs-arch-node-card {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+}
+
+.boggs-arch-node-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.boggs-arch-state-tag {
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.boggs-arch-state-name {
+  font-weight: 800;
+  font-size: 0.84rem;
+  color: #f1f5f9;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.boggs-arch-state-desc {
+  margin: 0;
+  font-size: 0.76rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.boggs-arch-failsafe-box {
+  margin-top: 16px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.boggs-arch-failsafe-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #f87171;
+  margin-bottom: 4px;
+}
+
+.boggs-arch-failsafe-text {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+/* Backlog Tab */
+.boggs-arch-milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.boggs-arch-milestone-item {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.boggs-arch-milestone-item.done {
+  border-left: 3px solid #10b981;
+}
+
+.boggs-arch-milestone-item.active-pod {
+  border-left: 3px solid #f59e0b;
+  background: rgba(30, 41, 59, 0.35);
+}
+
+.boggs-arch-milestone-status {
+  margin-bottom: 6px;
+}
+
+.boggs-arch-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.70rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.boggs-arch-status-pill.green {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.boggs-arch-status-pill.amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.boggs-arch-milestone-title {
+  margin: 0 0 4px 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.boggs-arch-milestone-details {
+  margin: 0;
+  font-size: 0.80rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.boggs-arch-funnel-callout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  font-size: 0.86rem;
+  color: #f1f5f9;
+}
+
+/* Footer Action Bar */
+.boggs-arch-footer {
+  padding: 16px 26px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #080c16;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.boggs-arch-footer-meta {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.boggs-arch-footer-meta code {
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+.boggs-arch-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.boggs-arch-secondary-btn {
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.boggs-arch-secondary-btn:hover {
+  background: rgba(51, 65, 85, 0.8);
+  color: #ffffff;
+}
+
+.boggs-arch-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.boggs-arch-primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .boggs-arch-modal-container {
+    max-height: 96vh;
+    border-radius: 14px;
+  }
+  .boggs-arch-modal-header,
+  .boggs-arch-body,
+  .boggs-arch-footer,
+  .boggs-arch-tabs {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .boggs-arch-grid-two {
+    grid-template-columns: 1fr;
+  }
+  .boggs-arch-classes-grid {
+    grid-template-columns: 1fr;
+  }
+}

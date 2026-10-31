@@ -39,6 +39,7 @@ interface BoggsHeroProps {
   onScrollToPlayer: () => void;
   onOpenNewsletter: () => void;
   onOpenCapstone?: (systemId: string) => void;
+  onOpenArchitecture?: (systemId: string) => void;
   shortsSlot?: React.ReactNode;
 }
 
@@ -46,6 +47,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
   onScrollToPlayer,
   onOpenNewsletter,
   onOpenCapstone,
+  onOpenArchitecture,
   shortsSlot,
 }) => {
   return (
@@ -454,13 +456,23 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   </p>
                 </div>
 
-                <button
-                  onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Smart%20Mohs')}
-                  className="boggs-portfolio-hiring-btn cyan"
-                  style={{ whiteSpace: 'nowrap', padding: '10px 18px', fontSize: '0.85rem' }}
-                >
-                  <GraduationCap size={15} /> Apply as Student <ArrowRight size={14} />
-                </button>
+                <div className="boggs-portfolio-actions">
+                  <button
+                    onClick={() => onOpenArchitecture ? onOpenArchitecture('smart-mohs') : undefined}
+                    className="boggs-portfolio-blueprint-btn"
+                    style={{ padding: '10px 16px', fontSize: '0.84rem' }}
+                    title="Inspect requirements, UML class models, and state diagrams"
+                  >
+                    <FileCode2 size={15} /> View Architecture &amp; UML
+                  </button>
+                  <button
+                    onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Smart%20Mohs')}
+                    className="boggs-portfolio-hiring-btn cyan"
+                    style={{ whiteSpace: 'nowrap', padding: '10px 18px', fontSize: '0.85rem' }}
+                  >
+                    <GraduationCap size={15} /> Apply as Student <ArrowRight size={14} />
+                  </button>
+                </div>
               </div>
 
               {/* 3D Visual Roadmap Banner */}
@@ -619,12 +631,21 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       <span className="boggs-portfolio-hiring-tag">
                         <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Smart Mohs Wave Optics & Laser Control
                       </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Smart%20Mohs')}
-                        className="boggs-portfolio-hiring-btn amber"
-                      >
-                        Apply as Student <ArrowRight size={13} />
-                      </button>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('smart-mohs') : undefined}
+                          className="boggs-portfolio-blueprint-btn amber"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Smart%20Mohs')}
+                          className="boggs-portfolio-hiring-btn amber"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#fbbf24' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
@@ -696,12 +717,21 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       <span className="boggs-portfolio-hiring-tag">
                         <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Borealis Autonomous Road Pod Fleet & V2X Engine
                       </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('borealis-pods') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Pods')}
-                        className="boggs-portfolio-hiring-btn"
-                      >
-                        Apply as Student <ArrowRight size={13} />
-                      </button>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('borealis-pods') : undefined}
+                          className="boggs-portfolio-blueprint-btn"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('borealis-pods') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Pods')}
+                          className="boggs-portfolio-hiring-btn"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
@@ -806,12 +836,21 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       <span className="boggs-portfolio-hiring-tag">
                         <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Borealis Maglev Capsule Avionics & Guideway IoT
                       </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('borealis-maglev') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Maglev')}
-                        className="boggs-portfolio-hiring-btn"
-                      >
-                        Apply as Student <ArrowRight size={13} />
-                      </button>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('borealis-maglev') : undefined}
+                          className="boggs-portfolio-blueprint-btn"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('borealis-maglev') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Maglev')}
+                          className="boggs-portfolio-hiring-btn"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
@@ -883,12 +922,21 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       <span className="boggs-portfolio-hiring-tag">
                         <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Sovereign Mesh Microgrid Controller
                       </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('sovereign-mesh') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Sovereign%20Mesh')}
-                        className="boggs-portfolio-hiring-btn emerald"
-                      >
-                        Apply as Student <ArrowRight size={13} />
-                      </button>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('sovereign-mesh') : undefined}
+                          className="boggs-portfolio-blueprint-btn emerald"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('sovereign-mesh') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Sovereign%20Mesh')}
+                          className="boggs-portfolio-hiring-btn emerald"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#34d399' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
@@ -960,12 +1008,21 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       <span className="boggs-portfolio-hiring-tag">
                         <GraduationCap size={13} /> Target Repo (Capstone / Co-op): DigitPop WebAssembly Player & Live Ingest
                       </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('digitpop') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20DigitPop')}
-                        className="boggs-portfolio-hiring-btn purple"
-                      >
-                        Apply as Student <ArrowRight size={13} />
-                      </button>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('digitpop') : undefined}
+                          className="boggs-portfolio-blueprint-btn purple"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('digitpop') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20DigitPop')}
+                          className="boggs-portfolio-hiring-btn purple"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#c084fc' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
@@ -1037,12 +1094,21 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       <span className="boggs-portfolio-hiring-tag">
                         <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Opportunity OS Extension & Shelter Mesh
                       </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('opportunity-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Opportunity%20OS')}
-                        className="boggs-portfolio-hiring-btn amber"
-                      >
-                        Apply as Student <ArrowRight size={13} />
-                      </button>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('opportunity-os') : undefined}
+                          className="boggs-portfolio-blueprint-btn amber"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('opportunity-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Opportunity%20OS')}
+                          className="boggs-portfolio-hiring-btn amber"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#fbbf24' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.

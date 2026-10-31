@@ -31,6 +31,7 @@ import { ConductorLogo } from './ConductorLogo';
 import { BoggsLogo } from './BoggsLogo';
 import { BoggsHero } from './BoggsHero';
 import { NewsletterModal } from './NewsletterModal';
+import bookCoverUrl from '../assets/ai-native-software-engineering-cover@2x.png';
 
 interface AboutMediaHubPageProps {
   onStart?: (mode?: 'login' | 'signup') => void;
@@ -961,7 +962,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
                     <div className="digitpop-inspect-box">
                       <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '12px', textAlign: 'left' }}>
                         <img
-                          src="/images/ai-native-software-engineering-cover@2x.png"
+                          src={bookCoverUrl}
                           alt="AI-Native Software Engineering by Jeffrey Boggs"
                           style={{ width: '48px', height: '74px', borderRadius: '4px', objectFit: 'cover', boxShadow: '0 4px 10px rgba(0,0,0,0.5)', flexShrink: 0 }}
                         />
@@ -1113,7 +1114,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
                   >
                     <div className="book-hardcover-3d">
                       <img
-                        src="/images/ai-native-software-engineering-cover@2x.png"
+                        src={bookCoverUrl}
                         alt="AI-Native Software Engineering: The New Physics of Software Velocity by Jeffrey Boggs"
                         className="book-cover-img"
                       />
@@ -1260,7 +1261,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
             <div className="prologue-drawer-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <img
-                  src="/images/ai-native-software-engineering-cover@2x.png"
+                  src={bookCoverUrl}
                   alt="AI-Native Software Engineering Cover"
                   style={{ width: '40px', height: '62px', borderRadius: '4px', objectFit: 'cover', boxShadow: '0 4px 10px rgba(0,0,0,0.6)', flexShrink: 0 }}
                 />
@@ -1428,7 +1429,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
               <div className="prologue-footer-cta">
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
                   <img
-                    src="/images/ai-native-software-engineering-cover@2x.png"
+                    src={bookCoverUrl}
                     alt="AI-Native Software Engineering by Jeffrey Boggs"
                     style={{ width: '92px', height: '144px', borderRadius: '6px', objectFit: 'cover', boxShadow: '0 8px 24px rgba(0,0,0,0.8)' }}
                   />

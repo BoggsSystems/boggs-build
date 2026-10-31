@@ -1235,25 +1235,6 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
         </div>
       </section>
 
-      {/* TYT Categorized Playlists Carousels */}
-      <section className="mediahub-playlists-section">
-        <div className="mediahub-section-heading">
-          <h2 className="mediahub-section-title">The Video Network</h2>
-          <p className="mediahub-section-sub">
-            Curated channels covering architecture doctrines, live product speedruns, and student mentorship. Powered by the DigitPop interactive video engine.
-          </p>
-        </div>
-
-        <div className="mediahub-playlists-feed-wrapper">
-          <digitpop-feed
-            creator="opportunity-system"
-            channel="about"
-            format="playlists"
-            auto-expand="true"
-          />
-        </div>
-      </section>
-
       {/* In-Browser Prologue Reader Drawer */}
       {showPrologueDrawer && (
         <div className="prologue-drawer-overlay" onClick={() => setShowPrologueDrawer(false)}>

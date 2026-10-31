@@ -30,6 +30,7 @@ import '../styles/mediahub.css';
 import { ConductorLogo } from './ConductorLogo';
 import { BoggsLogo } from './BoggsLogo';
 import { BoggsHero } from './BoggsHero';
+import { OpportunityOSSection } from './OpportunityOSSection';
 import { NewsletterModal } from './NewsletterModal';
 import bookCoverUrl from '../assets/ai-native-software-engineering-cover@2x.png';
 
@@ -1234,6 +1235,9 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Opportunity OS & Chrome Extension Showcase Section */}
+      <OpportunityOSSection />
 
       {/* In-Browser Prologue Reader Drawer */}
       {showPrologueDrawer && (

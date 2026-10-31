@@ -513,7 +513,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   </div>
                   <h4 className="boggs-funnel-step-title">1. Submit Brief</h4>
                   <p className="boggs-funnel-step-desc">
-                    Pick your preferred system pod below (Smart Mohs, Borealis Maglev, Borealis Pods, Sovereign Mesh, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
+                    Pick your preferred system pod below (Smart Mohs, Borealis Pods, Borealis Maglev, Sovereign Mesh, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
                   </p>
                 </div>
 
@@ -635,120 +635,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 2: Borealis Maglev (Transportation Plank • Intercity Rail)
+               PRODUCT 2: Borealis Road Pods (Transportation Plank • Micro-Transit)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid reverse">
-                <div className="boggs-portfolio-media">
-                  <img
-                    src={borealisMaglevTubeUrl}
-                    alt="Borealis Elevated Canadian Maglev Tube Network and High-Speed Capsule"
-                    className="boggs-portfolio-img"
-                  />
-                  <div className="boggs-portfolio-overlay-badges">
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                      500–600 km/h Pylon Tube
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-                      SIL-4 Active Levitation (20 kHz)
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
-                      QNX & Rust Hard Real-Time
-                    </span>
-                  </div>
-                </div>
-
-                <div className="boggs-portfolio-body">
-                  <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
-                    <Train size={14} /> Transportation Plank • 500 km/h Intercity Maglev
-                  </div>
-                  <h3 className="boggs-portfolio-title">
-                    Borealis Maglev: Elevated Aerodynamic Tube Network & SIL-4 Capsule Avionics
-                  </h3>
-                  <p className="boggs-portfolio-desc">
-                    Overcomes Canadian winter blizzards and habitat clear-cutting by elevating aerodynamic composite tubes onto slender, isolated point-load pylons. Capsules cruise at 500–600 km/h with hard real-time active magnetic levitation (Toronto ↔ Montreal in 1h 35m; Ottawa ↔ Montreal in 52m).
-                  </p>
-
-                  <div className="boggs-portfolio-specs">
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
-                        <Cpu size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>Deterministic Active Gap Regulation:</strong> Closed-loop 20 kHz sensing-to-actuation cycle executing within ≤ 50 µs to regulate magnetic levitation clearance without physical touchdown at 500+ km/h.
-                      </div>
-                    </div>
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-                        <Shield size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>SIL-4 Formal Verification & Secondary Braking:</strong> CENELEC EN 50128 compliant fail-safe architecture with autonomous eddy-current deceleration and deployable aerodynamic drag flaps.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="boggs-portfolio-hiring-box">
-                    <div className="boggs-portfolio-hiring-header">
-                      <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Borealis Maglev Capsule Avionics & Guideway IoT
-                      </span>
-                      <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('borealis-maglev') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Maglev')}
-                        className="boggs-portfolio-hiring-btn"
-                      >
-                        Apply as Student <ArrowRight size={13} />
-                      </button>
-                    </div>
-                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
-                      <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Intermodal Handshake Connection Banner */}
-            <div
-              style={{
-                margin: '12px 0 20px 0',
-                padding: '16px 22px',
-                background: 'linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%)',
-                border: '1px solid rgba(56, 189, 248, 0.22)',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap',
-                gap: '12px',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Compass size={16} />
-                </div>
-                <div>
-                  <strong style={{ fontSize: '0.85rem', color: '#ffffff' }}>
-                    The Intermodal "Zero-Wait" Handshake (Hub Gateway):
-                  </strong>
-                  <span style={{ fontSize: '0.8rem', color: '#94a3b8', marginLeft: '6px' }}>
-                    UWB precision docking aligns the 6-passenger road pod directly against the elevated maglev platform for a guaranteed ≤ 15-step cross-platform transfer.
-                  </span>
-                </div>
-              </div>
-              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#34d399', background: 'rgba(16, 185, 129, 0.15)', padding: '3px 10px', borderRadius: '9999px', fontWeight: 700 }}>
-                DOORSTEP ➔ POD ➔ TUBE ➔ POD ➔ DESTINATION
-              </span>
-            </div>
-
-            {/* -------------------------------------------------------------
-               PRODUCT 3: Borealis Road Pods (Transportation Plank • Micro-Transit)
-               ------------------------------------------------------------- */}
-            <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid">
                 <div className="boggs-portfolio-media">
                   <img
                     src={borealisRoadPodUrl}
@@ -808,6 +698,116 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                       </span>
                       <button
                         onClick={() => onOpenCapstone ? onOpenCapstone('borealis-pods') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Pods')}
+                        className="boggs-portfolio-hiring-btn"
+                      >
+                        Apply as Student <ArrowRight size={13} />
+                      </button>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Intermodal Handshake Connection Banner */}
+            <div
+              style={{
+                margin: '12px 0 20px 0',
+                padding: '16px 22px',
+                background: 'linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%)',
+                border: '1px solid rgba(56, 189, 248, 0.22)',
+                borderRadius: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '12px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Compass size={16} />
+                </div>
+                <div>
+                  <strong style={{ fontSize: '0.85rem', color: '#ffffff' }}>
+                    The Intermodal "Zero-Wait" Handshake (Hub Gateway):
+                  </strong>
+                  <span style={{ fontSize: '0.8rem', color: '#94a3b8', marginLeft: '6px' }}>
+                    UWB precision docking aligns the 6-passenger road pod directly against the elevated maglev platform for a guaranteed ≤ 15-step cross-platform transfer.
+                  </span>
+                </div>
+              </div>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#34d399', background: 'rgba(16, 185, 129, 0.15)', padding: '3px 10px', borderRadius: '9999px', fontWeight: 700 }}>
+                DOORSTEP ➔ POD ➔ TUBE ➔ POD ➔ DESTINATION
+              </span>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 3: Borealis Maglev (Transportation Plank • Intercity Rail)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={borealisMaglevTubeUrl}
+                    alt="Borealis Elevated Canadian Maglev Tube Network and High-Speed Capsule"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      500–600 km/h Pylon Tube
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      SIL-4 Active Levitation (20 kHz)
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      QNX & Rust Hard Real-Time
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
+                    <Train size={14} /> Transportation Plank • 500 km/h Intercity Maglev
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Borealis Maglev: Elevated Aerodynamic Tube Network & SIL-4 Capsule Avionics
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Overcomes Canadian winter blizzards and habitat clear-cutting by elevating aerodynamic composite tubes onto slender, isolated point-load pylons. Capsules cruise at 500–600 km/h with hard real-time active magnetic levitation (Toronto ↔ Montreal in 1h 35m; Ottawa ↔ Montreal in 52m).
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Cpu size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Deterministic Active Gap Regulation:</strong> Closed-loop 20 kHz sensing-to-actuation cycle executing within ≤ 50 µs to regulate magnetic levitation clearance without physical touchdown at 500+ km/h.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                        <Shield size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>SIL-4 Formal Verification & Secondary Braking:</strong> CENELEC EN 50128 compliant fail-safe architecture with autonomous eddy-current deceleration and deployable aerodynamic drag flaps.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Borealis Maglev Capsule Avionics & Guideway IoT
+                      </span>
+                      <button
+                        onClick={() => onOpenCapstone ? onOpenCapstone('borealis-maglev') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Borealis%20Maglev')}
                         className="boggs-portfolio-hiring-btn"
                       >
                         Apply as Student <ArrowRight size={13} />

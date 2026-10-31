@@ -19,8 +19,8 @@ interface CapstoneApplyModalProps {
 
 const SYSTEMS = [
   { id: 'smart-mohs', name: 'Smart Mohs (Medicine & Laser Robotics)', tag: 'C++23 • CUDA • Optics' },
-  { id: 'borealis-maglev', name: 'Borealis Maglev (500 km/h Tube & Avionics)', tag: 'Rust • QNX • SIL-4' },
   { id: 'borealis-pods', name: 'Borealis Pods (6-Passenger Autonomous Fleet)', tag: 'C++20 • ROS 2 • V2X' },
+  { id: 'borealis-maglev', name: 'Borealis Maglev (500 km/h Tube & Avionics)', tag: 'Rust • QNX • SIL-4' },
   { id: 'sovereign-mesh', name: 'Sovereign Mesh (Clean Energy & Microgrids)', tag: 'Telemetry • SMR • Edge' },
   { id: 'digitpop', name: 'DigitPop (Interactive Video & Live Commerce)', tag: 'Wasm • Sub-10ms • WebGL' },
   { id: 'opportunity-os', name: 'Opportunity OS (Social Plank & Dignity Engine)', tag: 'Full-Stack • Extension • AI' },

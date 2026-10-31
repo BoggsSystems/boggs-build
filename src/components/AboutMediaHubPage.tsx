@@ -1895,31 +1895,25 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
       <footer className="landing-footer" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', padding: '36px 24px', background: '#080c15' }}>
         <div className="footer-content" style={{ maxWidth: '1360px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
           <div className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div className="logo-icon"><ConductorLogo size={18} /></div>
-            <span style={{ fontWeight: 700, letterSpacing: '0.05em' }}>OPPORTUNITY OS</span>
+            <BoggsLogo size={24} />
           </div>
-          <div className="footer-links" style={{ display: 'flex', gap: '24px', fontSize: '0.85rem' }}>
-            <button onClick={onNavigateHome} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', padding: 0 }}>
-              Home
-            </button>
-            <button onClick={onNavigatePricing} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', padding: 0 }}>
-              Pricing
-            </button>
-            <a href={AMAZON_BOOK_URL} target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'none' }}>
+          <div className="footer-links" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.85rem', color: '#94a3b8' }}>
+            <span style={{ color: '#64748b' }}>Umbrella Systems:</span>
+            <span style={{ color: '#38bdf8', fontWeight: 600 }}>Transit-OS (Infrastructure)</span>
+            <span style={{ color: '#f59e0b', fontWeight: 600 }}>Opportunity OS (Social)</span>
+            <span style={{ color: '#c084fc', fontWeight: 600 }}>DigitPop (Commerce)</span>
+            <a href="mailto:jeff@boggs.build" style={{ color: '#38bdf8', textDecoration: 'none' }}>
+              jeff@boggs.build
+            </a>
+            <a href={AMAZON_BOOK_URL} target="_blank" rel="noopener noreferrer" style={{ color: '#cbd5e1', textDecoration: 'none' }}>
               The Book (Amazon)
             </a>
             <button onClick={() => setShowNewsletterModal(true)} style={{ background: 'none', border: 'none', color: '#f97316', cursor: 'pointer', padding: 0 }}>
               Newsletter
             </button>
-            <button onClick={onNavigateTerms} style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', padding: 0 }}>
-              Terms
-            </button>
-            <button onClick={onNavigatePrivacy} style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', padding: 0 }}>
-              Privacy
-            </button>
           </div>
-          <p style={{ color: '#64748b', fontSize: '0.8rem', margin: 0 }}>
-            &copy; {new Date().getFullYear()} Boggs Systems Corporation. All rights reserved. Technology for the common man.
+          <p style={{ color: '#64748b', fontSize: '0.8rem', margin: 0, textAlign: 'center' }}>
+            &copy; {new Date().getFullYear()} Boggs Systems Inc. All rights reserved. The sovereign enterprise umbrella for autonomous systems.
           </p>
         </div>
       </footer>

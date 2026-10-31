@@ -58,7 +58,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
           className="boggs-pill-link"
           style={{ background: 'transparent', border: 'none', cursor: 'pointer', font: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
         >
-          Claim a Repo <ArrowRight size={13} />
+          Apply as Student <ArrowRight size={13} />
         </button>
       </div>
 
@@ -335,13 +335,13 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <div className="boggs-portfolio-hiring-box amber">
                     <div className="boggs-portfolio-hiring-header">
                       <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Capstone Repo: Smart Mohs Wave Optics & Laser Control
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Smart Mohs Wave Optics & Laser Control
                       </span>
                       <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Smart%20Mohs')}
+                        onClick={() => onOpenCapstone ? onOpenCapstone('smart-mohs') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Smart%20Mohs')}
                         className="boggs-portfolio-hiring-btn amber"
                       >
-                        Claim Smart Mohs Repo <ArrowRight size={13} />
+                        Apply as Student <ArrowRight size={13} />
                       </button>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
@@ -412,13 +412,13 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <div className="boggs-portfolio-hiring-box">
                     <div className="boggs-portfolio-hiring-header">
                       <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Capstone Repo: Transit-OS Core Dispatch & GIS Mesh
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Transit-OS Core Dispatch & GIS Mesh
                       </span>
                       <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('transit-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Transit-OS')}
+                        onClick={() => onOpenCapstone ? onOpenCapstone('transit-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Transit-OS')}
                         className="boggs-portfolio-hiring-btn"
                       >
-                        Claim Transit-OS Repo <ArrowRight size={13} />
+                        Apply as Student <ArrowRight size={13} />
                       </button>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
@@ -489,13 +489,13 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <div className="boggs-portfolio-hiring-box emerald">
                     <div className="boggs-portfolio-hiring-header">
                       <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Capstone Repo: Sovereign Mesh Microgrid Controller
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Sovereign Mesh Microgrid Controller
                       </span>
                       <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('sovereign-mesh') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Sovereign%20Mesh')}
+                        onClick={() => onOpenCapstone ? onOpenCapstone('sovereign-mesh') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Sovereign%20Mesh')}
                         className="boggs-portfolio-hiring-btn emerald"
                       >
-                        Claim Sovereign Mesh Repo <ArrowRight size={13} />
+                        Apply as Student <ArrowRight size={13} />
                       </button>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
@@ -566,13 +566,13 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <div className="boggs-portfolio-hiring-box purple">
                     <div className="boggs-portfolio-hiring-header">
                       <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Capstone Repo: DigitPop WebAssembly Player & Live Ingest
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): DigitPop WebAssembly Player & Live Ingest
                       </span>
                       <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('digitpop') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20DigitPop')}
+                        onClick={() => onOpenCapstone ? onOpenCapstone('digitpop') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20DigitPop')}
                         className="boggs-portfolio-hiring-btn purple"
                       >
-                        Claim DigitPop Repo <ArrowRight size={13} />
+                        Apply as Student <ArrowRight size={13} />
                       </button>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
@@ -643,13 +643,13 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <div className="boggs-portfolio-hiring-box amber">
                     <div className="boggs-portfolio-hiring-header">
                       <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Capstone Repo: Opportunity OS Extension & Shelter Mesh
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Opportunity OS Extension & Shelter Mesh
                       </span>
                       <button
-                        onClick={() => onOpenCapstone ? onOpenCapstone('opportunity-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Capstone%20Application%20-%20Opportunity%20OS')}
+                        onClick={() => onOpenCapstone ? onOpenCapstone('opportunity-os') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Opportunity%20OS')}
                         className="boggs-portfolio-hiring-btn amber"
                       >
-                        Claim Opportunity OS Repo <ArrowRight size={13} />
+                        Apply as Student <ArrowRight size={13} />
                       </button>
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>

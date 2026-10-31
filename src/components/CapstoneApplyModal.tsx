@@ -25,12 +25,19 @@ const SYSTEMS = [
   { id: 'opportunity-os', name: 'Opportunity OS (Social Plank & Dignity Engine)', tag: 'Full-Stack • Extension • AI' },
 ];
 
+const TRACKS = [
+  { id: 'capstone', label: 'Senior Capstone (4th Year)' },
+  { id: 'coop', label: 'Co-op Work Term' },
+  { id: 'both', label: 'Both / Flexible' },
+];
+
 export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
   isOpen,
   onClose,
   initialSystem = 'smart-mohs',
 }) => {
   const [selectedSystem, setSelectedSystem] = useState(initialSystem);
+  const [selectedTrack, setSelectedTrack] = useState('capstone');
   const [fullName, setFullName] = useState('');
   const [uottawaEmail, setUottawaEmail] = useState('');
   const [githubUrl, setGithubUrl] = useState('');
@@ -58,17 +65,19 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const systemObj = SYSTEMS.find((s) => s.id === selectedSystem) || SYSTEMS[0];
+    const trackObj = TRACKS.find((t) => t.id === selectedTrack) || TRACKS[0];
     const subject = encodeURIComponent(
-      `uOttawa SEG Capstone Application - ${systemObj.name} (${fullName || 'Student'})`
+      `uOttawa SEG Student Application [${trackObj.label}] - ${systemObj.name} (${fullName || 'Student'})`
     );
     const body = encodeURIComponent(
       `Full Name: ${fullName}\n` +
       `uOttawa Email: ${uottawaEmail}\n` +
       `GitHub Profile: ${githubUrl}\n` +
+      `Application Track: ${trackObj.label}\n` +
       `Selected System: ${systemObj.name}\n\n` +
       `Engineering Background & Why I want to build this:\n${interestsNote}\n\n` +
       `---\n` +
-      `Submitted via boggs.build Capstone Fast-Track Intake.`
+      `Submitted via boggs.build Student Fast-Track Intake.`
     );
 
     // Open mail client
@@ -96,17 +105,37 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
           <>
             <div className="capstone-modal-header">
               <div className="capstone-modal-badge">
-                <GraduationCap size={15} /> uOttawa SEG 2026/2027 Capstone Fast-Track
+                <GraduationCap size={15} /> uOttawa SEG 2026/2027 • Student Fast-Track Intake
               </div>
               <h2 className="capstone-modal-title">
-                Claim Your Repository. Skip Corporate Bureaucracy.
+                Apply as Student. Skip Corporate Bureaucracy.
               </h2>
               <p className="capstone-modal-subtitle">
-                While traditional companies take 4 weeks for HR paperwork and IT permissions, Boggs Systems onboards you in <strong>48 hours</strong>: direct review by Jeff Boggs ➔ fast-track mutual NDA ➔ immediate GitHub repository invite to an advanced, working codebase.
+                Whether you are applying for a <strong>Senior Capstone Project</strong>, a <strong>Co-op Work Term</strong>, or a <strong>Software Apprenticeship</strong>—Boggs Systems onboards you in <strong>48 hours</strong>: direct review by Jeff Boggs ➔ fast-track mutual NDA ➔ immediate GitHub repository invite to an advanced, working codebase.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="capstone-modal-form">
+              {/* Application Track Selector */}
+              <div className="capstone-form-group">
+                <label className="capstone-form-label">
+                  Select Application Track:
+                </label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                  {TRACKS.map((t) => (
+                    <button
+                      type="button"
+                      key={t.id}
+                      className={`capstone-system-card ${selectedTrack === t.id ? 'active' : ''}`}
+                      onClick={() => setSelectedTrack(t.id)}
+                      style={{ textAlign: 'center', padding: '9px 8px' }}
+                    >
+                      <span className="capstone-sys-name" style={{ fontSize: '0.78rem' }}>{t.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* System Selector */}
               <div className="capstone-form-group">
                 <label className="capstone-form-label">

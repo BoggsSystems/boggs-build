@@ -1913,7 +1913,7 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
               }}
               style={{ background: 'none', border: 'none', color: '#38bdf8', cursor: 'pointer', padding: 0, fontWeight: 700 }}
             >
-              Capstone Fast-Track
+              Apply as Student
             </button>
           </div>
           <p style={{ color: '#64748b', fontSize: '0.8rem', margin: 0, textAlign: 'center' }}>

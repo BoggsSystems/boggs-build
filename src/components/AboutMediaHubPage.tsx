@@ -808,32 +808,32 @@ export const AboutMediaHubPage: React.FC<AboutMediaHubPageProps> = ({
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
           onOpenNewsletter={() => setShowNewsletterModal(true)}
+          shortsSlot={
+            <section className="mediahub-shorts-section" style={{ paddingTop: '8px', paddingBottom: '8px' }}>
+              <div className="mediahub-shorts-header">
+                <div className="mediahub-shorts-title-wrap">
+                  <div className="mediahub-shorts-icon-badge">
+                    <Flame size={16} color="#ffffff" />
+                  </div>
+                  <div>
+                    <h2 className="mediahub-shorts-title">Shorts & Engineering Insights</h2>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mediahub-shorts-feed-wrapper">
+                <digitpop-feed
+                  creator="opportunity-system"
+                  channel="about"
+                  format="shorts"
+                  layout="carousel"
+                  auto-expand="true"
+                />
+              </div>
+            </section>
+          }
         />
       </div>
-
-      {/* ⚡ YouTube-Style Shorts Section */}
-      <section className="mediahub-shorts-section" style={{ paddingTop: '20px' }}>
-        <div className="mediahub-shorts-header">
-          <div className="mediahub-shorts-title-wrap">
-            <div className="mediahub-shorts-icon-badge">
-              <Flame size={16} color="#ffffff" />
-            </div>
-            <div>
-              <h2 className="mediahub-shorts-title">Shorts & Engineering Insights</h2>
-            </div>
-          </div>
-        </div>
-
-        <div className="mediahub-shorts-feed-wrapper">
-          <digitpop-feed
-            creator="opportunity-system"
-            channel="about"
-            format="shorts"
-            layout="carousel"
-            auto-expand="true"
-          />
-        </div>
-      </section>
 
       {/* Hero Viewport / TYT Stage */}
       <section className="mediahub-hero-section">

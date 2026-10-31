@@ -22,11 +22,13 @@ import {
 interface BoggsHeroProps {
   onScrollToPlayer: () => void;
   onOpenNewsletter: () => void;
+  shortsSlot?: React.ReactNode;
 }
 
 export const BoggsHero: React.FC<BoggsHeroProps> = ({
   onScrollToPlayer,
   onOpenNewsletter,
+  shortsSlot,
 }) => {
   return (
     <section className="boggs-hero-section">
@@ -90,6 +92,13 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             Engineering Dispatches
           </button>
         </div>
+
+        {/* Embedded Shorts Carousel (Above The Tripartite Public-Interest Coalition) */}
+        {shortsSlot && (
+          <div className="boggs-hero-shorts-slot">
+            {shortsSlot}
+          </div>
+        )}
 
         {/* Section 1: The Tripartite Coalition */}
         <div className="boggs-coalition-section">

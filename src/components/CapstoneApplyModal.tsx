@@ -24,7 +24,8 @@ const SYSTEMS = [
   { id: 'robot-fleet', name: 'Robot Fleet (Humanoid & Quadruped Multi-Agent)', tag: 'CycloneDDS • MuJoCo • DTDL v3' },
   { id: 'digital-twin-appliance', name: 'Digital Twin Appliance (UE5 • Vulkan Cockpit)', tag: 'C++20 • UE5 • Embedded Linux' },
   { id: 'digitpop', name: 'DigitPop (Interactive Video & Live Commerce)', tag: 'Wasm • Sub-10ms • WebGL' },
-  { id: 'opportunity-os', name: 'Opportunity OS (Social Plank & Dignity Engine)', tag: 'Full-Stack • Extension • AI' },
+  { id: 'opportunity-os', name: 'Opportunity OS (ATS Co-Pilot & Job Search Engine)', tag: 'TypeScript • Chrome MV3 • Local AI' },
+  { id: 'civic-campus', name: 'Sovereign Civic Campuses (Pine Street Model & Pod Transit)', tag: 'Robotics • Transit • Civic Infra' },
 ];
 
 const TRACKS = [
@@ -41,7 +42,8 @@ const SYSTEM_PLACEHOLDERS: Record<string, string> = {
   'borealis-pods': "e.g., Tell Jeff about your C++20, ROS 2, sensor fusion, or Cellular-V2X experience, and your interest in Level 4 urban path planning or dynamic green-wave pacing.",
   'transit-os': "e.g., Tell Jeff about your Rust, GIS, or distributed multi-agent routing experience, and your interest in deterministic municipal transit dispatch.",
   'digitpop': "e.g., Tell Jeff about your WebAssembly, WebGL, or video codec experience, and interest in building sub-10ms interactive live commerce overlays.",
-  'opportunity-os': "e.g., Tell Jeff about your TypeScript, Chrome extension, or LLM agent workflow experience, and interest in building dignity-first career infrastructure."
+  'opportunity-os': "e.g., Tell Jeff about your TypeScript, Chrome extension Manifest V3, DOM mutation parsing, or LLM agent workflow experience, and your interest in destroying the job search headache.",
+  'civic-campus': "e.g., Tell Jeff about your robotics, ROS 2, civil infrastructure, microgrid systems, or urban transit corridor experience, and your interest in building modern dignified shelter communities."
 };
 
 export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({

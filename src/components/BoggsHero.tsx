@@ -37,6 +37,7 @@ import borealisRoadPodUrl from '../assets/borealis-road-pod.jpg';
 import digitalTwinApplianceUrl from '../assets/digital-twin-appliance.jpg';
 import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
 import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
+import civicShelterCampusUrl from '../assets/civic-shelter-campus.jpg';
 import spoProductPodArchitectureUrl from '../assets/spo-product-pod-architecture.jpg';
 import highVelocityFunnelRoadmapUrl from '../assets/high-velocity-funnel-roadmap.jpg';
 
@@ -666,7 +667,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   </div>
                   <h4 className="boggs-funnel-step-title">1. Submit Brief</h4>
                   <p className="boggs-funnel-step-desc">
-                    Pick your preferred system pod below (Smart Mohs, Borealis Pods, Borealis Maglev, Robot Fleet, Digital Twin Appliance, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
+                    Pick your preferred system pod below (Smart Mohs, Borealis Pods, Borealis Maglev, Robot Fleet, Digital Twin Appliance, DigitPop, Opportunity OS, or Sovereign Civic Campuses) and link your GitHub profile. No resume formatting required.
                   </p>
                 </div>
 
@@ -1266,14 +1267,14 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 7: Opportunity OS (Housing, Social Mobility & Dignity)
+               PRODUCT 7: Opportunity OS (Job Search Headache Painkiller & ATS Co-Pilot)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid">
                 <div className="boggs-portfolio-media">
                   <img
                     src={opportunityOsResumeUrl}
-                    alt="Opportunity OS Evidence-Grounded Hiring & Dignity Engine"
+                    alt="Opportunity OS 1-Click ATS Co-Pilot & Candidate Proof-of-Work Studio"
                     className="boggs-portfolio-img"
                   />
                   <div className="boggs-portfolio-overlay-badges">
@@ -1287,20 +1288,20 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                     </span>
                     <span className="boggs-portfolio-stat-pill">
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                      Homelessness Shelter Mesh
+                      Sub-10ms DOM Inject
                     </span>
                   </div>
                 </div>
 
                 <div className="boggs-portfolio-body">
                   <div className="boggs-portfolio-tag" style={{ color: '#fbbf24' }}>
-                    <HeartHandshake size={14} /> Housing & Dignity Plank • Social Engine
+                    <Sparkles size={14} /> Career Agency &amp; ATS Co-Pilot • Job Search Pain Relief
                   </div>
                   <h3 className="boggs-portfolio-title">
-                    Opportunity OS: Evidence-Grounded Candidate Pipelines & Homelessness Shelter Mesh
+                    Opportunity OS: 1-Click ATS Co-Pilot &amp; Candidate Proof-of-Work Engine
                   </h3>
                   <p className="boggs-portfolio-desc">
-                    Restoring human agency and economic dignity. Replaces keyword-stuffing ATS resume shredders with verified skill evidence and 1-click intelligent autofill co-pilots, while powering real-time emergency shelter routing to systematically eliminate Canadian homelessness.
+                    Engineered to cure the modern job search headache. Replaces 45-minute repetitive Workday forms and black-box ATS keyword shredders with a client-side Chrome extension that injects verified portfolio evidence, matches role criteria in sub-10ms, and autofills complex applications with zero server data exfiltration.
                   </p>
 
                   <div className="boggs-portfolio-specs">
@@ -1309,15 +1310,15 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                         <FileCode2 size={15} />
                       </div>
                       <div className="boggs-portfolio-spec-text">
-                        <strong>Production Chrome Extension:</strong> Full-stack browser extension with local PDF parsing and contextual form autofill with 100% client-side privacy.
+                        <strong>Production Manifest V3 Extension:</strong> Client-side browser extension with local PDF parsing, intelligent DOM form inspection, and contextual autofill with 100% user privacy.
                       </div>
                     </div>
                     <div className="boggs-portfolio-spec-item">
                       <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
-                        <HeartHandshake size={15} />
+                        <Sparkles size={15} />
                       </div>
                       <div className="boggs-portfolio-spec-text">
-                        <strong>Emergency Shelter Coordination Mesh:</strong> Algorithmic coordination platform matching unhoused citizens with open emergency shelter beds and modular housing inventory.
+                        <strong>Evidence-Grounded Matching:</strong> Pairs applicant claims directly with verifiable GitHub code commits, patents, and system artifacts rather than generic AI keyword hallucination.
                       </div>
                     </div>
                   </div>
@@ -1325,7 +1326,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   <div className="boggs-portfolio-hiring-box amber">
                     <div className="boggs-portfolio-hiring-header">
                       <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Opportunity OS Extension & Shelter Mesh
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Opportunity OS ATS Co-Pilot &amp; Chrome MV3 Engine
                       </span>
                       <div className="boggs-portfolio-actions">
                         <button
@@ -1345,6 +1346,100 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#fbbf24' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 8: Sovereign Civic Campuses (Pine Street Inn Model & Pod Mesh)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={civicShelterCampusUrl}
+                    alt="Sovereign Civic Campuses Modular Dignity Shelter Mesh with Borealis Transit Pods"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Pine Street Model
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Borealis Pod Corridor
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      Automated Modular Build
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#10b981' }}>
+                    <Building2 size={14} /> Civic Infrastructure &amp; Social Engine • Pine Street Inn Model
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Sovereign Civic Campuses: Modular Dignity Shelters &amp; High-Speed Transit Mesh
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Inspired by Boston's Pine Street Inn model of dignified supportive communities and workforce development. Solves the urban housing crisis by unlocking abundant regional land, constructing modern modular shelter campuses via autonomous heavy robot fleets, and connecting residents to urban economic centers in 12 minutes via Borealis autonomous pod corridors.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Car size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Borealis Transit Pod Corridors:</strong> Dedicated grade-separated high-speed transit tubes linking regional campuses directly to downtown subway hubs, hospitals, and employers in 10–15 minutes, ending geographic and economic isolation.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#fbbf24' }}>
+                        <Bot size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Robot Fleet Modular Assembly:</strong> Rapid 24/7 autonomous site prep, foundation excavation, and robotic precision assembly of mass-timber living pods and solar microgrids, cutting civic capital costs by up to 70%.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                        <HeartHandshake size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Pine Street Dignity &amp; Training Engine:</strong> Trauma-informed supportive housing, culinary arts, facilities operations, and on-site Digital Twin career cockpits training residents for high-wage autonomous dispatch roles.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box emerald">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Sovereign Civic Campuses &amp; Transit Corridor Mesh
+                      </span>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('civic-campus') : undefined}
+                          className="boggs-portfolio-blueprint-btn emerald"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('civic-campus') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Civic%20Campuses')}
+                          className="boggs-portfolio-hiring-btn emerald"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#10b981' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
                     </div>
                   </div>
                 </div>

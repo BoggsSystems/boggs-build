@@ -202,21 +202,38 @@ const ActorsDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ sy
             { num: 'UC-5', title: 'Tactile HIL Interlock Override', sub: 'Sub-5ms Rotary Intervention', color: '#fbbf24' },
           ],
         };
-      default: // opportunity-os
+      case 'civic-campus':
         return {
-          title: 'SYSTEM BOUNDARY: OPPORTUNITY OS CAREER ENGINE & DIGNITY GRAPH',
-          primary: { role: 'Student Engineer', sub: 'Capstone Candidate' },
+          title: 'SYSTEM BOUNDARY: SOVEREIGN CIVIC CAMPUS & TRANSIT CORRIDOR MESH',
+          primary: { role: 'Campus Operations Lead', sub: 'Civil Systems Director' },
           actors: [
-            { role: 'Jeff Boggs (Founder)', sub: '24h Technical Review', color: '#fbbf24' },
-            { role: 'GitHub Repositories', sub: 'Source Code & Commit Tree', color: '#38bdf8' },
-            { role: 'W3C Credential Issuer', sub: 'Verifiable Capstone Badge', color: '#10b981' },
+            { role: 'Borealis AV Pods', sub: 'High-Speed Metro Link', color: '#38bdf8' },
+            { role: 'Robot Fleet Crane/Paver', sub: 'Modular Mass-Timber Assembly', color: '#fbbf24' },
+            { role: 'Pine Street Care Mesh', sub: 'Supportive Dignity & Trades', color: '#10b981' },
           ],
           useCases: [
-            { num: 'UC-1', title: 'Deconstruct GitHub Commits', sub: 'Tree-Sitter Pattern Parser', color: accentColor },
-            { num: 'UC-2', title: 'Embed Skill Vector Graph', sub: 'Multidimensional Competency', color: '#c084fc' },
-            { num: 'UC-3', title: 'Dense Pod Requisition Match', sub: 'Cosine Similarity ≥ 0.88', color: '#38bdf8' },
-            { num: 'UC-4', title: 'Multimodal AI Interview', sub: 'Blind Rubric Evaluation', color: '#10b981' },
-            { num: 'UC-5', title: 'Digital NDA & Repo Access', sub: 'Direct Push Permissions', color: '#fbbf24' },
+            { num: 'UC-1', title: 'Autonomous Site Topography', sub: 'LiDAR Earthmoving & Trenching', color: accentColor },
+            { num: 'UC-2', title: 'Robotic Pod Assembly', sub: 'Millimeter Timber Locking & MEP', color: '#fbbf24' },
+            { num: 'UC-3', title: 'Grade-Separated Transit Link', sub: '12-Minute Express to Metro Hub', color: '#38bdf8' },
+            { num: 'UC-4', title: 'Solar Microgrid Islanding', sub: '650 kW Net-Zero Battery Storage', color: '#10b981' },
+            { num: 'UC-5', title: 'Workforce Sovereignty Ladder', sub: 'Cockpit Training & Direct Placement', color: '#c084fc' },
+          ],
+        };
+      default: // opportunity-os
+        return {
+          title: 'SYSTEM BOUNDARY: OPPORTUNITY OS ATS CO-PILOT & PROOF ENGINE',
+          primary: { role: 'Job Candidate', sub: 'Applicant Co-Pilot' },
+          actors: [
+            { role: 'Corporate ATS Portals', sub: 'Workday / Greenhouse / Lever', color: '#fbbf24' },
+            { role: 'Local Chrome Extension', sub: 'Sub-10ms DOM Form Inject', color: '#38bdf8' },
+            { role: 'Local Encrypted Vault', sub: 'Zero-Exfiltration Proofs', color: '#10b981' },
+          ],
+          useCases: [
+            { num: 'UC-1', title: 'Inspect Multi-Step DOM Trees', sub: 'Map Form Fields & Dropzones', color: accentColor },
+            { num: 'UC-2', title: 'Query Local Encrypted Vault', sub: 'Extract Verified Project Proofs', color: '#c084fc' },
+            { num: 'UC-3', title: 'Grounded Evidence Matching', sub: 'Eliminate Keyword Stuffing', color: '#38bdf8' },
+            { num: 'UC-4', title: 'Sub-10ms Automated Autofill', sub: 'Dispatch Trusted Synthetic Events', color: '#10b981' },
+            { num: 'UC-5', title: '1-Click Submission & Log', sub: 'Record Local Confidential Telemetry', color: '#fbbf24' },
           ],
         };
     }
@@ -460,31 +477,58 @@ const SubsystemDiagram: React.FC<{ systemId: string; accentColor: string }> = ({
             { title: 'Tactile Rotary USB/CAN Interface', sub: 'Aerospace Dials, E-Stop & OLED Telemetry', color: '#fbbf24' },
           ],
         };
+      case 'civic-campus':
+        return {
+          tier1Label: 'TIER 1: REGIONAL LAND & EARTH-MOVING TELEMETRY',
+          tier1Blocks: [
+            { title: 'Autonomous Heavy Excavator & Paver Fleet', sub: 'LiDAR GPS-RTK Precision Grading & Trenching', color: '#fbbf24' },
+            { title: 'Geotechnical Soil & Microclimate Sensor Array', sub: 'Thermal Airflow & Structural Sub-Grade Telemetry', color: '#38bdf8' },
+            { title: 'Solar Irradiance & Microgrid Generation Sensors', sub: 'Real-Time Photovoltaic & Inverter Tracking', color: '#10b981' },
+          ],
+          tier2Label: 'TIER 2: REAL-TIME CAMPUS BUS & ROBOTIC COORDINATION',
+          tier2Blocks: [
+            { title: 'CycloneDDS / ROS 2 Autonomous Construction Spine', sub: 'Deterministic Peer-to-Peer Heavy Machine Sync', color: '#fbbf24' },
+            { title: 'OpenUSD Geospatial Campus Twin Bridge', sub: 'Real-Time 3D Building Information Modeling (BIM)', color: accentColor },
+            { title: 'Microgrid Energy Management System (EMS)', sub: 'Dynamic Battery Load-Balancing & Thermal Pumps', color: '#10b981' },
+          ],
+          tier3Label: 'TIER 3: HIGH-SPEED BOREALIS TRANSIT PORTAL',
+          tier3Blocks: [
+            { title: '4-Berth Grade-Separated Transit Portal', sub: '90-Second Headway Glass-Canopied Pod Station', color: '#38bdf8' },
+            { title: 'IEEE 1588 PTP Mainline Synchronization Node', sub: 'Sub-Microsecond Tube Injection Time-Slotting', color: '#c084fc' },
+            { title: 'Autonomous Passenger Flow & Accessible Gates', sub: 'ISO 21542 Universal Level-Boarding Infrastructure', color: '#38bdf8' },
+          ],
+          tier4Label: 'TIER 4: PINE STREET DIGNITY & WORKFORCE COCKPITS',
+          tier4Blocks: [
+            { title: 'Mass-Timber Modular Residential Pods', sub: 'WELL Building v2 Certified Passive Sanctuary Units', color: '#10b981' },
+            { title: 'Commercial Culinary Arts & Facilities Center', sub: 'Pine Street Model Community Dining & Trade Labs', color: '#fbbf24' },
+            { title: 'On-Campus Digital Twin & Opportunity OS Labs', sub: 'Vocational Autonomous Dispatch & Flight Cockpits', color: '#06b6d4' },
+          ],
+        };
       default: // opportunity-os
         return {
-          tier1Label: 'TIER 1: SOURCE INGESTION & CODE PARSING PIPELINE',
+          tier1Label: 'TIER 1: CLIENT-SIDE ATS DOM INSPECTION ENGINE',
           tier1Blocks: [
-            { title: 'Tree-Sitter AST & Semantic Git Parser', sub: 'Deconstructs Commits, Pull Requests & Architecture', color: '#38bdf8' },
-            { title: 'GitHub Enterprise API Repository Scanner', sub: 'Extracts Code Contributions & Test Suites', color: '#fbbf24' },
-            { title: 'Blind Evaluation Masking Filter', sub: 'Sanitizes PII & Eliminates Algorithmic Bias', color: '#10b981' },
+            { title: 'Tree-Sitter DOM Field & Mutation Inspector', sub: 'Maps Complex Forms Across Workday & Greenhouse', color: '#38bdf8' },
+            { title: 'Contextual Multi-Step Form Pagination Watcher', sub: 'Detects Next-Step Transitions & Hidden Shadow-DOM', color: '#fbbf24' },
+            { title: 'Zero-Exfiltration Network Isolation Layer', sub: 'Guarantees Zero Server Logging of Candidate PII', color: '#10b981' },
           ],
-          tier2Label: 'TIER 2: SEMANTIC KNOWLEDGE GRAPH CORE',
+          tier2Label: 'TIER 2: ON-DEVICE ZERO-KNOWLEDGE EVIDENCE VAULT',
           tier2Blocks: [
-            { title: '1536-Dimensional Skill Vector Embeddings', sub: 'Dense Competency Mapping Across C++, Rust, TS', color: '#c084fc' },
-            { title: 'Qdrant Vector Database Dense Search Index', sub: 'Sub-45ms Cosine Similarity Matching Query', color: accentColor },
-            { title: 'Graph Centrality & Competency Scorer', sub: 'Hierarchical Software Architecture Profiling', color: '#38bdf8' },
+            { title: 'WebCrypto AES-GCM Encrypted Local Store', sub: 'Secures Verified Work, Patents & Code Commits', color: '#c084fc' },
+            { title: 'Semantic Requisition Evidence Matcher', sub: 'Sub-10ms Alignment of Verified Proof to Job Specs', color: accentColor },
+            { title: 'Anti-Hallucination Content Grounding Guard', sub: 'Prevents Generic AI Keyword Stuffing Distortions', color: '#38bdf8' },
           ],
-          tier3Label: 'TIER 3: EVALUATION SANDBOX & AI INTERVIEWER',
+          tier3Label: 'TIER 3: HIGH-SPEED DOM INJECTION CONTROLLER',
           tier3Blocks: [
-            { title: 'Docker Micro-Container Execution Sandbox', sub: 'Isolated Real-Time Code Execution & Unit Tests', color: '#38bdf8' },
-            { title: 'Multimodal AI Technical Interview Supervisor', sub: 'Standardized Rubric Evaluation without Human Bias', color: '#fbbf24' },
-            { title: 'Automated Skill Gap Analysis Engine', sub: 'Recommends Specific Capstone Prep Tasks', color: '#c084fc' },
+            { title: 'Trusted Synthetic DOM Event Dispatcher', sub: 'Simulates Native User Typing & Select Transitions', color: '#38bdf8' },
+            { title: 'Dynamic File Dropzone & Resume Attacher', sub: 'Injects On-Device Tailored PDF Application Proofs', color: '#fbbf24' },
+            { title: 'Reversible Form-Fill Command Queue', sub: 'Instant Single-Click Undo & Candidate Oversight', color: '#10b981' },
           ],
-          tier4Label: 'TIER 4: CAPSTONE POD DISPATCH & CREDENTIALS',
+          tier4Label: 'TIER 4: CANDIDATE CAREER DASHBOARD & TELEMETRY',
           tier4Blocks: [
-            { title: 'Founder Fast-Track Review Dispatch (24h)', sub: 'Direct Architectural Review by Jeff Boggs', color: '#10b981' },
-            { title: 'Mutual Digital NDA & IP Signing Engine', sub: 'Immediate Git Push Permissions Provisioned', color: '#38bdf8' },
-            { title: 'W3C Verifiable Credential Cryptographic Issuer', sub: 'Tamper-Evident Digital Capstone Project Badges', color: '#a855f7' },
+            { title: 'Local Application Velocity & Funnel Tracker', sub: 'Tracks Interview Conversion Rates & Response Latency', color: '#06b6d4' },
+            { title: 'W3C Verifiable Credential Digital Signer', sub: 'Embeds Tamper-Evident Proof in Resume Exports', color: '#38bdf8' },
+            { title: 'Direct Founder & Engineering Fast-Track Pipeline', sub: '24h Technical Brief Review & Direct Repo Access', color: '#a855f7' },
           ],
         };
     }
@@ -649,16 +693,27 @@ const UmlClassDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           pattern: 'PATTERN: Hardware Direct Framebuffer & Lock-Free SPSC',
           patternDesc: 'Eliminates desktop window manager overhead and mutex contention',
         };
+      case 'civic-campus':
+        return {
+          c1: { title: 'CivicCampusMasterPlan', st: '<<MasterLayout>>', m: ['+ calculate_density_envelope(): ZoningEnvelope', '+ simulate_microclimate_airflow(): ThermalProfile', '+ export_openusd_twin(): UsdStageRef'], a: ['- campus_id: CampusUuid', '- regional_parcel_acres: float = 45.0', '- residential_pod_capacity: int = 120'] },
+          c2: { title: 'ModularPodAssemblyAgent', st: '<<RoboticCoordinator>>', m: ['+ dispatch_pod_crane_sequence(podId: string): bool', '+ verify_structural_seals(podId: string): SealTelemetry', '+ calibrate_mep_connectors(): AlignmentReport'], a: ['- fleet_dds_domain: DomainId = 42', '- crane_telemetry_stream: RtpStream', '- torque_verification_sensor: I2cArray'] },
+          c3: { title: 'TransitCorridorPortal', st: '<<TransitNexus>>', m: ['+ dispatch_express_pod(dest: string): PodDispatchId', '+ monitor_passenger_throughput(): FlowMetrics', '+ sync_ptp_clock(): PtpStatus'], a: ['- berth_count: int = 4', '- headway_seconds: int = 90', '- route_to_metro_hub_km: float = 18.5'] },
+          c4: { title: 'MicrogridEnergyManager', st: '<<PowerGovernor>>', m: ['+ balance_solar_battery_flows(): LoadState', '+ execute_island_decoupling(): bool', '+ cycle_thermal_heat_pumps(): void'], a: ['- solar_pv_capacity_kw: float = 650.0', '- battery_bess_kwh: float = 2400.0', '- is_grid_islanded: bool'] },
+          c5: { title: 'ResidentEmpowermentPipeline', st: '<<WorkforceEngine>>', m: ['+ enroll_resident(id: string, track: string): Plan', '+ schedule_pod_apprenticeship(): Slot', '+ track_sovereignty_milestones(): Report'], a: ['- culinary_training_seats: int = 40', '- robotics_cockpit_seats: int = 24', '- placement_success_rate: float'] },
+          c6: { title: 'OpenUsdCampusVisualizer', st: '<<DigitalTwin>>', m: ['+ render_photoreal_viewport(): FrameBuffer', '+ stream_sensor_overlay_to_cockpit(): void'], a: ['- usd_stage: UsdStagePtr', '- omniverse_connector: OmniverseLiveSync'] },
+          pattern: 'PATTERN: Transit-Oriented Micro-City & Modular Assembly',
+          patternDesc: 'Combines off-site mass timber prefabrication with high-speed pod links',
+        };
       default: // opportunity-os
         return {
-          c1: { title: 'ICandidateProfileGraph', st: '<<Interface / TalentGraph>>', m: ['+ ingest_github_repository(): Promise<Score>', '+ compute_graph_centrality(): Map<Tag, f32>', '+ export_blind_profile(): SanitizedView'], a: ['+ candidate_id: CandidateUuid', '+ is_verified: boolean'] },
-          c2: { title: 'CandidateProfileGraph', st: '<<EntityGraph>>', m: ['+ ingest_github_repository(): Promise<Score>', '+ generate_skill_vector(): Float32Array', '+ export_blind_profile(): SanitizedView'], a: ['- skill_vector_embedding: Float32[1536]', '- verified_credentials: Credential[]', '- git_metrics: ContributionScore'] },
-          c3: { title: 'SemanticVectorMatcher', st: '<<MatchingEngine>>', m: ['+ rank_candidates_for_pod(): Promise<Ranked[]>', '+ calculate_skill_gap(): SkillGapReport'], a: ['- vector_index: QdrantVectorStore', '- similarity_threshold: 0.85', '- top_k: number = 10'] },
-          c4: { title: 'ResumeDeconstructionPipeline', st: '<<ParserEngine>>', m: ['+ parse_ast_patterns(): SyntaxAnalysis', '+ sanitize_demographic_pii(): void'], a: ['- tree_sitter_parser: TreeSitter', '- anonymization_rules: RegexFilter[]'] },
-          c5: { title: 'InterviewSimulator', st: '<<AgentWorkflow>>', m: ['+ start_coding_session(): Session', '+ evaluate_code_execution(): TestResult', '+ compile_rubric_feedback(): Report'], a: ['- llm_supervisor: AgentSupervisor', '- scoring_rubric: RubricModel', '- docker_sandbox: SandboxHandle'] },
-          c6: { title: 'VerifiableCredentialIssuer', st: '<<TrustAnchor>>', m: ['+ issue_capstone_badge(): SignedCredential', '+ verify_tamper_evidence(): boolean'], a: ['- ed25519_signing_key: CryptoKey', '- w3c_context_url: string', '- registry_endpoint: string'] },
-          pattern: 'PATTERN: Hexagonal Architecture (Ports & Adapters)',
-          patternDesc: 'Decouples core matching from external enterprise ATS',
+          c1: { title: 'AtsDomParser', st: '<<DomInspector>>', m: ['+ detect_ats_vendor(): AtsVendorType', '+ map_form_hierarchy(): FormFieldSchema', '+ observe_dynamic_steps(): void'], a: ['- portal_type: AtsVendorType', '- input_node_map: Map<string, HTMLElement>', '- mutation_observer: MutationObserver'] },
+          c2: { title: 'EvidenceGroundingEngine', st: '<<MatchingEngine>>', m: ['+ extract_grounded_claims(): VerifiedClaim[]', '+ tailor_resume_context(): TailoredResumeJson', '+ generate_ats_friendly_pdf(): Uint8Array'], a: ['- local_vault: WebCryptoVault', '- claim_verifier: CredentialVerifier', '- similarity_scorer: CosineModel'] },
+          c3: { title: 'AutofillInjectionController', st: '<<DomMutator>>', m: ['+ execute_autofill(): Promise<FillSummary>', '+ dispatch_trusted_input(el, val): void', '+ attach_tailored_resume_blob(): void'], a: ['- injection_latency_ms: number', '- rollback_stack: FieldSnapshot[]'] },
+          c4: { title: 'LocalVaultManager', st: '<<EncryptedStorage>>', m: ['+ read_encrypted_profile(): ProfileRecord', '+ write_encrypted_profile(): void', '+ wipe_candidate_storage(): void'], a: ['- indexed_db_handle: IDBDatabase', '- encryption_key: CryptoKey'] },
+          c5: { title: 'WasmPdfCompiler', st: '<<WasmEngine>>', m: ['+ compile_resume_pdf(): Uint8Array', '+ sign_verifiable_credential(): string'], a: ['- wasm_module_bytes: Uint8Array', '- ed25519_key_pair: KeyPair'] },
+          c6: { title: 'ApplicationTracker', st: '<<AnalyticsLedger>>', m: ['+ log_submission_event(company: string): void', '+ calculate_funnel_velocity(): VelocityReport'], a: ['- local_telemetry_log: SubmissionRecord[]'] },
+          pattern: 'PATTERN: Command & Observer with Local Zero-Knowledge Vault',
+          patternDesc: 'Sub-10ms DOM mutation handling with strict client-side privacy',
         };
     }
   };
@@ -887,19 +942,33 @@ const SequenceDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           s6: '6. Ingestion-to-Photon Frame Latency Locked <= 25ms',
           s7: '7. OLED Diagnostic Telemetry Strip Updated (120 FPS)',
         };
+      case 'civic-campus':
+        return {
+          l1: 'RegionalSite', l2: 'RobotCrane', l3: 'TimberPod', l4: 'TransitPortal', l5: 'Resident',
+          s1: '1. autonomous_grading_and_foundation_scan()',
+          s2: '2. robotic_crane_picks_modular_mass_timber_pod()',
+          t1: 'CycloneDDS Millimeter Precision Locking (< 5ms)',
+          s3: '3. seal_structural_joints_and_connect_mep()',
+          t2: 'IEEE 1588 PTP Transit Guideway Sync',
+          s4: '4. borealis_express_pod_links_campus_to_metro(12m)',
+          s5Title: '5. Net-Zero Microgrid Power Islanding',
+          s5Sub: '650 kW solar array & BESS battery buffer activate',
+          s6: '6. Pine Street Dignity Housing & Trades Ready',
+          s7: '7. Resident Enrolled in Digital Twin Career Cockpit',
+        };
       default: // opportunity-os
         return {
-          l1: 'Candidate', l2: 'ProfileGraph', l3: 'VectorMatcher', l4: 'AI Simulator', l5: 'Founder & NDA',
-          s1: '1. submit_capstone_brief_and_github_url()',
-          s2: '2. parse_git_commits_and_ast_patterns()',
-          t1: 'Dense Cosine Similarity Search (< 45ms query)',
-          s3: '3. match_open_capstone_pod_requisitions()',
-          t2: 'Blind Rubric AI Technical Assessment',
-          s4: '4. dispatch_to_jeff_boggs(24h review)',
-          s5Title: '5. Ethical Bias & Privacy Watchdog',
-          s5Sub: 'Sanitizes all demographic PII from evaluation',
-          s6: '6. Mutual Digital NDA & IP Assignment Executed',
-          s7: '7. Direct GitHub Repo Push Permissions Provisioned',
+          l1: 'JobHunter', l2: 'ChromeExt', l3: 'AtsDomParser', l4: 'LocalVault', l5: 'ATS Portal',
+          s1: '1. navigate_to_workday_or_greenhouse_job()',
+          s2: '2. inspect_dom_and_extract_form_schema(< 10ms)',
+          t1: 'WebCrypto Local Vault Decryption (Zero Exfiltration)',
+          s3: '3. match_verified_github_commits_and_proof()',
+          t2: 'Synthetic Trusted DOM Events Fired',
+          s4: '4. autofill_all_form_fields_and_attach_pdf()',
+          s5Title: '5. Candidate Review & Verification Lock',
+          s5Sub: '1-click human verification prior to HTTP dispatch',
+          s6: '6. Application Submitted Successfully to ATS',
+          s7: '7. Confirmation Telemetry Logged to Encrypted Tracker',
         };
     }
   };

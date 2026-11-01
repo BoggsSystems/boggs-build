@@ -1370,7 +1370,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                     </span>
                     <span className="boggs-portfolio-stat-pill">
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                      Borealis Pod Corridor
+                      Borealis Road Pods
                     </span>
                     <span className="boggs-portfolio-stat-pill">
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
@@ -1384,10 +1384,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                     <Building2 size={14} /> Civic Infrastructure &amp; Social Engine • Pine Street Inn Model
                   </div>
                   <h3 className="boggs-portfolio-title">
-                    Sovereign Civic Campuses: Modular Dignity Shelters &amp; High-Speed Transit Mesh
+                    Sovereign Civic Campuses: Modular Dignity Shelters &amp; Autonomous Road Pod Mesh
                   </h3>
                   <p className="boggs-portfolio-desc">
-                    Inspired by Boston's Pine Street Inn model of dignified supportive communities and workforce development. Solves the urban housing crisis by unlocking abundant regional land, constructing modern modular shelter campuses via autonomous heavy robot fleets, and connecting residents to urban economic centers in 12 minutes via Borealis autonomous pod corridors.
+                    Inspired by Boston's Pine Street Inn model of dignified supportive communities and workforce development. Solves the urban housing crisis by unlocking abundant regional land, constructing modern modular shelter campuses via autonomous heavy robot fleets, and connecting residents to urban economic centers in 12 minutes via Borealis autonomous road pods.
                   </p>
 
                   <div className="boggs-portfolio-specs">
@@ -1396,7 +1396,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                         <Car size={15} />
                       </div>
                       <div className="boggs-portfolio-spec-text">
-                        <strong>Borealis Transit Pod Corridors:</strong> Dedicated grade-separated high-speed transit tubes linking regional campuses directly to downtown subway hubs, hospitals, and employers in 10–15 minutes, ending geographic and economic isolation.
+                        <strong>Borealis Autonomous Road Pods:</strong> Fleet of 6-passenger autonomous wheeled vehicles operating on paved roadways and arterial express corridors, providing curbside pick-up directly at the campus and 12-minute links to downtown subway hubs, hospitals, and employers.
                       </div>
                     </div>
                     <div className="boggs-portfolio-spec-item">

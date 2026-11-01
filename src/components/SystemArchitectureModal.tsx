@@ -583,6 +583,127 @@ export const ARCHITECTURE_DATA: Record<string, SystemData> = {
     ],
   },
 
+  'digital-twin-appliance': {
+    id: 'digital-twin-appliance',
+    name: 'Digital Twin Appliance & Bare-Metal UE5 Cockpit',
+    shortName: 'Digital Twin Appliance',
+    badge: 'C++20 • Unreal Engine 5 • Vulkan DRM/KMS • CycloneDDS',
+    accentColor: '#38bdf8',
+    repo: 'BoggsSystems/borealis-twin-appliance & ue5-cockpit-runtime',
+    architectureTier: 'Bare-Metal Edge Appliance • Direct Hardware Framebuffer • HIL Cockpit',
+    overview:
+      'Physical command-and-control substrate for Boggs Systems autonomous transit and robotic fleets. Bypasses consumer desktop display servers to render photorealistic Unreal Engine 5 digital twins directly to multi-display cockpit arrays via Vulkan DRM/KMS at sub-25ms ingestion-to-photon latency.',
+    standards: [
+      { name: 'Direct Rendering Manager (DRM / KMS)', desc: 'Linux kernel subsystem for direct GPU modesetting and buffer flipping without X11 or Wayland display server overhead.' },
+      { name: 'Vulkan 1.3 Specification', desc: 'Low-overhead, explicit GPU compute and graphics API driving multi-viewport 4K cockpit rendering.' },
+      { name: 'OMG DDS (Data Distribution Service)', desc: 'Eclipse CycloneDDS pub/sub standard delivering deterministic kinematic telemetry with sub-millisecond jitter.' },
+      { name: 'IEEE 1588 Precision Time Protocol (PTP)', desc: 'Hardware-timestamped clock synchronization ensuring sub-microsecond correlation between physical vehicle and digital twin.' },
+    ],
+    functionalReqs: [
+      'Ingest continuous high-frequency CycloneDDS telemetry topics from Borealis Pods and Robot Fleet into UE5 at ≥ 120 Hz.',
+      'Drive triple synchronized 4K panoramic cockpit displays (Sensor Voxel View, Photorealistic World Twin, Intermodal Hub).',
+      'Synthesize real-time Canadian winter conditions (Lumen snow accumulation, icing friction reduction, volumetric fog).',
+      'Interface with physical cockpit hardware: tactile rotary encoders, CAN-bus emergency interlocks, and OLED status panels.',
+      'Support bidirectional hardware-in-the-loop (HIL) manual override injection for simulated corridor hazard resolution.',
+    ],
+    nonFunctionalReqs: [
+      'Ingestion-to-photon display latency guaranteed ≤ 25 ms across all active viewport cameras.',
+      'Cold boot to active full-screen interactive twin within ≤ 6 seconds via immutable Linux appliance rootfs.',
+      'Zero display tearing and frame drop jitter using triple-buffered Vulkan swapchains locked to 120 FPS display refreshes.',
+      'Hardware watchdog safety interlock: Automated fallback to local sensor failover plane if network DDS telemetry drops for > 150 ms.',
+    ],
+    umlPackage: 'BoggsSystems::Appliance::CockpitCore',
+    umlClasses: [
+      {
+        name: 'ApplianceKmsCompositor',
+        stereotype: '<<BareMetalDriver>>',
+        description: 'Allocates direct DRM planes and manages Vulkan frame flips across multi-head monitor connectors without desktop compositors.',
+        attributes: [
+          '- drmCardFd: int',
+          '- crtcControllers: Vector<DrmCrtc>',
+          '- swapchains: Array<VkSwapchainKHR, 3>',
+        ],
+        methods: [
+          '+ initializeDrmKms(): Result<void>',
+          '+ presentPlaneBuffer(displayIndex: int, buffer: DrmFb): void',
+          '+ handleVBlankInterrupt(): void',
+        ],
+        relations: ['Composes -> Ue5ViewportRenderer'],
+      },
+      {
+        name: 'DdsTelemetryRingBuffer',
+        stereotype: '<<LockFreeQueue>>',
+        description: 'Ingests high-rate CycloneDDS vehicle kinematics and V2X SPaT packets into lock-free shared memory.',
+        attributes: [
+          '- ringBufferPtr: atomic<uint8_t*>',
+          '- writeCursor: atomic<uint64_t>',
+          '- vehicleStateTopic: dds_entity_t',
+        ],
+        methods: [
+          '+ onTelemetryPacket(packet: PodKinematicsMsg): void',
+          '+ readLatestState(podId: PodId): VehicleStateSnapshot',
+        ],
+        relations: ['Feeds -> Ue5WorldModelBridge'],
+      },
+      {
+        name: 'Ue5WorldModelBridge',
+        stereotype: '<<SimulationBridge>>',
+        description: 'Translates physical telemetry snapshots into CARLA/UE5 actor transforms, sensor meshes, and winter shaders.',
+        attributes: [
+          '- worldContext: UWorld*',
+          '- carlaVehicleActors: Map<PodId, AActor*>',
+          '- weatherController: AWeatherSubsystem*',
+        ],
+        methods: [
+          '+ syncActorTransforms(state: VehicleStateSnapshot): void',
+          '+ updateLidarPointCloudVoxel(cloud: LidarScanBuffer): void',
+          '+ applyFrictionTensors(roadCondition: WinterFrictionCoeff): void',
+        ],
+        relations: ['Controls -> ApplianceKmsCompositor'],
+      },
+      {
+        name: 'TactileHmiController',
+        stereotype: '<<HardwareInterface>>',
+        description: 'Communicates with physical cockpit dials, emergency kill-switches, and status OLED via USB HID and CAN-bus.',
+        attributes: [
+          '- canInterfaceName: string',
+          '- dialRotationTicks: int32_t',
+          '- safetyInterlockState: bool',
+        ],
+        methods: [
+          '+ pollRotaryDials(): HmiEvent',
+          '+ updateOledDiagnostics(fps: float, ddsLatencyMs: float): void',
+          '+ triggerEmergencyDisengage(): void',
+        ],
+        relations: ['Signals -> Ue5WorldModelBridge'],
+      },
+    ],
+    designPatterns: [
+      { name: 'Hardware Direct Framebuffer (DRM/KMS)', usage: 'Bypasses X11/Wayland window managers to render multi-head 4K views straight to GPU framebuffers.' },
+      { name: 'Lock-Free SPSC Ring Buffer', usage: 'Decouples DDS telemetry reception threads from UE5 120 FPS rendering loops, eliminating mutex stalls.' },
+      { name: 'Digital Twin Observer Pattern', usage: 'Subscribes physical vehicle state topics to synchronously update virtual actor kinematics in the simulation world.' },
+    ],
+    stateMachine: {
+      title: 'Digital Twin Cockpit Appliance Lifecycle',
+      states: [
+        { name: 'BOOT_DRM_INIT', tag: 'State 1', desc: 'Minimal kernel boots, detects monitor EDIDs, and binds Vulkan swapchain to DRM/KMS display planes.' },
+        { name: 'DDS_MESH_DISCOVERY', tag: 'State 2', desc: 'CycloneDDS joins the local/V2X autonomous vehicle domain and synchronizes PTP hardware clocks.' },
+        { name: 'RUN_TWIN_RENDER', tag: 'State 3', desc: 'Continuous 120 FPS multi-display rendering of photorealistic UE5 twin, LIDAR voxels, and maglev docking.' },
+        { name: 'HIL_OPERATOR_INTERVENE', tag: 'State 4', desc: 'Tactile hardware dials or override triggers seize manual teleoperation or reroute simulated pods.' },
+        { name: 'FAILSAFE_LOCAL_CACHE', tag: 'State 5', desc: 'Network telemetry timeout engages local physics dead-reckoning and alerts operator via OLED strip.' },
+      ],
+      failsafe: 'Immediate transition to FAILSAFE_LOCAL_CACHE: Continues deterministic dead-reckoning trajectory display, flashes red status beacons, and locks autonomous assets in geofenced safe holding patterns.',
+    },
+    currentMilestones: [
+      { title: 'Bare-Metal Vulkan DRM/KMS Proof-of-Concept', status: 'completed', details: 'Direct-to-display frame presenting verified on Linux kernel without window manager overhead.' },
+      { title: 'CycloneDDS Telemetry Ring-Buffer Pipeline', status: 'completed', details: 'Sub-10ms lock-free ingestion linking vehicle kinematics to simulation bridge.' },
+      { title: 'UE5 & CARLA Winter Sensor Shader Suite', status: 'completed', details: 'Procedural snow and road friction degradation model validated in synthetic Canadian corridors.' },
+      { title: 'Student Pod Task: Multi-Monitor Viewport Synchronizer', status: 'pod-backlog', details: 'Implement frame-accurate Genlock synchronization across 3x 4K DisplayPort outputs in Vulkan.' },
+      { title: 'Student Pod Task: Physical Cockpit CAN-Bus Rotary Controller', status: 'pod-backlog', details: 'Program embedded micro-controller (STM32/RP2040) firmware to map tactile dials to UE5 camera controls.' },
+      { title: 'Student Pod Task: WebRTC Pixel Streaming Fallback Bridge', status: 'pod-backlog', details: 'Enable seamless handoff between local bare-metal appliance rendering and remote browser streaming.' },
+    ],
+  },
+
   'digitpop': {
     id: 'digitpop',
     name: 'DigitPop Interactive Shoppable Video & Live Commerce',

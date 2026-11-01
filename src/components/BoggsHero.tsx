@@ -28,11 +28,13 @@ import {
   Bot,
   Boxes,
   Workflow,
+  Monitor,
 } from 'lucide-react';
 import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
 import borealisMaglevTubeUrl from '../assets/borealis-maglev-tube.jpg';
 import robotFleetHeterogeneousUrl from '../assets/robot-fleet-heterogeneous.jpg';
 import borealisRoadPodUrl from '../assets/borealis-road-pod.jpg';
+import digitalTwinApplianceUrl from '../assets/digital-twin-appliance.jpg';
 import digitpopLiveCommerceUrl from '../assets/digitpop-live-commerce.jpg';
 import opportunityOsResumeUrl from '../assets/opportunity-os-resume.png';
 import spoProductPodArchitectureUrl from '../assets/spo-product-pod-architecture.jpg';
@@ -664,7 +666,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   </div>
                   <h4 className="boggs-funnel-step-title">1. Submit Brief</h4>
                   <p className="boggs-funnel-step-desc">
-                    Pick your preferred system pod below (Smart Mohs, Borealis Pods, Borealis Maglev, Sovereign Mesh, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
+                    Pick your preferred system pod below (Smart Mohs, Borealis Pods, Borealis Maglev, Robot Fleet, Digital Twin Appliance, DigitPop, or Opportunity OS) and link your GitHub profile. No resume formatting required.
                   </p>
                 </div>
 
@@ -1174,10 +1176,100 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 6: Opportunity OS (Housing, Social Mobility & Dignity)
+               PRODUCT 6: Digital Twin Appliance (Operations & Simulation Plank)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={digitalTwinApplianceUrl}
+                    alt="Digital Twin Bare-Metal Appliance and Cockpit Console"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Unreal Engine 5 (UE5)
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Vulkan DRM/KMS Kiosk OS
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#c084fc' }} />
+                      Multi-Monitor Cockpit HMI
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      &lt;25ms Telemetry-to-Photon
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#38bdf8' }}>
+                    <Monitor size={14} /> Operations &amp; Simulation Plank • Fleet Command Appliance
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    Digital Twin Appliance: Bare-Metal UE5 Cockpit &amp; Real-Time Fleet Telemetry
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    The physical command-and-control substrate for Boggs Systems' autonomous mobility and robotic infrastructure. Replaces brittle, high-latency web browser dashboards with a dedicated, custom Linux edge appliance driving multi-monitor cockpits via direct Vulkan DRM/KMS—rendering photorealistic Unreal Engine 5 digital twins, live LiDAR point clouds, and V2X corridors at sub-25ms ingestion-to-photon latency.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Cpu size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Bare-Metal Vulkan &amp; Kiosk OS Subsystem:</strong> Stripped-down immutable Linux appliance kernel bypassing traditional desktop window managers to render multi-display 4K frames directly to the GPU framebuffer with zero OS stutter.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
+                        <Zap size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Tactile Hardware HMI &amp; Telemetry Ingestion:</strong> CycloneDDS and lock-free ZeroMQ ring buffers coupled with physical aerospace rotaries, CAN-bus hardware watchdog interlocks, and in-the-loop manual override controls.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): Borealis Digital Twin Appliance &amp; UE5 Cockpit
+                      </span>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('digital-twin-appliance') : undefined}
+                          className="boggs-portfolio-blueprint-btn"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('digital-twin-appliance') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20Digital%20Twin%20Appliance')}
+                          className="boggs-portfolio-hiring-btn"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 7: Opportunity OS (Housing, Social Mobility & Dignity)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid">
                 <div className="boggs-portfolio-media">
                   <img
                     src={opportunityOsResumeUrl}

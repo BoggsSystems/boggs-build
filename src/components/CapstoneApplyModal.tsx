@@ -22,6 +22,7 @@ const SYSTEMS = [
   { id: 'borealis-pods', name: 'Borealis Pods (6-Passenger Autonomous Fleet)', tag: 'C++20 • ROS 2 • V2X' },
   { id: 'borealis-maglev', name: 'Borealis Maglev (500 km/h Tube & Avionics)', tag: 'Rust • QNX • SIL-4' },
   { id: 'robot-fleet', name: 'Robot Fleet (Humanoid & Quadruped Multi-Agent)', tag: 'CycloneDDS • MuJoCo • DTDL v3' },
+  { id: 'digital-twin-appliance', name: 'Digital Twin Appliance (UE5 • Vulkan Cockpit)', tag: 'C++20 • UE5 • Embedded Linux' },
   { id: 'digitpop', name: 'DigitPop (Interactive Video & Live Commerce)', tag: 'Wasm • Sub-10ms • WebGL' },
   { id: 'opportunity-os', name: 'Opportunity OS (Social Plank & Dignity Engine)', tag: 'Full-Stack • Extension • AI' },
 ];
@@ -36,6 +37,7 @@ const SYSTEM_PLACEHOLDERS: Record<string, string> = {
   'smart-mohs': "e.g., Tell Jeff about your C++23, CUDA, or computer vision experience, and your interest in sub-cellular optical biopsy margins or 3D cold laser micro-ablation.",
   'borealis-maglev': "e.g., Tell Jeff about your Rust, QNX, control theory, or formal verification experience, and your interest in 20 kHz active levitation gap regulation or aerodynamic failsafes.",
   'robot-fleet': "e.g., Tell Jeff about your robotics, ROS 2 / CycloneDDS, MuJoCo physics, or computer vision experience, and your interest in multi-agent humanoid/quadruped collaborative manipulation.",
+  'digital-twin-appliance': "e.g., Tell Jeff about your C++, Unreal Engine 5, embedded Linux / Vulkan DRM-KMS, or hardware HMI experience, and your interest in building bare-metal digital twin cockpits.",
   'borealis-pods': "e.g., Tell Jeff about your C++20, ROS 2, sensor fusion, or Cellular-V2X experience, and your interest in Level 4 urban path planning or dynamic green-wave pacing.",
   'transit-os': "e.g., Tell Jeff about your Rust, GIS, or distributed multi-agent routing experience, and your interest in deterministic municipal transit dispatch.",
   'digitpop': "e.g., Tell Jeff about your WebAssembly, WebGL, or video codec experience, and interest in building sub-10ms interactive live commerce overlays.",

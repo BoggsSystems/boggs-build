@@ -185,6 +185,23 @@ const ActorsDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ sy
             { num: 'UC-5', title: 'Emergency Stance Clamping', sub: '< 5ms Hardware E-Stop Interlock', color: '#fbbf24' },
           ],
         };
+      case 'digital-twin-appliance':
+        return {
+          title: 'SYSTEM BOUNDARY: DIGITAL TWIN BARE-METAL APPLIANCE & COCKPIT',
+          primary: { role: 'Fleet Controller', sub: 'Tactical Cockpit Lead' },
+          actors: [
+            { role: 'Borealis AV Pods', sub: 'C-V2X / SPaT Ingestion', color: '#38bdf8' },
+            { role: 'Vulkan KMS Compositor', sub: 'Direct Direct-to-Display', color: '#10b981' },
+            { role: 'Tactile Rotary HMI', sub: 'Hardware CAN-Bus Controls', color: '#fbbf24' },
+          ],
+          useCases: [
+            { num: 'UC-1', title: 'Bare-Metal KMS Modesetting', sub: 'Lock 120 FPS Direct Framebuffer', color: accentColor },
+            { num: 'UC-2', title: 'CycloneDDS Telemetry Sync', sub: 'Sub-10ms Kinematic Ring Buffer', color: '#38bdf8' },
+            { num: 'UC-3', title: 'Lumen Canadian Winter Sim', sub: 'Real-Time Snow & Ice Friction', color: '#10b981' },
+            { num: 'UC-4', title: 'Multi-Monitor Genlock Flip', sub: 'Synchronized 3x 4K Viewports', color: '#c084fc' },
+            { num: 'UC-5', title: 'Tactile HIL Interlock Override', sub: 'Sub-5ms Rotary Intervention', color: '#fbbf24' },
+          ],
+        };
       default: // opportunity-os
         return {
           title: 'SYSTEM BOUNDARY: OPPORTUNITY OS CAREER ENGINE & DIGNITY GRAPH',
@@ -416,6 +433,33 @@ const SubsystemDiagram: React.FC<{ systemId: string; accentColor: string }> = ({
             { title: 'Multi-Role Operations & Tele-Op Console', sub: 'Live Telemetry, Battery SOC & 3D Visualizer', color: '#a855f7' },
           ],
         };
+      case 'digital-twin-appliance':
+        return {
+          tier1Label: 'TIER 1: PHYSICAL VEHICLE TELEMETRY & V2X INGESTION',
+          tier1Blocks: [
+            { title: 'Borealis Pod Kinematics & Sensors', sub: '360° LIDAR, 4D Radar & UWB Docking', color: '#38bdf8' },
+            { title: 'Municipal C-V2X (3GPP Rel-18)', sub: 'Live SPaT Green-Wave Corridor Packets', color: '#10b981' },
+            { title: 'PTP IEEE 1588 Hardware Clock', sub: 'Sub-Microsecond Timestamp Correlation', color: '#fbbf24' },
+          ],
+          tier2Label: 'TIER 2: REAL-TIME DETERMINISTIC BUS & QUEUE',
+          tier2Blocks: [
+            { title: 'Eclipse CycloneDDS Middleware', sub: 'Deterministic State Consensus Fabric', color: '#38bdf8' },
+            { title: 'Lock-Free SPSC Ring Buffer', sub: 'Sub-10ms Shared-Memory Frame Queue', color: accentColor },
+            { title: 'Hardware Watchdog Safety Node', sub: '150ms Telemetry Drop Dead-Reckoning', color: '#fbbf24' },
+          ],
+          tier3Label: 'TIER 3: UNREAL ENGINE 5 SIMULATION CORE',
+          tier3Blocks: [
+            { title: 'CARLA AV Ground-Truth World', sub: 'Dynamic Traffic & Winter Weather Shaders', color: '#10b981' },
+            { title: 'Nanite & Lumen Ray-Traced Twin', sub: 'Elevated Maglev & Urban Corridor Assets', color: '#38bdf8' },
+            { title: 'Synthetic Sensor Generation Core', sub: 'Real-Time Voxel Point Cloud Simulation', color: '#c084fc' },
+          ],
+          tier4Label: 'TIER 4: APPLIANCE OS & MULTI-DISPLAY KMS',
+          tier4Blocks: [
+            { title: 'Bare-Metal Vulkan KMS Driver', sub: 'Direct Framebuffer Display Flip at 120 FPS', color: '#38bdf8' },
+            { title: '3x Synchronized 4K Cockpit Array', sub: 'Sensor Voxels • Photoreal Twin • Hub Docking', color: '#06b6d4' },
+            { title: 'Tactile Rotary USB/CAN Interface', sub: 'Aerospace Dials, E-Stop & OLED Telemetry', color: '#fbbf24' },
+          ],
+        };
       default: // opportunity-os
         return {
           tier1Label: 'TIER 1: SOURCE INGESTION & CODE PARSING PIPELINE',
@@ -593,6 +637,17 @@ const UmlClassDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           c6: { title: 'DigitalTwinClient', st: '<<DTDLv3Client>>', m: ['+ update_robot_twin(telemetry: JointTelemetry): void', '+ query_zone_occupancy(zoneId: string): TwinNode[]', '+ patch_relationship(source: string, target: string): void'], a: ['- adt_endpoint: Uri', '- dtdl_model_cache: ModelDirectory', '- telemetry_batch_queue: Queue<TwinUpdate>'] },
           pattern: 'PATTERN: Mediator & State Hierarchies',
           patternDesc: 'Normalizes CycloneDDS, MAVLink, and DTDL topics',
+        };
+      case 'digital-twin-appliance':
+        return {
+          c1: { title: 'ApplianceKmsCompositor', st: '<<BareMetalDriver>>', m: ['+ initializeDrmKms(): Result<void>', '+ presentPlaneBuffer(displayIndex: int): void', '+ handleVBlankInterrupt(): void'], a: ['- drmCardFd: int', '- crtcControllers: Vector<DrmCrtc>', '- swapchains: Array<VkSwapchainKHR, 3>'] },
+          c2: { title: 'DdsTelemetryRingBuffer', st: '<<LockFreeQueue>>', m: ['+ onTelemetryPacket(packet: PodMsg): void', '+ readLatestState(podId: PodId): StateSnapshot'], a: ['- ringBufferPtr: atomic<uint8_t*>', '- writeCursor: atomic<uint64_t>', '- vehicleStateTopic: dds_entity_t'] },
+          c3: { title: 'Ue5WorldModelBridge', st: '<<SimulationBridge>>', m: ['+ syncActorTransforms(state: StateSnapshot): void', '+ updateLidarPointCloudVoxel(): void', '+ applyFrictionTensors(): void'], a: ['- worldContext: UWorld*', '- carlaVehicleActors: Map<PodId, AActor*>', '- weatherController: AWeatherSubsystem*'] },
+          c4: { title: 'TactileHmiController', st: '<<HardwareInterface>>', m: ['+ pollRotaryDials(): HmiEvent', '+ updateOledDiagnostics(fps: float): void', '+ triggerEmergencyDisengage(): void'], a: ['- canInterfaceName: string', '- dialRotationTicks: int32_t', '- safetyInterlockState: bool'] },
+          c5: { title: 'MultiViewportGenlock', st: '<<DisplaySync>>', m: ['+ alignDisplayBlankIntervals(): void', '+ lockFrameRate(hz: int = 120): void'], a: ['- activeDisplays: DisplayPort[3]', '- tearFreeVBlankEnabled: bool'] },
+          c6: { title: 'WebRtcStreamingBridge', st: '<<RemoteStreamer>>', m: ['+ captureNvencFrame(): VideoFrame', '+ broadcastDataChannelTelemetry(): void'], a: ['- webrtcPeerConnection: PeerHandle', '- av1BitrateKbps: int = 25000'] },
+          pattern: 'PATTERN: Hardware Direct Framebuffer & Lock-Free SPSC',
+          patternDesc: 'Eliminates desktop window manager overhead and mutex contention',
         };
       default: // opportunity-os
         return {
@@ -817,6 +872,20 @@ const SequenceDiagram: React.FC<{ systemId: string; accentColor: string }> = ({ 
           s5Sub: 'Sub-5ms relay cuts motor power on boundary breach',
           s6: '6. Destination Curbside Docking Completed',
           s7: '7. Azure Digital Twins DTDL v3 Graph Updated (< 45ms)',
+        };
+      case 'digital-twin-appliance':
+        return {
+          l1: 'BorealisPod', l2: 'CycloneDDS', l3: 'Ue5WorldBridge', l4: 'VulkanDRM', l5: 'CockpitHMI',
+          s1: '1. emit_pod_kinematics_and_c_v2x_spat()',
+          s2: '2. push_to_lock_free_ring_buffer(< 4ms)',
+          t1: 'PTP IEEE 1588 Microsecond Timestamp Sync',
+          s3: '3. update_actor_kinematics_and_winter_mesh()',
+          t2: 'Lumen & CARLA Ground-Truth Raymarch',
+          s4: '4. present_planes_to_3x_4k_framebuffers()',
+          s5Title: '5. Hardware CAN-Bus Override Interlock',
+          s5Sub: 'Tactile aerospace rotary dial adjusts corridor focus',
+          s6: '6. Ingestion-to-Photon Frame Latency Locked <= 25ms',
+          s7: '7. OLED Diagnostic Telemetry Strip Updated (120 FPS)',
         };
       default: // opportunity-os
         return {

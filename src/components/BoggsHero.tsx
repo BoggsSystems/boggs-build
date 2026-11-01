@@ -1090,96 +1090,10 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
             </div>
 
             {/* -------------------------------------------------------------
-               PRODUCT 5: DigitPop (Interactive Media & Live Commerce Plank)
+               PRODUCT 5: Digital Twin Appliance (Operations & Simulation Plank)
                ------------------------------------------------------------- */}
             <div className="boggs-portfolio-card">
               <div className="boggs-portfolio-grid">
-                <div className="boggs-portfolio-media">
-                  <img
-                    src={digitpopLiveCommerceUrl}
-                    alt="DigitPop Sub-10ms Live Interactive Video Commerce Platform"
-                    className="boggs-portfolio-img"
-                  />
-                  <div className="boggs-portfolio-overlay-badges">
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#c084fc' }} />
-                      &lt;10ms Ultra-Low Latency
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
-                      Shoppable 4K Video Overlays
-                    </span>
-                    <span className="boggs-portfolio-stat-pill">
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
-                      WebAssembly & WebGL
-                    </span>
-                  </div>
-                </div>
-
-                <div className="boggs-portfolio-body">
-                  <div className="boggs-portfolio-tag" style={{ color: '#c084fc' }}>
-                    <Tv size={14} /> Commerce & Media Plank • Commercial Engine
-                  </div>
-                  <h3 className="boggs-portfolio-title">
-                    DigitPop: Sub-10ms Interactive Video Streaming & Decentralized Commerce Engine
-                  </h3>
-                  <p className="boggs-portfolio-desc">
-                    The commercial growth and media engine of Boggs Systems. Replaces passive video broadcasts with ultra-low latency interactive WebAssembly streams, live dynamic clickable overlays, and decentralized digital commerce without middleman platform fees.
-                  </p>
-
-                  <div className="boggs-portfolio-specs">
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(192, 132, 252, 0.15)', color: '#c084fc' }}>
-                        <Play size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>Interactive WebAssembly Pipeline:</strong> Client-side dynamic overlays running at 60fps across mobile browsers without native application installs.
-                      </div>
-                    </div>
-                    <div className="boggs-portfolio-spec-item">
-                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
-                        <Flame size={15} />
-                      </div>
-                      <div className="boggs-portfolio-spec-text">
-                        <strong>In-Stream Direct Checkout:</strong> Synchronized video frames with live transaction engines allowing viewers to purchase products, vote, and unlock content inside the video frame.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="boggs-portfolio-hiring-box purple">
-                    <div className="boggs-portfolio-hiring-header">
-                      <span className="boggs-portfolio-hiring-tag">
-                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): DigitPop WebAssembly Player & Live Ingest
-                      </span>
-                      <div className="boggs-portfolio-actions">
-                        <button
-                          onClick={() => onOpenArchitecture ? onOpenArchitecture('digitpop') : undefined}
-                          className="boggs-portfolio-blueprint-btn purple"
-                          title="Inspect requirements, UML class models, and state diagrams"
-                        >
-                          <FileCode2 size={13} /> View Architecture &amp; UML
-                        </button>
-                        <button
-                          onClick={() => onOpenCapstone ? onOpenCapstone('digitpop') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20DigitPop')}
-                          className="boggs-portfolio-hiring-btn purple"
-                        >
-                          Apply as Student <ArrowRight size={13} />
-                        </button>
-                      </div>
-                    </div>
-                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
-                      <strong style={{ color: '#c084fc' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* -------------------------------------------------------------
-               PRODUCT 6: Digital Twin Appliance (Operations & Simulation Plank)
-               ------------------------------------------------------------- */}
-            <div className="boggs-portfolio-card">
-              <div className="boggs-portfolio-grid reverse">
                 <div className="boggs-portfolio-media">
                   <img
                     src={digitalTwinApplianceUrl}
@@ -1259,6 +1173,92 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#38bdf8' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 6: DigitPop (Interactive Media & Live Commerce Plank)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={digitpopLiveCommerceUrl}
+                    alt="DigitPop Sub-10ms Live Interactive Video Commerce Platform"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#c084fc' }} />
+                      &lt;10ms Ultra-Low Latency
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#38bdf8' }} />
+                      Shoppable 4K Video Overlays
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      WebAssembly & WebGL
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#c084fc' }}>
+                    <Tv size={14} /> Commerce & Media Plank • Commercial Engine
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    DigitPop: Sub-10ms Interactive Video Streaming & Decentralized Commerce Engine
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    The commercial growth and media engine of Boggs Systems. Replaces passive video broadcasts with ultra-low latency interactive WebAssembly streams, live dynamic clickable overlays, and decentralized digital commerce without middleman platform fees.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(192, 132, 252, 0.15)', color: '#c084fc' }}>
+                        <Play size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Interactive WebAssembly Pipeline:</strong> Client-side dynamic overlays running at 60fps across mobile browsers without native application installs.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8' }}>
+                        <Flame size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>In-Stream Direct Checkout:</strong> Synchronized video frames with live transaction engines allowing viewers to purchase products, vote, and unlock content inside the video frame.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box purple">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): DigitPop WebAssembly Player & Live Ingest
+                      </span>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('digitpop') : undefined}
+                          className="boggs-portfolio-blueprint-btn purple"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('digitpop') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20DigitPop')}
+                          className="boggs-portfolio-hiring-btn purple"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#c084fc' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
                     </div>
                   </div>
                 </div>

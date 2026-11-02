@@ -19,7 +19,6 @@ interface CapstoneApplyModalProps {
 
 const SYSTEMS = [
   { id: 'smart-mohs', name: 'Smart Mohs (Medicine & Laser Robotics)', tag: 'C++23 • CUDA • Optics' },
-  { id: 'voxelbio', name: 'VoxelBio (Synthetic 3D Tissue Foundry)', tag: 'C++23 • PyTorch • Volumetric SoA' },
   { id: 'borealis-pods', name: 'Borealis Pods (6-Passenger Autonomous Fleet)', tag: 'C++20 • ROS 2 • V2X' },
   { id: 'borealis-maglev', name: 'Borealis Maglev (500 km/h Tube & Avionics)', tag: 'Rust • QNX • SIL-4' },
   { id: 'robot-fleet', name: 'Robot Fleet (Humanoid & Quadruped Multi-Agent)', tag: 'CycloneDDS • MuJoCo • DTDL v3' },
@@ -37,7 +36,6 @@ const TRACKS = [
 
 const SYSTEM_PLACEHOLDERS: Record<string, string> = {
   'smart-mohs': "e.g., Tell Jeff about your C++23, CUDA, or computer vision experience, and your interest in sub-cellular optical biopsy margins or 3D cold laser micro-ablation.",
-  'voxelbio': "e.g., Tell Jeff about your C++23, PyTorch, computer graphics (voxels/raymarching), or biomedical engineering background, and your interest in procedural biological tissue & tumor generation.",
   'borealis-maglev': "e.g., Tell Jeff about your Rust, QNX, control theory, or formal verification experience, and your interest in 20 kHz active levitation gap regulation or aerodynamic failsafes.",
   'robot-fleet': "e.g., Tell Jeff about your robotics, ROS 2 / CycloneDDS, MuJoCo physics, or computer vision experience, and your interest in multi-agent humanoid/quadruped collaborative manipulation.",
   'digital-twin-appliance': "e.g., Tell Jeff about your C++, Unreal Engine 5, embedded Linux / Vulkan DRM-KMS, or hardware HMI experience, and your interest in building bare-metal digital twin cockpits.",

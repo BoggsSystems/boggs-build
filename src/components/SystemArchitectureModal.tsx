@@ -180,6 +180,109 @@ export const ARCHITECTURE_DATA: Record<string, SystemData> = {
     ],
   },
 
+  'voxelbio': {
+    id: 'voxelbio',
+    name: 'VoxelBio Synthetic 3D Tissue & Pathology Generation Engine',
+    shortName: 'VoxelBio',
+    badge: 'C++23 • PyTorch CUDA • Volumetric SoA • Wave Optics',
+    accentColor: '#c084fc',
+    repo: 'BoggsSystems/skin-system & voxelbio-torch',
+    architectureTier: 'High-Performance Generative Simulation & Deep Learning Data Foundry',
+    overview:
+      'Procedural biological digital twin and synthetic imaging data platform. Synthesizes stratified multi-layer cellular volumes, undulating dermal-epidermal rete ridges, and infiltrative fractal tumor nests with zero-copy streaming into PyTorch 3D AI vision models.',
+    standards: [
+      { name: 'IEEE 1516 (HLA)', desc: 'Standard for Modeling and Simulation High-Level Architecture framework.' },
+      { name: 'DICOM Part 3 / PS 3.3', desc: 'Medical image object definitions for 3D multi-frame volumetric datasets.' },
+      { name: 'OpenMP 5.2 / SIMD', desc: 'Hardware-vectorized thread-level parallelism across volumetric memory buffers.' },
+      { name: 'Google FlatBuffers / Zero-Copy', desc: 'Memory-mapped binary serialization for zero-overhead GPU data streaming.' },
+    ],
+    functionalReqs: [
+      'Synthesize a 512x512x256 heterogeneous cellular tissue block in < 45ms using C++23 Structure-of-Arrays memory allocation.',
+      'Model stochastic fractal branching nests of basal cell carcinoma (BCC) and squamous cell carcinoma (SCC) with tunable infiltrative aggressiveness.',
+      'Simulate wave-optics beam propagation including forward-peaked Henyey-Greenstein scattering (g = 0.90) and Rayleigh speckle modulation.',
+      'Provide zero-copy PyTorch Tensor interop via C++ Pybind11 / libtorch extension with seamless CUDA device transfer.',
+      'Export voxel-accurate ground-truth semantic segmentation masks (stratum corneum, epidermis, dermis, tumor, margin).',
+    ],
+    nonFunctionalReqs: [
+      'Deterministic reproducibility: Identical 64-bit seed must yield bit-exact volumetric voxel grids across x86-64 and ARM64 platforms.',
+      'Cache locality: L1/L2 cache hit rate >= 92% during OpenMP multi-threaded beam propagation sweeps.',
+      'Memory efficiency: Peak working memory <= 1.2 GB during full 1024-line 3D volume synthesis.',
+      'Sub-millisecond data delivery: PyTorch DataLoader batch retrieval time < 15ms per 3D volumetric sample.',
+    ],
+    umlPackage: 'BoggsSystems::VoxelBio::GenerativeEngine',
+    umlClasses: [
+      {
+        name: 'VolumetricTissueModel',
+        stereotype: '<<StructureOfArrays>>',
+        description: 'Represents cellular tissue properties as cache-aligned contiguous arrays for SIMD vectorization.',
+        attributes: [
+          '- dimensions: VoxelDim3D',
+          '- refractive_index: std::vector<float>',
+          '- scattering_coeff: std::vector<float>',
+          '- absorption_coeff: std::vector<float>',
+          '- histology_labels: std::vector<uint16_t>',
+        ],
+        methods: [
+          '+ allocate_arena(dim: VoxelDim3D): void',
+          '+ sample_voxel(x: int, y: int, z: int): VoxelProperties',
+          '+ get_raw_pointer_cuda(): uintptr_t',
+        ],
+        relations: ['Composes ProceduralStrataBuilder', 'Provides data to WaveOpticsKernel'],
+      },
+      {
+        name: 'ProceduralPathologyGenerator',
+        stereotype: '<<GenerativeKernel>>',
+        description: 'Stochastically grows fractal tumor nests and rete ridges across stratified tissue boundaries.',
+        attributes: [
+          '- fractal_seed: uint64_t',
+          '- infiltrative_depth: float',
+          '- nest_density: float',
+        ],
+        methods: [
+          '+ generate_strata(skin_params: StrataConfig): void',
+          '+ spawn_fractal_tumor(origin: Vec3f, config: TumorConfig): BoundingBox3D',
+        ],
+        relations: ['Mutates VolumetricTissueModel'],
+      },
+      {
+        name: 'TorchDataLoaderBridge',
+        stereotype: '<<TensorStreamer>>',
+        description: 'Binds the C++23 SoA memory arena directly into PyTorch C++ / CUDA tensors with zero disk serialization.',
+        attributes: [
+          '- batch_size: size_t',
+          '- cuda_stream: cudaStream_t',
+        ],
+        methods: [
+          '+ stream_next_batch(target_tensor: at::Tensor&): void',
+          '+ export_synthetic_oct_bscan(): at::Tensor',
+        ],
+        relations: ['Consumes VolumetricTissueModel', 'Exports to PyTorch DataLoader'],
+      },
+    ],
+    designPatterns: [
+      { name: 'Structure of Arrays (SoA)', usage: 'Stores physical properties in contiguous parallel arrays maximizing AVX-512 / NEON vectorization.' },
+      { name: 'Procedural Fractal Synthesis', usage: 'Deterministic mathematical recursion eliminating storage of multi-gigabyte voxel assets on disk.' },
+      { name: 'Zero-Copy Ring Buffer', usage: 'Direct host-to-device streaming into PyTorch GPU memory without intermediate disk writes.' },
+    ],
+    stateMachine: {
+      title: 'VoxelBio Synthetic Generation & ML Streaming Lifecycle',
+      states: [
+        { name: 'IDLE_ARENA_ALLOCATED', tag: 'State 0', desc: 'Memory arena allocated, SIMD alignment verified, seed initialized.' },
+        { name: 'STRATA_SYNTHESIS', tag: 'State 1', desc: 'Procedural generation of epidermis, dermis, and undulating rete ridges.' },
+        { name: 'PATHOLOGY_SEEDING', tag: 'State 2', desc: 'Stochastic fractal seeding of malignant BCC/SCC tumor nests and vascular networks.' },
+        { name: 'PHYSICS_PROPAGATION', tag: 'State 3', desc: 'Wave-optics beam propagation and speckle modulation simulating synthetic OCT B-scans.' },
+        { name: 'ZERO_COPY_TENSOR_DISPATCH', tag: 'State 4', desc: 'Direct memory dispatch into PyTorch training batch pipeline via CUDA IPC.' },
+      ],
+      failsafe: 'Boundary containment assertion ensuring procedural fractal recursion terminates within active voxel bounds.',
+    },
+    currentMilestones: [
+      { title: 'C++23 SoA Volumetric Core', status: 'completed', details: 'Basic multi-layer tissue and fractal tumor generator verified with automated unit tests.' },
+      { title: 'Wave Optics Beam Kernel', status: 'completed', details: 'Henyey-Greenstein anisotropic scattering kernel generating synthetic OCT B-scans in < 850ms.' },
+      { title: 'Student Pod Task: voxelbio-torch Python Extension', status: 'pod-backlog', details: 'Build zero-copy PyTorch C++ extension and custom DataLoader for seamless AI training pipelines.' },
+      { title: 'Student Pod Task: WebGL / Vulkan Real-Time Slice Viewer', status: 'pod-backlog', details: 'Build interactive browser 3D raymarching viewer allowing clinicians to inspect synthetic tumor margins.' },
+    ],
+  },
+
   'borealis-pods': {
     id: 'borealis-pods',
     name: 'Borealis Pods (6-Passenger Autonomous Micro-Transit)',

@@ -31,6 +31,7 @@ import {
   Monitor,
 } from 'lucide-react';
 import smartMohsWorkstationUrl from '../assets/smart-mohs-workstation.jpg';
+import voxelbioWorkstationUrl from '../assets/voxelbio-workstation.jpg';
 import borealisMaglevTubeUrl from '../assets/borealis-maglev-tube.jpg';
 import robotFleetHeterogeneousUrl from '../assets/robot-fleet-heterogeneous.jpg';
 import borealisRoadPodUrl from '../assets/borealis-road-pod.jpg';
@@ -667,7 +668,7 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                   </div>
                   <h4 className="boggs-funnel-step-title">1. Submit Brief</h4>
                   <p className="boggs-funnel-step-desc">
-                    Pick your preferred system pod below (Smart Mohs, Borealis Pods, Borealis Maglev, Robot Fleet, Digital Twin Appliance, DigitPop, Opportunity OS, or Sovereign Civic Campuses) and link your GitHub profile. No resume formatting required.
+                    Pick your preferred system pod below (Smart Mohs, VoxelBio, Borealis Pods, Borealis Maglev, Robot Fleet, Digital Twin Appliance, DigitPop, Opportunity OS, or Sovereign Civic Campuses) and link your GitHub profile. No resume formatting required.
                   </p>
                 </div>
 
@@ -791,6 +792,96 @@ export const BoggsHero: React.FC<BoggsHeroProps> = ({
                     </div>
                     <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
                       <strong style={{ color: '#fbbf24' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* -------------------------------------------------------------
+               PRODUCT 1B: VoxelBio (Biomedical AI Plank • Synthetic Tissue Foundry)
+               ------------------------------------------------------------- */}
+            <div className="boggs-portfolio-card">
+              <div className="boggs-portfolio-grid reverse">
+                <div className="boggs-portfolio-media">
+                  <img
+                    src={voxelbioWorkstationUrl}
+                    alt="VoxelBio High-Fidelity Synthetic 3D Tissue and Pathology Generation Engine"
+                    className="boggs-portfolio-img"
+                  />
+                  <div className="boggs-portfolio-overlay-badges">
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#06b6d4' }} />
+                      C++23 &amp; OpenMP / SIMD
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+                      Procedural Fractal Pathology
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#c084fc' }} />
+                      Zero-Copy PyTorch &amp; FlatBuffers
+                    </span>
+                    <span className="boggs-portfolio-stat-pill">
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#fbbf24' }} />
+                      Synthetic OCT &amp; CT Stream
+                    </span>
+                  </div>
+                </div>
+
+                <div className="boggs-portfolio-body">
+                  <div className="boggs-portfolio-tag" style={{ color: '#c084fc' }}>
+                    <Layers size={14} /> Biomedical AI Plank • Synthetic Tissue Foundry
+                  </div>
+                  <h3 className="boggs-portfolio-title">
+                    VoxelBio: High-Fidelity Synthetic 3D Tissue &amp; Pathology Generation Engine
+                  </h3>
+                  <p className="boggs-portfolio-desc">
+                    Solves the fundamental training data bottleneck in surgical oncology AI and 3D medical vision. Bypasses clinical trial scarcity, donor tissue constraints, and HIPAA/PIPEDA hurdles by procedurally synthesizing mathematically continuous, heterogeneous 3D biological tissue volumes with stochastic infiltrative tumor morphologies and ground-truth sub-cellular segmentation.
+                  </p>
+
+                  <div className="boggs-portfolio-specs">
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(6, 182, 212, 0.15)', color: '#06b6d4' }}>
+                        <Layers size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>C++23 SoA Volumetric Core:</strong> High-cache-locality Structure-of-Arrays (SoA) procedural engine generating multi-layer cellular strata, undulating rete ridges, and stochastic fractal tumor nests at microsecond cache speeds.
+                      </div>
+                    </div>
+                    <div className="boggs-portfolio-spec-item">
+                      <div className="boggs-portfolio-spec-icon" style={{ background: 'rgba(192, 132, 252, 0.15)', color: '#c084fc' }}>
+                        <Cpu size={15} />
+                      </div>
+                      <div className="boggs-portfolio-spec-text">
+                        <strong>Zero-Copy PyTorch &amp; FlatBuffers:</strong> Direct GPU streaming interface allowing AI researchers to train 3D vision transformers (e.g., Swin UNETR) against infinite synthetic OCT, ultrasound, and micro-CT scans without disk I/O bottlenecks.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="boggs-portfolio-hiring-box purple">
+                    <div className="boggs-portfolio-hiring-header">
+                      <span className="boggs-portfolio-hiring-tag">
+                        <GraduationCap size={13} /> Target Repo (Capstone / Co-op): VoxelBio Generative Core &amp; PyTorch Runtime
+                      </span>
+                      <div className="boggs-portfolio-actions">
+                        <button
+                          onClick={() => onOpenArchitecture ? onOpenArchitecture('voxelbio') : undefined}
+                          className="boggs-portfolio-blueprint-btn purple"
+                          title="Inspect requirements, UML class models, and state diagrams"
+                        >
+                          <FileCode2 size={13} /> View Architecture &amp; UML
+                        </button>
+                        <button
+                          onClick={() => onOpenCapstone ? onOpenCapstone('voxelbio') : (window.location.href = 'mailto:jeff@boggs.build?subject=uOttawa%20Student%20Application%20-%20VoxelBio')}
+                          className="boggs-portfolio-hiring-btn purple"
+                        >
+                          Apply as Student <ArrowRight size={13} />
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '0.79rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                      <strong style={{ color: '#c084fc' }}>High-Velocity Funnel:</strong> Submit brief ➔ 24h review by Jeff Boggs ➔ Fast-track digital NDA ➔ Direct GitHub repo access.
                     </div>
                   </div>
                 </div>

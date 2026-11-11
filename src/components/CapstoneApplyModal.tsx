@@ -97,6 +97,19 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
     setResumeFile(file);
   };
 
+  const readFileAsBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        const base64 = result.includes(',') ? result.split(',')[1] : result;
+        resolve(base64);
+      };
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
@@ -106,38 +119,42 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
     const trackObj = TRACKS.find((t) => t.id === selectedTrack) || TRACKS[0];
 
     try {
-      const formData = new FormData();
-      formData.append('_subject', `uOttawa Student Application [${trackObj.label}] - ${systemObj.name} (${fullName})`);
-      formData.append('_replyto', uottawaEmail);
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-      formData.append('Candidate Name', fullName);
-      formData.append('uOttawa Email', uottawaEmail);
-      formData.append('GitHub Profile', githubUrl);
-      formData.append('Application Track', trackObj.label);
-      formData.append('Target System Pod', systemObj.name);
-      formData.append('Engineering Strengths & Notes', interestsNote || 'None provided');
+      let resumePayload: { filename: string; content: string } | undefined;
       if (resumeFile) {
-        formData.append('attachment', resumeFile, resumeFile.name);
+        const base64Content = await readFileAsBase64(resumeFile);
+        resumePayload = {
+          filename: resumeFile.name,
+          content: base64Content,
+        };
       }
 
-      const response = await fetch('https://formsubmit.co/ajax/jeff@boggs.build', {
+      const payload = {
+        candidateName: fullName,
+        uottawaEmail,
+        githubUrl,
+        applicationTrack: trackObj.label,
+        targetSystem: systemObj.name,
+        interestsNote,
+        resume: resumePayload,
+      };
+
+      const response = await fetch('/api/apply', {
         method: 'POST',
-        body: formData,
         headers: {
-          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json().catch(() => null);
-      if (response.ok || (data && data.success === 'true')) {
+      if (response.ok && data?.success) {
         setStatus('success');
       } else {
-        throw new Error(data?.message || 'Submission failed');
+        throw new Error(data?.error || 'Submission failed');
       }
     } catch (err) {
-      console.warn('FormSubmit network failure, falling back to mailto client:', err);
-      // Graceful fallback to mailto if blocked by adblocker/offline
+      console.warn('Submission network issue, falling back to mail client:', err);
+      // Graceful fallback to mailto if network error
       const subject = encodeURIComponent(
         `uOttawa SEG Student Application [${trackObj.label}] - ${systemObj.name} (${fullName || 'Student'})`
       );

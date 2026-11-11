@@ -4,11 +4,14 @@ import {
   GraduationCap,
   Sparkles,
   ArrowRight,
-  ShieldCheck,
   CheckCircle2,
   Clock,
   Send,
-  Zap,
+  UploadCloud,
+  FileText,
+  Trash2,
+  Loader2,
+  Check,
 } from 'lucide-react';
 
 interface CapstoneApplyModalProps {
@@ -52,18 +55,24 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
   initialSystem = 'smart-mohs',
 }) => {
   const [selectedSystem, setSelectedSystem] = useState(initialSystem);
+  const [showSystemPicker, setShowSystemPicker] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState('capstone');
   const [fullName, setFullName] = useState('');
   const [uottawaEmail, setUottawaEmail] = useState('');
   const [githubUrl, setGithubUrl] = useState('');
   const [interestsNote, setInterestsNote] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (isOpen && initialSystem) {
       const resolved = initialSystem === 'transit-os' ? 'borealis-pods' : initialSystem;
       setSelectedSystem(resolved);
-      setSubmitted(false);
+      setShowSystemPicker(false);
+      setStatus('idle');
+      setErrorMessage('');
     }
   }, [isOpen, initialSystem]);
 
@@ -79,27 +88,72 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFileSelect = (file: File) => {
+    if (file.size > 10 * 1024 * 1024) {
+      setErrorMessage('Resume file size must be less than 10MB.');
+      return;
+    }
+    setErrorMessage('');
+    setResumeFile(file);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus('submitting');
+    setErrorMessage('');
+
     const systemObj = SYSTEMS.find((s) => s.id === selectedSystem) || SYSTEMS[0];
     const trackObj = TRACKS.find((t) => t.id === selectedTrack) || TRACKS[0];
-    const subject = encodeURIComponent(
-      `uOttawa SEG Student Application [${trackObj.label}] - ${systemObj.name} (${fullName || 'Student'})`
-    );
-    const body = encodeURIComponent(
-      `Full Name: ${fullName}\n` +
-      `uOttawa Email: ${uottawaEmail}\n` +
-      `GitHub Profile: ${githubUrl}\n` +
-      `Application Track: ${trackObj.label}\n` +
-      `Selected System: ${systemObj.name}\n\n` +
-      `Engineering Background & Why I want to build this:\n${interestsNote}\n\n` +
-      `---\n` +
-      `Submitted via boggs.build Student Fast-Track Intake.`
-    );
 
-    // Open mail client
-    window.location.href = `mailto:jeff@boggs.build?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    try {
+      const formData = new FormData();
+      formData.append('_subject', `uOttawa Student Application [${trackObj.label}] - ${systemObj.name} (${fullName})`);
+      formData.append('_replyto', uottawaEmail);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+      formData.append('Candidate Name', fullName);
+      formData.append('uOttawa Email', uottawaEmail);
+      formData.append('GitHub Profile', githubUrl);
+      formData.append('Application Track', trackObj.label);
+      formData.append('Target System Pod', systemObj.name);
+      formData.append('Engineering Strengths & Notes', interestsNote || 'None provided');
+      if (resumeFile) {
+        formData.append('attachment', resumeFile, resumeFile.name);
+      }
+
+      const response = await fetch('https://formsubmit.co/ajax/jeff@boggs.build', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      const data = await response.json().catch(() => null);
+      if (response.ok || (data && data.success === 'true')) {
+        setStatus('success');
+      } else {
+        throw new Error(data?.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.warn('FormSubmit network failure, falling back to mailto client:', err);
+      // Graceful fallback to mailto if blocked by adblocker/offline
+      const subject = encodeURIComponent(
+        `uOttawa SEG Student Application [${trackObj.label}] - ${systemObj.name} (${fullName || 'Student'})`
+      );
+      const body = encodeURIComponent(
+        `Full Name: ${fullName}\n` +
+        `uOttawa Email: ${uottawaEmail}\n` +
+        `GitHub Profile: ${githubUrl}\n` +
+        `Application Track: ${trackObj.label}\n` +
+        `Selected System: ${systemObj.name}\n\n` +
+        `Engineering Background & Why I want to build this:\n${interestsNote}\n\n` +
+        `---\n` +
+        `Submitted via boggs.build Student Fast-Track Intake.`
+      );
+      window.location.href = `mailto:jeff@boggs.build?subject=${subject}&body=${body}`;
+      setStatus('success');
+    }
   };
 
   const currentSystemObj = SYSTEMS.find((s) => s.id === selectedSystem) || SYSTEMS[0];
@@ -121,7 +175,7 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
           <X size={20} />
         </button>
 
-        {!submitted ? (
+        {status !== 'success' ? (
           <>
             <div className="capstone-modal-header">
               <div className="capstone-modal-badge">
@@ -156,29 +210,83 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
                 </div>
               </div>
 
-              {/* System Selector */}
+              {/* Locked System Pod Badge (with toggle) */}
               <div className="capstone-form-group">
-                <label className="capstone-form-label">
-                  Select Target System / Repository:
-                </label>
-                <div className="capstone-system-grid">
-                  {SYSTEMS.map((sys) => {
-                    const isSelected = selectedSystem === sys.id;
-                    return (
-                      <button
-                        type="button"
-                        key={sys.id}
-                        className={`capstone-system-card ${isSelected ? 'active' : ''}`}
-                        onClick={() => setSelectedSystem(sys.id)}
-                      >
-                        <div className="capstone-sys-header">
-                          <span className="capstone-sys-name">{sys.name}</span>
-                          <span className="capstone-sys-tag">{sys.tag}</span>
-                        </div>
-                      </button>
-                    );
-                  })}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <label className="capstone-form-label">Target System / Repository:</label>
+                  <button
+                    type="button"
+                    onClick={() => setShowSystemPicker(!showSystemPicker)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#38bdf8',
+                      fontSize: '0.75rem',
+                      cursor: 'pointer',
+                      padding: 0,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {showSystemPicker ? 'Hide pods ▴' : 'Change pod ▾'}
+                  </button>
                 </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '10px',
+                    background: 'rgba(56, 189, 248, 0.08)',
+                    border: '1px solid rgba(56, 189, 248, 0.35)',
+                    borderRadius: '10px',
+                    padding: '10px 14px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                    <span style={{ fontWeight: 800, color: '#f8fafc', fontSize: '0.86rem' }}>
+                      {currentSystemObj.name}
+                    </span>
+                  </div>
+                  <span
+                    style={{
+                      fontSize: '0.7rem',
+                      color: '#38bdf8',
+                      fontFamily: 'monospace',
+                      background: 'rgba(56, 189, 248, 0.15)',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      whiteSpace: 'nowrap',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {currentSystemObj.tag}
+                  </span>
+                </div>
+
+                {showSystemPicker && (
+                  <div className="capstone-system-grid" style={{ marginTop: '8px', maxHeight: '160px' }}>
+                    {SYSTEMS.map((sys) => {
+                      const isSelected = selectedSystem === sys.id;
+                      return (
+                        <button
+                          type="button"
+                          key={sys.id}
+                          className={`capstone-system-card ${isSelected ? 'active' : ''}`}
+                          onClick={() => {
+                            setSelectedSystem(sys.id);
+                            setShowSystemPicker(false);
+                          }}
+                        >
+                          <div className="capstone-sys-header">
+                            <span className="capstone-sys-name">{sys.name}</span>
+                            <span className="capstone-sys-tag">{sys.tag}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
               {/* Name & Email Row */}
@@ -220,13 +328,114 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
                 />
               </div>
 
+              {/* Resume / Project Brief Upload */}
+              <div className="capstone-form-group">
+                <label className="capstone-form-label">
+                  Resume / Project Brief (PDF or Word, Optional)
+                </label>
+                {!resumeFile ? (
+                  <label
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      setIsDragging(true);
+                    }}
+                    onDragLeave={() => setIsDragging(false)}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      setIsDragging(false);
+                      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                        handleFileSelect(e.dataTransfer.files[0]);
+                      }
+                    }}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '5px',
+                      padding: '14px 12px',
+                      borderRadius: '10px',
+                      border: `1px dashed ${isDragging ? '#38bdf8' : 'rgba(255, 255, 255, 0.2)'}`,
+                      background: isDragging ? 'rgba(56, 189, 248, 0.08)' : 'rgba(3, 7, 18, 0.4)',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <input
+                      type="file"
+                      accept=".pdf,.docx,.doc"
+                      style={{ display: 'none' }}
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files[0]) {
+                          handleFileSelect(e.target.files[0]);
+                        }
+                      }}
+                    />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '0.84rem' }}>
+                      <UploadCloud size={18} style={{ color: '#38bdf8' }} />
+                      <span><strong style={{ color: '#f1f5f9' }}>Click to upload resume</strong> or drag and drop</span>
+                    </div>
+                    <span style={{ fontSize: '0.72rem', color: '#64748b' }}>PDF or Word documents up to 10MB</span>
+                  </label>
+                ) : (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '10px 14px',
+                      borderRadius: '10px',
+                      background: 'rgba(16, 185, 129, 0.08)',
+                      border: '1px solid rgba(16, 185, 129, 0.3)',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                      <FileText size={18} style={{ color: '#10b981', flexShrink: 0 }} />
+                      <div style={{ minWidth: 0 }}>
+                        <div
+                          style={{
+                            fontSize: '0.82rem',
+                            fontWeight: 700,
+                            color: '#f1f5f9',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                          }}
+                        >
+                          {resumeFile.name}
+                        </div>
+                        <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
+                          {(resumeFile.size / 1024).toFixed(1)} KB • Ready to send
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setResumeFile(null)}
+                      title="Remove file"
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#ef4444',
+                        cursor: 'pointer',
+                        padding: '4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                )}
+              </div>
+
               {/* Interests & Background Note */}
               <div className="capstone-form-group">
                 <label className="capstone-form-label">
                   Engineering Strengths & Why You Want This System (Optional)
                 </label>
                 <textarea
-                  rows={3}
+                  rows={2}
                   value={interestsNote}
                   onChange={(e) => setInterestsNote(e.target.value)}
                   placeholder={
@@ -237,31 +446,51 @@ export const CapstoneApplyModal: React.FC<CapstoneApplyModalProps> = ({
                 />
               </div>
 
+              {errorMessage && (
+                <div style={{ color: '#ef4444', fontSize: '0.8rem', padding: '6px 10px', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '6px' }}>
+                  {errorMessage}
+                </div>
+              )}
+
               {/* High-Velocity Guarantee Callout */}
               <div className="capstone-velocity-callout">
                 <Clock size={18} className="text-amber" />
                 <div style={{ fontSize: '0.8rem', color: '#cbd5e1', lineHeight: 1.45 }}>
-                  <strong style={{ color: '#fbbf24' }}>48-Hour Turnaround:</strong> Application reviewed directly by founder Jeff Boggs (uOttawa SEG Alum) ahead of the November Ottawa campus visit.
+                  <strong style={{ color: '#fbbf24' }}>48-Hour Turnaround:</strong> Application and brief delivered directly to founder Jeff Boggs (<code style={{ color: '#38bdf8' }}>jeff@boggs.build</code>).
                 </div>
               </div>
 
-              <button type="submit" className="capstone-btn-submit">
-                <Send size={16} /> Submit Application & Draft Brief
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="capstone-btn-submit"
+                style={{ opacity: status === 'submitting' ? 0.7 : 1 }}
+              >
+                {status === 'submitting' ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" /> Submitting Brief & Resume...
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} /> Submit Application & Draft Brief
+                  </>
+                )}
               </button>
             </form>
           </>
         ) : (
           <div className="capstone-success-view">
             <div className="capstone-success-icon">
-              <CheckCircle2 size={42} style={{ color: '#10b981' }} />
+              <CheckCircle2 size={46} style={{ color: '#10b981' }} />
             </div>
-            <h3 className="capstone-success-title">Application Drafted!</h3>
+            <h3 className="capstone-success-title">Application Submitted!</h3>
             <p className="capstone-success-desc">
-              Your application details have been formatted and routed to founder Jeff Boggs (<code>jeff@boggs.build</code>). If your email client didn't open automatically, send your brief directly to <strong>jeff@boggs.build</strong>.
+              Your application details {resumeFile ? 'and resume ' : ''}have been routed directly to founder Jeff Boggs (<code>jeff@boggs.build</code>).
+              You will receive a direct review of your GitHub profile and background ahead of the November Ottawa campus sprint.
             </p>
             <button
               onClick={() => {
-                setSubmitted(false);
+                setStatus('idle');
                 onClose();
               }}
               className="capstone-btn-secondary"

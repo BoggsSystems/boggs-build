@@ -118,8 +118,14 @@ async function handleApply(req, res) {
             <div style="font-size: 14px; color: #334155; white-space: pre-wrap;">${interestsNote || 'None provided.'}</div>
           </div>
 
+          <div style="margin-top: 20px; margin-bottom: 24px;">
+            <a href="mailto:${uottawaEmail}?subject=Re:%20uOttawa%20Student%20Application%20-%20${encodeURIComponent(targetSystem || 'Boggs Systems')}" style="display: inline-block; background: #0284c7; color: #ffffff; padding: 11px 22px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px;">
+              ✉️ Reply to ${candidateName} (${uottawaEmail})
+            </a>
+          </div>
+
           <div style="font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 16px;">
-            Submitted directly through <a href="https://boggs.build" style="color: #0284c7; text-decoration: none;">boggs.build</a> Student Fast-Track Intake. Hitting <strong>Reply</strong> will respond directly to <code>${uottawaEmail}</code>.
+            Submitted directly through <a href="https://boggs.build" style="color: #0284c7; text-decoration: none;">boggs.build</a> Student Fast-Track Intake.
           </div>
         </div>
       `;
@@ -133,9 +139,8 @@ async function handleApply(req, res) {
       }
 
       const resendPayload = {
-        from: 'intake@opportunity-system.com',
+        from: 'notifications@opportunity-system.com',
         to: 'jeff@boggs.build',
-        reply_to: uottawaEmail,
         subject: emailSubject,
         html: htmlContent,
         attachments: attachments.length > 0 ? attachments : undefined,

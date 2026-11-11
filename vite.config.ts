@@ -61,9 +61,8 @@ export default defineConfig(({ mode }) => {
                   'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                  from: 'intake@opportunity-system.com',
+                  from: 'notifications@opportunity-system.com',
                   to: 'jeff@boggs.build',
-                  reply_to: data.uottawaEmail,
                   subject: emailSubject,
                   html: htmlContent,
                   attachments: attachments.length > 0 ? attachments : undefined,
